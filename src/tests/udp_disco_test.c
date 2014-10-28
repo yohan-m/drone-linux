@@ -15,7 +15,6 @@ void test_udp_disco()
 			return;
 		}
 		
-		//try to receive data with this IP to check if the format is valid
 		unsigned char data[64];
 		udp_driver_read(data,64);
 	}	

@@ -10,13 +10,17 @@ void test_udp_async()
 	data[3]='t';
 	data[4]='\0';
 	
+	char c;
+	
 	udp_async_driver_init(31000,52400,"127.0.0.1");
 	udp_async_driver_enable_read(&test_callback_receive,64);
 	
 	while(cnt <10) { 
 		printf("getchar() ?\n");
-		getchar();		
-		udp_async_driver_write(data,5);
+		c = getchar();	
+		if(c=='s') {
+			udp_async_driver_write(data,5);
+		}	
 		cnt++;
 	}
 	
