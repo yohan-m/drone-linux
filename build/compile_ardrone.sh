@@ -1,1 +1,1 @@
-/opt/Codesourcery/bin/arm-none-linux-gnueabi-gcc -march=armv7-a -Wall ./../src/*/*.c ./../src/*c -o ardrone_localization -DDEBUG
+/opt/Codesourcery/bin/arm-none-linux-gnueabi-gcc -Wall ./../src/*/*.c ./../src/*.c ./../../common-sources/src/*.c -o ardrone_localization -DDEBUG
