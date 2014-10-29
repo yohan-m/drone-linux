@@ -3,12 +3,13 @@
 #include "tests/udp_async_test.h"
 #include "tests/udp_disco_test.h"
 #include "tests/udp_manager_test.h"
+#include "tests/udp_protocol_test.h"
 
 int main(int argc, char *argv[]) 
 {
 	printf("\nStart\n\n");
 
-	test_udp_manager();
+	udpProtocolTest();
 
 	printf("\nEnd\n\n");
 	return 0;	
