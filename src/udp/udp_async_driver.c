@@ -119,7 +119,7 @@ int udp_async_driver_write(unsigned char * data, int size)
 		printf("(%s)\n",data);
 	#endif
 	
-	return 0;
+	return cnt_bytes;
 }
 
 

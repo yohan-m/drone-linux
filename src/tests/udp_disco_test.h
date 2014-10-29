@@ -12,8 +12,11 @@
 #define UDP_DISCO_TEST_H
 
 #include "./../udp/udp_driver_discover.h"
-#include "./../udp/udp_driver.h"
+#include "./../../../common-sources/src/wifiFrame.h"
+#include "./../../../common-sources/src/frameTypes.h"
+#include "./../udp/udp_async_driver.h"
 
 void test_udp_disco();
+void test_callback_fct(unsigned char * data, int size);
 
 #endif

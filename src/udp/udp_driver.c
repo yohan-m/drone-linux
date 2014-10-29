@@ -72,7 +72,7 @@ int udp_driver_write(unsigned char * data, int size)
 		}
 		printf("(%s)\n",data);	
 	#endif
-	return 0;
+	return cnt_bytes;
 }
 
 
@@ -97,7 +97,7 @@ int udp_driver_read(unsigned char * data, int size)
 		}
 		printf("(%s)\n",data);
 	#endif
-	return 0;
+	return cnt_bytes;
 }
 
 

@@ -6,8 +6,9 @@ void test_udp_manager()
 	char c;
 	
 	wifiFrame frame = createWifiFrame(TIME_FRAME, 123456789, 2974674, 48486, 256155);
-	char data[19];
-	wifiFrameToChar(frame, data);
+	char * data;
+	data = wifiFrameToChar(frame);
+	
 	
 	udp_async_driver_init(31000,52400,"192.168.1.3");
 	udp_async_driver_enable_read(&test_callback_receive_manager,64);
