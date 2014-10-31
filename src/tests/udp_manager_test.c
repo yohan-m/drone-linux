@@ -29,12 +29,7 @@ void test_callback_receive_manager(unsigned char * data, int size)
 {
 	if(size==19) {
 		wifiFrame frame = wifiFrameFromChar((char *)data);		
-		printf("[Test] L%d %s : seqNum = %d\n",__LINE__,__FUNCTION__,frame.seqNum);	
-		printf("[Test] L%d %s : type   = %c\n",__LINE__,__FUNCTION__,frame.type);	
-		printf("[Test] L%d %s : data0  = %d\n",__LINE__,__FUNCTION__,frame.data[0]);
-		printf("[Test] L%d %s : data1  = %d\n",__LINE__,__FUNCTION__,frame.data[1]);
-		printf("[Test] L%d %s : data2  = %d\n",__LINE__,__FUNCTION__,frame.data[2]);
-		printf("[Test] L%d %s : data3  = %d\n",__LINE__,__FUNCTION__,frame.data[3]);	
+		printf("[Test] L%d %s : seqNum%d type=%c data0=%d data1=%d data2=%d data3=%d\n",__LINE__,__FUNCTION__,frame.seqNum,frame.type,frame.data[0],frame.data[1],frame.data[2],frame.data[3]);	
 	}
 	else {
 		printf("[Test] L%d %s : (%d bytes) Unknow frame %s\n",__LINE__,__FUNCTION__,size,data);		

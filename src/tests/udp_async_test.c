@@ -12,7 +12,7 @@ void test_udp_async()
 	
 	char c;
 	
-	udp_async_driver_init(31000,52400,"127.0.0.1");
+	udp_async_driver_init(31000,52400,"192.168.1.3");
 	udp_async_driver_enable_read(&test_callback_receive,64);
 	
 	while(cnt <10) { 
