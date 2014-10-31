@@ -33,12 +33,10 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 	memset((char *) &disco_remote_sockaddr, 0, sizeof(disco_remote_sockaddr));
 	disco_remote_sockaddr.sin_family = AF_INET;
 	disco_remote_sockaddr.sin_port = htons(remote_port);
-	disco_local_sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	/*if (inet_aton("255.255.255.255", &disco_remote_sockaddr.sin_addr)==0) {
+	if (inet_aton("192.168.1.255", &disco_remote_sockaddr.sin_addr)==0) {
 		printf("[Error] L%d %s : inet_aton failed\n",__LINE__,__FUNCTION__);
 		return -4;
-	}*/
-	
+	}
 
 	//enable async read
 	
@@ -98,6 +96,15 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 		return -10;
 	}
 	
+	#ifdef DEBUG
+		printf("[Debug] L%d %s : write %d bytes to %s:%d : ",__LINE__,__FUNCTION__,cnt_bytes,inet_ntoa(disco_remote_sockaddr.sin_addr),ntohs(disco_remote_sockaddr.sin_port));
+		int i;
+		for(i=0 ; i<cnt_bytes ; i++) {
+			printf("0x%X ",discovery_frame[i]);
+		}	
+		printf("\n");
+	#endif
+	
 	//wait for a response
 	int time = 0;
 	while(time<delay_ms) {
@@ -119,7 +126,7 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 	else {
 		IP[0] = '\0';
 		#ifdef DEBUG
-			printf("[Debug] L%d %s : Discovering finished, computer no found\n",__LINE__,__FUNCTION__);
+			printf("[Debug] L%d %s : Discovering finished, computer not found\n",__LINE__,__FUNCTION__);
 		#endif
 	}	
 	
