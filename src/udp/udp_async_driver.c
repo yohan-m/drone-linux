@@ -52,14 +52,14 @@ int udp_async_driver_close()
 }
 
 
-int udp_async_driver_enable_read(function callback_receive_fct, int max_packet_size)
+int udp_async_driver_enable_read(udp_function callback_receive_fct, int max_packet_size)
 {
 	int flags;
 	struct sigaction sa;
 	
 	//get global variable for the handler
 	async_packet_size = max_packet_size;
-	callback_receive = callback_receive_fct;
+	callback_receive_udp = callback_receive_fct;
 
 	//add ASYNC flags to the socket
 	flags = fcntl(async_socket_fd, F_GETFL);
@@ -145,7 +145,7 @@ void udp_async_driver_handler(int sig)
 		printf("(%s)\n",data);
 	#endif
 	
-	callback_receive(data,cnt_bytes);
+	callback_receive_udp(data,cnt_bytes);
 }
 
 

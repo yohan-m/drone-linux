@@ -27,7 +27,7 @@
 /**
  * \brief Typedef of the callback function used to receive asynchronous data.	
  */
-typedef void (*function)(unsigned char * data, int size);
+typedef void (*udp_function)(unsigned char * data, int size);
 
 /**
  * \brief Store the port/adress informations.
@@ -52,7 +52,7 @@ int async_packet_size;
 /**
  * \brief Function called when the driver receive data via UDP.
  */
-function callback_receive;
+udp_function callback_receive_udp;
 
 /**
  * \brief        Initialization of the socket.
@@ -76,7 +76,7 @@ int udp_async_driver_close();
  * \param[in]	 max_packet_size		Max packet size to read.
  * \return 		 0 for a successfull call. A negative value on error.
  */
-int udp_async_driver_enable_read(function callback_receive_fct, int max_packet_size);
+int udp_async_driver_enable_read(udp_function callback_receive_fct, int max_packet_size);
 
 /**
  * \brief        Send data over UDP.
