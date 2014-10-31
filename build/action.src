@@ -1,9 +1,0 @@
-#!/bin/sh 
-sleep 1
-echo cd /data/video/ 
-sleep 1 
-echo chmod 777 ardrone_localization
-sleep 1 
-echo ./ardrone_localization_disco
-sleep 10000000000000
-echo "exit" 

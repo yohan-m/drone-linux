@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 	printf("\nStart\n\n");
 
-	test_usb_read();
+	test_udp_disco();
 
 	printf("\nEnd\n\n");
 	return 0;	

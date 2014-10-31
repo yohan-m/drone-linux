@@ -117,18 +117,18 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 		return -11;
 	}
 	
-	if(disco_found>0) {
-		memcpy(IP,disco_ip,IP_SIZE);
-		#ifdef DEBUG
-			printf("[Debug] L%d %s : Discovering finished %s\n",__LINE__,__FUNCTION__,IP);
-		#endif		
-	}
-	else {
+	if(disco_found<=0) {
 		IP[0] = '\0';
 		#ifdef DEBUG
 			printf("[Debug] L%d %s : Discovering finished, computer not found\n",__LINE__,__FUNCTION__);
 		#endif
-	}	
+		return -12;
+	}
+	
+	memcpy(IP,disco_ip,IP_SIZE);
+	#ifdef DEBUG
+		printf("[Debug] L%d %s : Discovering finished %s\n",__LINE__,__FUNCTION__,IP);
+	#endif		
 	
 	return 0;
 }
