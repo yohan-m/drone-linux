@@ -6,12 +6,12 @@ void test_usb_read()
 		return;			
 	}
 	
-	/*unsigned char data[64];
+	unsigned char data[64];
 	
 	usb_driver_read(data,64);
 	usb_driver_read(data,64);
 	usb_driver_read(data,64);
 	usb_driver_read(data,64);
 	
-	usb_driver_close();*/
+	usb_driver_close();
 }
