@@ -50,7 +50,7 @@ void readFrame(unsigned char * data, int size);
  * \param[in]	 remote_addr 	remote IP address to send/receive data.
  * \return 		 0 for a successfull call, 1 if init failed
  */
-uint8_t initCommunication(char * remote_addr);
+uint8_t initCommunication();
 
 /**
  * \brief        Closes the socket.

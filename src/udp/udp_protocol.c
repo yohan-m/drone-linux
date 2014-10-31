@@ -1,4 +1,5 @@
 #include "udp_protocol.h"
+#include "udp_driver_discover.h"
 #include "../../../common-sources/src/wifiFrame.h"
 
 
@@ -20,8 +21,15 @@ void readFrame(unsigned char * data, int size){
 }
 
 
-uint8_t initCommunication(char * remote_addr){
-	if(udp_async_driver_init(LOCAL_PORT, REMOTE_PORT,remote_addr)==0){
+uint8_t initCommunication(){
+	char IP[IP_SIZE];
+	wifiFrame disco_frame = createWifiFrame(DISCOVERY_FRAME, 0, 0, 0, 0);
+	char * disco_data = wifiFrameToChar(disco_frame);
+	
+	// waiting for PC to answer discovery frame (to get its IP for future communication)
+	while(udp_driver_discover_network(LOCAL_PORT,REMOTE_PORT,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE ,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE , MAX_DISCOVERY_WAIT_TIME, IP)<0);
+	// initializing communication with PC
+	if(udp_async_driver_init(LOCAL_PORT, REMOTE_PORT,IP)==0){
 		if(udp_async_driver_enable_read(&readFrame, MAX_PACKET_SIZE)==0){
 			return 0;
 		}

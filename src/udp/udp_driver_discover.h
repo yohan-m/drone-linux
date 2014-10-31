@@ -26,6 +26,7 @@
 #include <errno.h>
 
 #define IP_SIZE 16*sizeof(char)
+#define MAX_DISCOVERY_WAIT_TIME 500
 /**
  * \brief Store the port/adress informations.
  */
