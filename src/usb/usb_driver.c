@@ -5,7 +5,7 @@ int usb_driver_init()
 	struct termios config;
 	
 	//open the device
-	usb_device = open(USB_DEV, O_RDWR);
+	usb_device = open(USB_DEV, O_RDWR | O_NOCTTY | O_SYNC);
 	if (usb_device < 0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -1;

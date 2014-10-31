@@ -15,7 +15,7 @@ uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, uin
 
 void readFrame(unsigned char * data, int size){
 	if(size==CONVERTED_WIFI_FRAME_SIZE){
-		wifiFrame f = wifiFrameFromChar((char*)data);
+		//wifiFrame f = wifiFrameFromChar((char*)data);
 		//printf("frame:\nseqnum=%d\ntype=%c\ndata=%d; %d; %d; %d\n",f.seqNum,f.type,f.data[0],f.data[1],f.data[2],f.data[3]);
 	}
 }
