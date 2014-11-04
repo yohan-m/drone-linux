@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
 	printf("\nStart\n\n");
 
-	test_usb_read();
+	test_usb_async();
 
 	printf("\nEnd\n\n");
 	return 0;	

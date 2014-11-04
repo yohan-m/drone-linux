@@ -13,7 +13,7 @@
 
 #include "./../usb/usb_async_driver.h"
 
-void test_usp_async();
+void test_usb_async();
 void test_callback_receive_usb(unsigned char * data, int size);
 
 #endif

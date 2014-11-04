@@ -22,7 +22,7 @@
 /**
  * \brief Path to the device.
  */
-#define USB_DEV "/dev/ttyUSB0"
+#define USB_DEV "/dev/ttyACM0"
 
 /**
  * \brief Reference the usb dev.

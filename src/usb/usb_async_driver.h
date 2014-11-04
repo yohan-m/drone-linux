@@ -11,6 +11,8 @@
 #ifndef USB_ASYNC_DRIVER_H
 #define USB_ASYNC_DRIVER_H
 
+#define _GNU_SOURCE
+
 #include <stdio.h> 
 #include <stdlib.h>
 #include <string.h> 
@@ -18,11 +20,12 @@
 #include <fcntl.h>  
 #include <errno.h>  
 #include <termios.h>
+#include <signal.h>
 
 /**
  * \brief Path to the device.
  */
-#define USB_ASYNC_DEV "/dev/ttyUSB0"
+#define USB_ASYNC_DEV "/dev/ttyACM0"
 
 /**
  * \brief Typedef of the callback function used to receive asynchronous data.	
@@ -33,6 +36,11 @@ typedef void (*usb_function)(unsigned char * data, int size);
  * \brief Reference the usb dev.
  */
 int usb_async_device;
+
+/**
+ * \brief Packet size (receive).
+ */
+int usb_packet_size;
 
 /**
  * \brief Function called when the driver receive data via USB.
@@ -58,14 +66,6 @@ int usb_async_driver_close();
  * \return 		 0 for a successfull call. A negative value on error.
  */
 int usb_async_driver_enable_read(usb_function callback_receive_fct, int max_packet_size);
-
-/**
- * \brief        Send data over USB.
- * \param[in]    data 	Buffer to send.
- * \param[in]	 size	Size of the buffer.
- * \return 		 0 for a successfull call. A negative value on error.
- */
-int usb_async_driver_write(unsigned char * data, int size);
 
 /**
  * \brief        Handler called when the driver receive data.

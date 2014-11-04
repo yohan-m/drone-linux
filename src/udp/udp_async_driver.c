@@ -125,11 +125,11 @@ int udp_async_driver_write(unsigned char * data, int size)
 
 void udp_async_driver_handler(int sig) 
 {
-	unsigned char data[64];
+	unsigned char data[async_packet_size];
 	struct sockaddr_in async_sender_sockaddr;
 	int slen=sizeof(async_sender_sockaddr);
 	
-	int cnt_bytes = recvfrom(async_socket_fd, data, 64, 0, (struct sockaddr *)&async_sender_sockaddr, (socklen_t *)&slen);
+	int cnt_bytes = recvfrom(async_socket_fd, data, async_packet_size, 0, (struct sockaddr *)&async_sender_sockaddr, (socklen_t *)&slen);
 
 	if (cnt_bytes<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
