@@ -19,10 +19,10 @@ int usb_async_driver_init()
 	}
 
 	//set baudrate
-	/*if(cfsetspeed(&config, B9600)<0) {
+	if(cfsetspeed(&config, B57600)<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -4;
-	}*/
+	}
 
 	config.c_cflag |= (CLOCAL | CREAD); //Enable the receiver and set local mode
 	config.c_iflag = 0; //clear input config
