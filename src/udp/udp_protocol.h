@@ -24,7 +24,7 @@
 /**
  * \brief Remote (PC) port to which data will be sent
  */
-#define REMOTE_PORT 30000
+#define REMOTE_PORT 31000
 
 /**
  * \brief Function used to send a frame over wifi

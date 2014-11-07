@@ -5,7 +5,7 @@ int usb_driver_init()
 	struct termios config;
 	
 	//open the device
-	usb_device = open(USB_DEV, O_RDWR | O_NOCTTY | O_SYNC);
+	usb_device = open(USB_DEV, O_RDWR | O_NOCTTY| O_SYNC);
 	if (usb_device < 0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -1;
@@ -14,15 +14,15 @@ int usb_driver_init()
 	//get port config
 	if(tcgetattr(usb_device, &config)<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
-		return -3;
+		return -2;
 	}
-
+	
 	//set baudrate
-	/*if(cfsetspeed(&config, B9600)<0) {
+	/*if(cfsetspeed(&config, B57600)<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
-		return -4;
+		return -3;
 	}*/
-
+	
 	config.c_cflag |= (CLOCAL | CREAD); //Enable the receiver and set local mode
 	config.c_iflag = 0; //clear input config
 	config.c_lflag = 0; //clear local config
@@ -32,27 +32,19 @@ int usb_driver_init()
 	//set port config
 	if(tcsetattr(usb_device, TCSANOW, &config)<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
-		return -5;
+		return -4;
 	}
-		
-	#ifdef DEBUG
-		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
-	#endif
 
 	return 0;
 }
 
 
-int  usb_driver_close()
+int usb_driver_close()
 {
 	if(close(usb_device)<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -1;
 	}
-	
-	#ifdef DEBUG
-		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
-	#endif
 	
 	return 0;
 }
@@ -67,7 +59,7 @@ int usb_driver_read(unsigned char * data, int size)
 		return -1;
 	}
 
-	#ifdef DEBUG
+	#ifdef DEBUG_USB_DRIVER
 		printf("[Debug] L%d %s : %d bytes : ",__LINE__,__FUNCTION__,cnt_bytes);	
 		int i;
 		for(i=0 ; i<cnt_bytes ; i++) {

@@ -6,14 +6,14 @@ void test_udp_disco()
 	wifiFrame disco_frame = createWifiFrame(DISCOVERY_FRAME, 0, 0, 0, 0);
 	char * disco_data = wifiFrameToChar(disco_frame);
 	
-	if(udp_driver_discover_network(31000,52400,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE ,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE , 5000, IP)<0) {
+	if(udp_driver_discover_network(30000,31000,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE ,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE , 5000, IP)<0) {
 		printf("[Test] disco returns error <0\n");
 		return;
 	}
 	
 	printf("[Test] disco ip=%s\n",IP);
 		
-	if(udp_async_driver_init(31000,52400,IP)<0) {
+	if(udp_async_driver_init(30000,31000,IP)<0) {
 		printf("[Test] init returns error <0\n");
 		return;
 	}	

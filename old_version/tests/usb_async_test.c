@@ -6,14 +6,12 @@ void test_usb_async()
 		return;
 	}
 	
-	if(usb_async_driver_enable_read(&test_callback_receive_usb,64)<0) {
+	if(usb_async_driver_enable_read(&test_callback_receive_usb,256)<0) {
 		return;
 	}
 	
-	int cnt = 0;
-	while(cnt <10) { 
-		getchar();	
-		cnt++;
+	while(1) { 
+		usleep(500);
 	}
 	
 	usb_async_driver_close();

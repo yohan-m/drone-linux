@@ -7,7 +7,7 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 	
 	//create the socket
 	if ((disco_socket_fd=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP))==-1) {
-		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
+		printf("[Error] L%d %s : %s (%d)\n",__LINE__,__FUNCTION__,strerror(errno),errno);
 		return -1;
 	}	
 		
@@ -81,7 +81,7 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 	
 	//send the discovery frame
 	
-	#ifdef DEBUG
+	#ifdef DEBUG_DISCO
 		printf("Discovering ...\n");
 	#endif
 	
@@ -96,7 +96,7 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 		return -10;
 	}
 	
-	#ifdef DEBUG
+	#ifdef DEBUG_DISCO
 		printf("[Debug] L%d %s : write %d bytes to %s:%d : ",__LINE__,__FUNCTION__,cnt_bytes,inet_ntoa(disco_remote_sockaddr.sin_addr),ntohs(disco_remote_sockaddr.sin_port));
 		int i;
 		for(i=0 ; i<cnt_bytes ; i++) {
@@ -119,14 +119,14 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 	
 	if(disco_found<=0) {
 		IP[0] = '\0';
-		#ifdef DEBUG
+		#ifdef DEBUG_DISCO
 			printf("[Debug] L%d %s : Discovering finished, computer not found\n",__LINE__,__FUNCTION__);
 		#endif
 		return -12;
 	}
 	
 	memcpy(IP,disco_ip,IP_SIZE);
-	#ifdef DEBUG
+	#ifdef DEBUG_DISCO
 		printf("[Debug] L%d %s : Discovering finished %s\n",__LINE__,__FUNCTION__,IP);
 	#endif		
 	
@@ -151,12 +151,12 @@ void udp_driver_discover_handler(int sig)
 		disco_found++;
 		disco_ip = (char *)inet_ntoa(disco_sender_sockaddr.sin_addr);
 		
-		#ifdef DEBUG
+		#ifdef DEBUG_DISCO
 			printf("[Debug] L%d %s : Response from %s\n",__LINE__,__FUNCTION__,disco_ip);
 		#endif	
 	}
 	else {
-		#ifdef DEBUG
+		#ifdef DEBUG_DISCO
 			printf("[Debug] L%d %s : Unknown response : %d bytes from %s:%d : ",__LINE__,__FUNCTION__,cnt_bytes,inet_ntoa(disco_sender_sockaddr.sin_addr),ntohs(disco_sender_sockaddr.sin_port));	
 			int i;
 			for(i=0 ; i<cnt_bytes ; i++) {

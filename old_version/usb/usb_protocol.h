@@ -1,7 +1,7 @@
 /**
  * \file usb_protocol.h
  *
- * \brief Protocol level functions for USB communication
+ * \brief Protocol level functions for USB communication (Asynchronous).
  *
  * \author Thomas Hoet
  *

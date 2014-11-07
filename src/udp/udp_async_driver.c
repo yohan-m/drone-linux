@@ -28,10 +28,6 @@ int udp_async_driver_init(int local_port, int remote_port, char * remote_addr)
 		printf("[Error] L%d %s : inet_aton failed\n",__LINE__,__FUNCTION__);
 		return -3;
 	}
-	
-	#ifdef DEBUG
-		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
-	#endif
 
 	return 0;
 }
@@ -43,10 +39,6 @@ int udp_async_driver_close()
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -1;
 	}
-	
-	#ifdef DEBUG
-		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
-	#endif
 	
 	return 0;
 }
@@ -90,11 +82,7 @@ int udp_async_driver_enable_read(udp_function callback_receive_fct, int max_pack
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -4;	
 	}
-    
-	#ifdef DEBUG
-		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
-	#endif
-    
+	
 	return 0;
 }
 
@@ -110,7 +98,7 @@ int udp_async_driver_write(unsigned char * data, int size)
 		return -1;
 	}
 
-	#ifdef DEBUG
+	#ifdef DEBUG_UDP_DRIVER
 		printf("[Debug] L%d %s : %d bytes to %s:%d : ",__LINE__,__FUNCTION__,cnt_bytes,inet_ntoa(async_remote_sockaddr.sin_addr),ntohs(async_remote_sockaddr.sin_port));	
 		int i;
 		for(i=0 ; i<cnt_bytes ; i++) {
@@ -136,7 +124,7 @@ void udp_async_driver_handler(int sig)
 		return;	
 	}
 	
-	#ifdef DEBUG
+	#ifdef DEBUG_UDP_DRIVER
 		printf("[Debug] L%d %s : %d bytes from %s:%d : ",__LINE__,__FUNCTION__,cnt_bytes,inet_ntoa(async_sender_sockaddr.sin_addr),ntohs(async_sender_sockaddr.sin_port));	
 		int i;
 		for(i=0 ; i<cnt_bytes ; i++) {
