@@ -90,7 +90,6 @@ int udp_async_driver_write(unsigned char * data, int size);
  * \brief        Handler called when the driver receive data.
  * \details 	 This handler analyses the data and calls the callback receive function if data are valids.
  * \param[in]	 sig Signal reference.
- * \return 		 0 for a successfull call. A negative value on error.
  */
 void udp_async_driver_handler(int sig);
 

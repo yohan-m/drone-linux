@@ -47,7 +47,6 @@ void readFrame(unsigned char * data, int size);
 /**
  * \brief        Initialization of the socket and the callback function for reception
  * \details      It must be called first
- * \param[in]	 remote_addr 	remote IP address to send/receive data.
  * \return 		 0 for a successfull call, 1 if init failed
  */
 uint8_t initCommunication();
