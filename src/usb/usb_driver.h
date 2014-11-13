@@ -16,13 +16,9 @@
 #include <string.h> 
 #include <unistd.h>  
 #include <fcntl.h>  
+#include <dirent.h> 
 #include <errno.h>  
 #include <termios.h>
-
-/**
- * \brief Path to the device.
- */
-#define USB_DEV "/dev/ttyACM0"
 
 /**
  * \brief Reference the usb dev.
@@ -50,5 +46,12 @@ int usb_driver_close();
  */
 int usb_driver_read(unsigned char * data, int size);
 
+/**
+ * \brief        Find the name of the USB device.
+ * \details 	 This function should not be called. It is called in usb_driver_init().
+ * \param[out]   name 	Name of the USB device.
+ * \return 		 0 for a successfull call. A negative value on error.
+ */
+int usb_driver_find_dev(char * name);
 
 #endif

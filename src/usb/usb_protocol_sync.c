@@ -50,7 +50,9 @@ uint8_t readUSBFrameSync(char * type, uint32_t * data0, uint32_t * data1, uint32
 		}
 		
 		if(cnt_ok%1000==0) {
-			printf("[Warning] L%d %s : %d Ok , %d missed\n",__LINE__,__FUNCTION__,cnt_ok,cnt_missed);			
+			#ifdef DEBUG_INFO
+				printf("[Debug] L%d %s : %d Ok , %d missed\n",__LINE__,__FUNCTION__,cnt_ok,cnt_missed);
+			#endif			
 		}
 		
 		checkSeqNum=frame.seqNum;
@@ -76,12 +78,16 @@ uint8_t readUSBFrameSync(char * type, uint32_t * data0, uint32_t * data1, uint32
 
 uint8_t initUSBCommunicationSync()
 {
-	if(usb_driver_init()==0){
+	#ifdef DEBUG_INFO
+		printf("[Debug] L%d %s : Initializing USB ...\n",__LINE__,__FUNCTION__);		
+	#endif
+	if(usb_driver_init()==0)
+	{
 		checkSeqNum = -1;
 		cnt_ok = 0;
 		cnt_missed = 0;
-		#ifdef DEBUG_USB_PROTOCOL
-			printf("[Debug] L%d %s : USB init ok\n",__LINE__,__FUNCTION__);		
+		#ifdef DEBUG_INFO
+			printf("[Debug] L%d %s : Done !\n",__LINE__,__FUNCTION__);		
 		#endif
 		return 0;
 	}
@@ -89,10 +95,14 @@ uint8_t initUSBCommunicationSync()
 }
 
 
-uint8_t closeUSBCommunicationSync(){
+uint8_t closeUSBCommunicationSync()
+{
+	#ifdef DEBUG_INFO
+		printf("[Debug] L%d %s : Closing USB ...\n",__LINE__,__FUNCTION__);		
+	#endif
 	if(usb_driver_close()==0) {
-		#ifdef DEBUG_USB_PROTOCOL
-			printf("[Debug] L%d %s : close USB ok\n",__LINE__,__FUNCTION__);		
+		#ifdef DEBUG_INFO
+			printf("[Debug] L%d %s : Done !\n",__LINE__,__FUNCTION__);		
 		#endif
 		return 0;
 	}

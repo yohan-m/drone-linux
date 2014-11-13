@@ -107,7 +107,7 @@ int udp_driver_discover_network(int local_port, int remote_port, unsigned char *
 	
 	//wait for a response
 	int time = 0;
-	while(time<delay_ms) {
+	while(time<delay_ms && disco_found == 0) {
 		usleep(10000);	
 		time+=10;
 	}
@@ -148,12 +148,13 @@ void udp_driver_discover_handler(int sig)
 	}
 	
 	if(cnt_bytes == disco_response_size && memcmp(data,disco_response_frame,disco_response_size)==0) {
-		disco_found++;
 		disco_ip = (char *)inet_ntoa(disco_sender_sockaddr.sin_addr);
 		
 		#ifdef DEBUG_DISCO
 			printf("[Debug] L%d %s : Response from %s\n",__LINE__,__FUNCTION__,disco_ip);
 		#endif	
+		
+		disco_found++;
 	}
 	else {
 		#ifdef DEBUG_DISCO
