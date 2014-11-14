@@ -49,7 +49,7 @@ uint8_t readUSBFrameSync(char * type, uint32_t * data0, uint32_t * data1, uint32
 			cnt_missed++;
 		}
 		
-		if(cnt_ok%1000==0) {
+		if(cnt_ok%10==0) {
 			#ifdef DEBUG_INFO
 				printf("[Debug] L%d %s : %d Ok , %d missed\n",__LINE__,__FUNCTION__,cnt_ok,cnt_missed);
 			#endif			

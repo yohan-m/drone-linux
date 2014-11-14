@@ -74,7 +74,7 @@ int usb_async_driver_enable_read(usb_function callback_receive_fct, int max_pack
  */
 void usb_async_driver_handler(int sig);
 
-
+void setPacketSize(int size);
 
 
 #endif

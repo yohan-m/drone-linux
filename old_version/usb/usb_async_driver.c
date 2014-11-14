@@ -6,7 +6,7 @@ int usb_async_driver_init()
 	struct termios config;
 	
 	//open the device
-	usb_async_device = open(USB_ASYNC_DEV, O_RDWR | O_NOCTTY | O_SYNC);
+	usb_async_device = open(USB_ASYNC_DEV, O_RDONLY | O_NOCTTY | O_NDELAY | O_NONBLOCK);
 	if (usb_async_device < 0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -1;
@@ -18,11 +18,11 @@ int usb_async_driver_init()
 		return -3;
 	}
 
-	//set baudrate
+	/*//set baudrate
 	if(cfsetspeed(&config, B57600)<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return -4;
-	}
+	}*/
 
 	config.c_cflag |= (CLOCAL | CREAD); //Enable the receiver and set local mode
 	config.c_iflag = 0; //clear input config
@@ -36,7 +36,7 @@ int usb_async_driver_init()
 		return -5;
 	}
 		
-	#ifdef DEBUG
+	#ifdef DEBUG_INFO
 		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
 	#endif
 
@@ -51,7 +51,7 @@ int usb_async_driver_close()
 		return -1;
 	}
 	
-	#ifdef DEBUG
+	#ifdef DEBUG_INFO
 		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
 	#endif
 	
@@ -76,7 +76,7 @@ int usb_async_driver_enable_read(usb_function callback_receive_fct, int packet_s
 	}
 		
 	//configure the sigaction structure
-	sa.sa_flags = 0;
+	//sa.sa_flags = 0;
 	sa.sa_handler = usb_async_driver_handler;
 	sigemptyset(&sa.sa_mask);
 
@@ -98,7 +98,7 @@ int usb_async_driver_enable_read(usb_function callback_receive_fct, int packet_s
 		return -4;	
 	}
     
-	#ifdef DEBUG
+	#ifdef DEBUG_INFO
 		printf("[Debug] L%d %s : Ok\n",__LINE__,__FUNCTION__);		
 	#endif
 
@@ -116,7 +116,7 @@ void usb_async_driver_handler(int sig)
 		return;
 	}
 
-	#ifdef DEBUG
+	#ifdef DEBUG_USB_DRIVER_ASYNC
 		printf("[Debug] L%d %s : %d bytes : ",__LINE__,__FUNCTION__,cnt_bytes);	
 		int i;
 		for(i=0 ; i<cnt_bytes ; i++) {
@@ -126,4 +126,10 @@ void usb_async_driver_handler(int sig)
 	#endif
 	
 	callback_receive_usb(data,cnt_bytes);
+}
+
+
+void setPacketSize(int size) 
+{
+	usb_packet_size = size;
 }
