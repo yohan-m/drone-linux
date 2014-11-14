@@ -76,8 +76,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals_func.html"><span>Functions</span></a></li>
       <li><a href="globals_vars.html"><span>Variables</span></a></li>
       <li><a href="globals_type.html"><span>Typedefs</span></a></li>
-      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
-      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li class="current"><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
@@ -101,7 +99,7 @@ $(document).ready(function(){initNavTree('globals_defs.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,35 +112,10 @@ $(document).ready(function(){initNavTree('globals_defs.html','');});
 &#160;<ul>
 <li>_GNU_SOURCE
 : <a class="el" href="udp__async__driver_8h.html#a369266c24eacffb87046522897a570d5">udp_async_driver.h</a>
-, <a class="el" href="usb__async__driver_8h.html#a369266c24eacffb87046522897a570d5">usb_async_driver.h</a>
 , <a class="el" href="udp__driver__discover_8h.html#a369266c24eacffb87046522897a570d5">udp_driver_discover.h</a>
-</li>
-<li>FREQUENCY_MOTOR_HZ
-: <a class="el" href="leds__motors__manager_8h.html#ade809f2465d56a06a764fb45d1b0a0c3">leds_motors_manager.h</a>
-</li>
-<li>GPIO_ERROR_READ
-: <a class="el" href="leds__motors__driver_8h.html#ad993da23cad97c6acf1b24c197b69bde">leds_motors_driver.h</a>
-</li>
-<li>GPIO_ERROR_RESET
-: <a class="el" href="leds__motors__driver_8h.html#ac68276717ca4549f95f1cd9c0ed4b5ae">leds_motors_driver.h</a>
-</li>
-<li>GPIO_M1
-: <a class="el" href="leds__motors__driver_8h.html#a320f584962900fcacd9a40e142670b9f">leds_motors_driver.h</a>
-</li>
-<li>GPIO_M2
-: <a class="el" href="leds__motors__driver_8h.html#a805cd23f4a0118c474111cf1e944c1c5">leds_motors_driver.h</a>
-</li>
-<li>GPIO_M3
-: <a class="el" href="leds__motors__driver_8h.html#a9f7807b4c0971af726d3d4eb161e7712">leds_motors_driver.h</a>
-</li>
-<li>GPIO_M4
-: <a class="el" href="leds__motors__driver_8h.html#aea6a4149870032dab90abb7e5305b5c3">leds_motors_driver.h</a>
 </li>
 <li>IP_SIZE
 : <a class="el" href="udp__driver__discover_8h.html#a2b0b8b640f7863e341022226a4084ad9">udp_driver_discover.h</a>
-</li>
-<li>LEDS_MOTORS_DEV
-: <a class="el" href="leds__motors__driver_8h.html#a4c93e4d78dc5d4d062bb7eb67be74add">leds_motors_driver.h</a>
 </li>
 <li>LOCAL_PORT
 : <a class="el" href="udp__protocol_8h.html#af46219462f0da78b25d5d693e325f865">udp_protocol.h</a>
@@ -153,17 +126,8 @@ $(document).ready(function(){initNavTree('globals_defs.html','');});
 <li>MAX_PACKET_SIZE
 : <a class="el" href="udp__protocol_8h.html#a879456c3b8e2853f7044d764e9c180d4">udp_protocol.h</a>
 </li>
-<li>PERIOD_MOTOR_US
-: <a class="el" href="leds__motors__manager_8h.html#a2a9831225a7597ac8d21ab2c9331357c">leds_motors_manager.h</a>
-</li>
 <li>REMOTE_PORT
 : <a class="el" href="udp__protocol_8h.html#aa27dfcf9c5badbcdb4f87febf8ffed8d">udp_protocol.h</a>
-</li>
-<li>USB_ASYNC_DEV
-: <a class="el" href="usb__async__driver_8h.html#a2223fd6fd47ddac4845c9e78e9036e77">usb_async_driver.h</a>
-</li>
-<li>USB_DEV
-: <a class="el" href="usb__driver_8h.html#aa26ccca056aabfee25a84728f7653119">usb_driver.h</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -171,7 +135,7 @@ $(document).ready(function(){initNavTree('globals_defs.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 7 2014 13:28:24 for Drone localization by
+    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

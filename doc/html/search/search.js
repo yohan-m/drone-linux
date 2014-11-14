@@ -7,14 +7,12 @@
 
 var indexSectionsWithContent =
 {
-  0: "_acdfgilmoprstu",
-  1: "lmu",
-  2: "cgilmrstu",
-  3: "acdlrsu",
+  0: "_acdilmrstu",
+  1: "cmu",
+  2: "acimrstu",
+  3: "acdu",
   4: "u",
-  5: "c",
-  6: "gor",
-  7: "_fgilmpru"
+  5: "_ilmr"
 };
 
 var indexSectionNames =
@@ -24,9 +22,7 @@ var indexSectionNames =
   2: "functions",
   3: "variables",
   4: "typedefs",
-  5: "enums",
-  6: "enumvalues",
-  7: "defines"
+  5: "defines"
 };
 
 function convertToId(search)

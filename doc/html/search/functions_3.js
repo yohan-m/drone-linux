@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['leds_5fmotors_5fclose',['leds_motors_close',['../leds__motors__manager_8c.html#a3c874c34c5f11bf2e175da3d88708b19',1,'leds_motors_close():&#160;leds_motors_manager.c'],['../leds__motors__manager_8h.html#a3c874c34c5f11bf2e175da3d88708b19',1,'leds_motors_close():&#160;leds_motors_manager.c']]],
-  ['leds_5fmotors_5fdriver_5fclose',['leds_motors_driver_close',['../leds__motors__driver_8c.html#ab70469b8a0d8431bbefe5db84a84cf2e',1,'leds_motors_driver_close():&#160;leds_motors_driver.c'],['../leds__motors__driver_8h.html#ab70469b8a0d8431bbefe5db84a84cf2e',1,'leds_motors_driver_close():&#160;leds_motors_driver.c']]],
-  ['leds_5fmotors_5fdriver_5finit',['leds_motors_driver_init',['../leds__motors__driver_8c.html#a3e84bf657797bb76917ed5000a585a89',1,'leds_motors_driver_init():&#160;leds_motors_driver.c'],['../leds__motors__driver_8h.html#a3e84bf657797bb76917ed5000a585a89',1,'leds_motors_driver_init():&#160;leds_motors_driver.c']]],
-  ['leds_5fmotors_5fdriver_5fwrite',['leds_motors_driver_write',['../leds__motors__driver_8c.html#a6070ba0f6ea392f4b683a71b270c1999',1,'leds_motors_driver_write(unsigned char *data, int size):&#160;leds_motors_driver.c'],['../leds__motors__driver_8h.html#a6070ba0f6ea392f4b683a71b270c1999',1,'leds_motors_driver_write(unsigned char *data, int size):&#160;leds_motors_driver.c']]],
-  ['leds_5fmotors_5finit',['leds_motors_init',['../leds__motors__manager_8c.html#a10c3477ca0dfa2ec7135143d22d2afef',1,'leds_motors_init():&#160;leds_motors_manager.c'],['../leds__motors__manager_8h.html#a10c3477ca0dfa2ec7135143d22d2afef',1,'leds_motors_init():&#160;leds_motors_manager.c']]]
+  ['main',['main',['../main_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.c']]]
 ];

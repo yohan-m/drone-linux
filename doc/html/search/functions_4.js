@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['main',['main',['../main_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.c']]],
-  ['motor_5fcmd',['motor_cmd',['../leds__motors__driver_8c.html#a8332ad3e538e127d1f3d6312b10aaf1d',1,'motor_cmd(int file, unsigned char cmd, unsigned char *reply, int replylen):&#160;leds_motors_driver.c'],['../leds__motors__driver_8h.html#a8332ad3e538e127d1f3d6312b10aaf1d',1,'motor_cmd(int file, unsigned char cmd, unsigned char *reply, int replylen):&#160;leds_motors_driver.c']]]
+  ['readframe',['readFrame',['../udp__protocol_8c.html#a15d5b506fa3329c66f278f1abd08d1c8',1,'readFrame(unsigned char *data, int size):&#160;udp_protocol.c'],['../udp__protocol_8h.html#a15d5b506fa3329c66f278f1abd08d1c8',1,'readFrame(unsigned char *data, int size):&#160;udp_protocol.c']]],
+  ['readusbframesync',['readUSBFrameSync',['../usb__protocol__sync_8c.html#aacfee0da355606333af1c6b9abc62346',1,'readUSBFrameSync(char *type, uint32_t *data0, uint32_t *data1, uint32_t *data2, uint32_t *data3):&#160;usb_protocol_sync.c'],['../usb__protocol__sync_8h.html#aacfee0da355606333af1c6b9abc62346',1,'readUSBFrameSync(char *type, uint32_t *data0, uint32_t *data1, uint32_t *data2, uint32_t *data3):&#160;usb_protocol_sync.c']]]
 ];

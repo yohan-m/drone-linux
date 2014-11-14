@@ -75,7 +75,6 @@ uint8_t readUSBFrameSync(char * type, uint32_t * data0, uint32_t * data1, uint32
 }
 
 
-
 uint8_t initUSBCommunicationSync()
 {
 	#ifdef DEBUG_INFO

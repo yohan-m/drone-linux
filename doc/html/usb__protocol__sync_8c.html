@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Drone localization: /home/thomas/Desktop/drone-project/drone-linux/src/tests/usb_protocol_test.h File Reference</title>
+<title>Drone localization: /home/thomas/Desktop/drone-project/drone-linux/src/usb/usb_protocol_sync.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('usb__protocol__test_8h.html','');});
+$(document).ready(function(){initNavTree('usb__protocol__sync_8c.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -103,28 +103,98 @@ $(document).ready(function(){initNavTree('usb__protocol__test_8h.html','');});
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">usb_protocol_test.h File Reference</div>  </div>
+<div class="title">usb_protocol_sync.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="usb__protocol__sync_8h_source.html">../usb/usb_protocol_sync.h</a>&quot;</code><br/>
-</div>
-<p><a href="usb__protocol__test_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="usb__protocol__sync_8h_source.html">usb_protocol_sync.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae2eb3a09dde7bf2041809ce96c4183eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__protocol__test_8h.html#ae2eb3a09dde7bf2041809ce96c4183eb">usbProtocolTest</a> ()</td></tr>
-<tr class="separator:ae2eb3a09dde7bf2041809ce96c4183eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacfee0da355606333af1c6b9abc62346"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__protocol__sync_8c.html#aacfee0da355606333af1c6b9abc62346">readUSBFrameSync</a> (char *type, uint32_t *data0, uint32_t *data1, uint32_t *data2, uint32_t *data3)</td></tr>
+<tr class="separator:aacfee0da355606333af1c6b9abc62346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040bded0139e7538fe77d5a3d76eb083"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__protocol__sync_8c.html#a040bded0139e7538fe77d5a3d76eb083">initUSBCommunicationSync</a> ()</td></tr>
+<tr class="memdesc:a040bded0139e7538fe77d5a3d76eb083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the socket and the callback function for reception.  <a href="#a040bded0139e7538fe77d5a3d76eb083">More...</a><br/></td></tr>
+<tr class="separator:a040bded0139e7538fe77d5a3d76eb083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a079bb95dd84738e7765036a71cd9f250"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__protocol__sync_8c.html#a079bb95dd84738e7765036a71cd9f250">closeUSBCommunicationSync</a> ()</td></tr>
+<tr class="memdesc:a079bb95dd84738e7765036a71cd9f250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the communication.  <a href="#a079bb95dd84738e7765036a71cd9f250">More...</a><br/></td></tr>
+<tr class="separator:a079bb95dd84738e7765036a71cd9f250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ae2eb3a09dde7bf2041809ce96c4183eb"></a>
+<a class="anchor" id="a079bb95dd84738e7765036a71cd9f250"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void usbProtocolTest </td>
+          <td class="memname">uint8_t closeUSBCommunicationSync </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Closes the communication. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 for a successfull call, 1 otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a040bded0139e7538fe77d5a3d76eb083"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t initUSBCommunicationSync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialization of the socket and the callback function for reception. </p>
+<p>It must be called first </p>
+<dl class="section return"><dt>Returns</dt><dd>0 for a successfull call, 1 if init failed </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aacfee0da355606333af1c6b9abc62346"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readUSBFrameSync </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>data0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>data1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>data2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>data3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -136,7 +206,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d93a1d4020dea85bb71b237545b5e722.html">tests</a></li><li class="navelem"><a class="el" href="usb__protocol__test_8h.html">usb_protocol_test.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_74712b2155551d19e5fc375f21fbf06e.html">usb</a></li><li class="navelem"><a class="el" href="usb__protocol__sync_8c.html">usb_protocol_sync.c</a></li>
     <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

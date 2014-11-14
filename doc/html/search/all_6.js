@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['initcommunication',['initCommunication',['../udp__protocol_8c.html#a855132e205585c42908692aa42496bc1',1,'initCommunication():&#160;udp_protocol.c'],['../udp__protocol_8h.html#a855132e205585c42908692aa42496bc1',1,'initCommunication():&#160;udp_protocol.c']]],
-  ['initusbcommunication',['initUSBCommunication',['../usb__protocol_8c.html#ae30a33e374db496359d2a8800f110df1',1,'initUSBCommunication():&#160;usb_protocol.c'],['../usb__protocol_8h.html#ae30a33e374db496359d2a8800f110df1',1,'initUSBCommunication():&#160;usb_protocol.c']]],
-  ['ip_5fsize',['IP_SIZE',['../udp__driver__discover_8h.html#a2b0b8b640f7863e341022226a4084ad9',1,'udp_driver_discover.h']]]
+  ['main',['main',['../main_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.c']]],
+  ['main_2ec',['main.c',['../main_8c.html',1,'']]],
+  ['max_5fdiscovery_5fwait_5ftime',['MAX_DISCOVERY_WAIT_TIME',['../udp__driver__discover_8h.html#ac73e208ecb0da873e4f02f70010821d3',1,'udp_driver_discover.h']]],
+  ['max_5fpacket_5fsize',['MAX_PACKET_SIZE',['../udp__protocol_8h.html#a879456c3b8e2853f7044d764e9c180d4',1,'udp_protocol.h']]]
 ];

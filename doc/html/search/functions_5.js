@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['readframe',['readFrame',['../udp__protocol_8c.html#a15d5b506fa3329c66f278f1abd08d1c8',1,'readFrame(unsigned char *data, int size):&#160;udp_protocol.c'],['../udp__protocol_8h.html#a15d5b506fa3329c66f278f1abd08d1c8',1,'readFrame(unsigned char *data, int size):&#160;udp_protocol.c']]],
-  ['readusbframe',['readUSBFrame',['../usb__protocol_8c.html#a309cc9c863c048c0686c5a6407410c5a',1,'readUSBFrame(unsigned char *data, int size):&#160;usb_protocol.c'],['../usb__protocol_8h.html#a309cc9c863c048c0686c5a6407410c5a',1,'readUSBFrame(unsigned char *data, int size):&#160;usb_protocol.c']]]
+  ['sendframe',['sendFrame',['../udp__protocol_8c.html#ad12df1ad776e07f97712be22ebac40f3',1,'sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, uint32_t data4):&#160;udp_protocol.c'],['../udp__protocol_8h.html#ad12df1ad776e07f97712be22ebac40f3',1,'sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, uint32_t data4):&#160;udp_protocol.c']]]
 ];

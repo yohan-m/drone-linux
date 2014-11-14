@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('usb__driver_8c.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,6 +119,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aae38bf95aa81a6e8d751000c7c3182da"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__driver_8c.html#aae38bf95aa81a6e8d751000c7c3182da">usb_driver_read</a> (unsigned char *data, int size)</td></tr>
 <tr class="memdesc:aae38bf95aa81a6e8d751000c7c3182da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive data via USB.  <a href="#aae38bf95aa81a6e8d751000c7c3182da">More...</a><br/></td></tr>
 <tr class="separator:aae38bf95aa81a6e8d751000c7c3182da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e22691ac735c5bf6a8d154fd53fbfd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__driver_8c.html#a09e22691ac735c5bf6a8d154fd53fbfd">usb_driver_find_dev</a> (char *name)</td></tr>
+<tr class="memdesc:a09e22691ac735c5bf6a8d154fd53fbfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the name of the USB device.  <a href="#a09e22691ac735c5bf6a8d154fd53fbfd">More...</a><br/></td></tr>
+<tr class="separator:a09e22691ac735c5bf6a8d154fd53fbfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ab814a661e2e075d2ef05a406c73d9b4b"></a>
@@ -135,6 +138,32 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Close the device. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 for a successfull call. A negative value on error. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a09e22691ac735c5bf6a8d154fd53fbfd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int usb_driver_find_dev </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find the name of the USB device. </p>
+<p>This function should not be called. It is called in <a class="el" href="usb__driver_8h.html#aefaf8b724165e6907ebdfbddac104090" title="Initialize the driver. ">usb_driver_init()</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">name</td><td>Name of the USB device. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>0 for a successfull call. A negative value on error. </dd></dl>
 
 </div>
@@ -200,7 +229,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_74712b2155551d19e5fc375f21fbf06e.html">usb</a></li><li class="navelem"><a class="el" href="usb__driver_8c.html">usb_driver.c</a></li>
-    <li class="footer">Generated on Fri Nov 7 2014 13:28:24 for Drone localization by
+    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

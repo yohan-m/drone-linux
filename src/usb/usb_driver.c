@@ -56,8 +56,16 @@ int usb_driver_close()
 
 
 int usb_driver_read(unsigned char * data, int size)
-{
+{	
 	int cnt_bytes = read(usb_device, data, size);
+	
+	if(cnt_bytes<=0) {
+		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
+		if(usb_driver_init()<0) {
+			return -1;
+		}
+		cnt_bytes = read(usb_device, data, size);		
+	}
 
 	if(cnt_bytes<0) {
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));

@@ -76,8 +76,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals_func.html"><span>Functions</span></a></li>
       <li class="current"><a href="globals_vars.html"><span>Variables</span></a></li>
       <li><a href="globals_type.html"><span>Typedefs</span></a></li>
-      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
-      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
@@ -101,7 +99,7 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -127,8 +125,14 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 <li>callback_receive_udp
 : <a class="el" href="udp__async__driver_8h.html#a73ad48f7031f36329b9d1861347d2aeb">udp_async_driver.h</a>
 </li>
-<li>callback_receive_usb
-: <a class="el" href="usb__async__driver_8h.html#a84af102f86cc08ca6be3873d5e98565f">usb_async_driver.h</a>
+<li>checkSeqNum
+: <a class="el" href="usb__protocol__sync_8h.html#a44d527fb508ce6d48b9a471eb38c0205">usb_protocol_sync.h</a>
+</li>
+<li>cnt_missed
+: <a class="el" href="usb__protocol__sync_8h.html#a0b22bbc4636d3c67d56e80269ee07333">usb_protocol_sync.h</a>
+</li>
+<li>cnt_ok
+: <a class="el" href="usb__protocol__sync_8h.html#aff1d8a4c7e391b1262673c432a197d39">usb_protocol_sync.h</a>
 </li>
 <li>disco_found
 : <a class="el" href="udp__driver__discover_8h.html#a93fb14ea93961b97b3bfba01ab9450c3">udp_driver_discover.h</a>
@@ -151,26 +155,8 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 <li>disco_socket_fd
 : <a class="el" href="udp__driver__discover_8h.html#a885b86e78764a2cb28c7a9104ba39a6a">udp_driver_discover.h</a>
 </li>
-<li>leds_motors_device
-: <a class="el" href="leds__motors__driver_8h.html#a260098f8832daf32550b387c28c243e9">leds_motors_driver.h</a>
-</li>
-<li>local_sockaddr
-: <a class="el" href="udp__driver_8h.html#acdaab098df1275a48549716101df4782">udp_driver.h</a>
-</li>
-<li>remote_sockaddr
-: <a class="el" href="udp__driver_8h.html#a597e35b4befb285ebdaf98d099b56f7c">udp_driver.h</a>
-</li>
-<li>socket_fd
-: <a class="el" href="udp__driver_8h.html#ad02424c03e4b1b3ddbdb78d829489ac3">udp_driver.h</a>
-</li>
-<li>usb_async_device
-: <a class="el" href="usb__async__driver_8h.html#a9f2debb4572a8aedd632f707e7601645">usb_async_driver.h</a>
-</li>
 <li>usb_device
 : <a class="el" href="usb__driver_8h.html#a6db4bd47fe9a2923965a4176b3890b06">usb_driver.h</a>
-</li>
-<li>usb_packet_size
-: <a class="el" href="usb__async__driver_8h.html#aef0c2f7cc7f99f8ff0e349d902a3c0f2">usb_async_driver.h</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -178,7 +164,7 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 7 2014 13:28:24 for Drone localization by
+    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('udp__protocol_8h_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('udp__protocol_8h_source.html','');});
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="udp__protocol_8h.html#af46219462f0da78b25d5d693e325f865">   23</a></span>&#160;<span class="preprocessor">#define LOCAL_PORT 30000</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="udp__protocol_8h.html#aa27dfcf9c5badbcdb4f87febf8ffed8d">   27</a></span>&#160;<span class="preprocessor">#define REMOTE_PORT 30000</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="udp__protocol_8h.html#aa27dfcf9c5badbcdb4f87febf8ffed8d">   27</a></span>&#160;<span class="preprocessor">#define REMOTE_PORT 31000</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;uint8_t <a class="code" href="udp__protocol_8h.html#ad12df1ad776e07f97712be22ebac40f3">sendFrame</a>(<span class="keywordtype">char</span> type, uint32_t data1, uint32_t data2, uint32_t data3, uint32_t data4);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
@@ -126,9 +126,9 @@ $(document).ready(function(){initNavTree('udp__protocol_8h_source.html','');});
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="udp__protocol_8h_html_ad12df1ad776e07f97712be22ebac40f3"><div class="ttname"><a href="udp__protocol_8h.html#ad12df1ad776e07f97712be22ebac40f3">sendFrame</a></div><div class="ttdeci">uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, uint32_t data4)</div><div class="ttdoc">Function used to send a frame over wifi. </div><div class="ttdef"><b>Definition:</b> udp_protocol.c:6</div></div>
-<div class="ttc" id="udp__protocol_8h_html_a15d5b506fa3329c66f278f1abd08d1c8"><div class="ttname"><a href="udp__protocol_8h.html#a15d5b506fa3329c66f278f1abd08d1c8">readFrame</a></div><div class="ttdeci">void readFrame(unsigned char *data, int size)</div><div class="ttdoc">Function used to send a frame over wifi. </div><div class="ttdef"><b>Definition:</b> udp_protocol.c:16</div></div>
-<div class="ttc" id="udp__protocol_8h_html_a9774ba52c91c5ee43e94d8a8d0ceda64"><div class="ttname"><a href="udp__protocol_8h.html#a9774ba52c91c5ee43e94d8a8d0ceda64">closeCommunication</a></div><div class="ttdeci">uint8_t closeCommunication()</div><div class="ttdoc">Closes the socket. </div><div class="ttdef"><b>Definition:</b> udp_protocol.c:41</div></div>
-<div class="ttc" id="udp__protocol_8h_html_a855132e205585c42908692aa42496bc1"><div class="ttname"><a href="udp__protocol_8h.html#a855132e205585c42908692aa42496bc1">initCommunication</a></div><div class="ttdeci">uint8_t initCommunication()</div><div class="ttdoc">Initialization of the socket and the callback function for reception. </div><div class="ttdef"><b>Definition:</b> udp_protocol.c:24</div></div>
+<div class="ttc" id="udp__protocol_8h_html_a15d5b506fa3329c66f278f1abd08d1c8"><div class="ttname"><a href="udp__protocol_8h.html#a15d5b506fa3329c66f278f1abd08d1c8">readFrame</a></div><div class="ttdeci">void readFrame(unsigned char *data, int size)</div><div class="ttdoc">Function used to send a frame over wifi. </div><div class="ttdef"><b>Definition:</b> udp_protocol.c:21</div></div>
+<div class="ttc" id="udp__protocol_8h_html_a9774ba52c91c5ee43e94d8a8d0ceda64"><div class="ttname"><a href="udp__protocol_8h.html#a9774ba52c91c5ee43e94d8a8d0ceda64">closeCommunication</a></div><div class="ttdeci">uint8_t closeCommunication()</div><div class="ttdoc">Closes the socket. </div><div class="ttdef"><b>Definition:</b> udp_protocol.c:59</div></div>
+<div class="ttc" id="udp__protocol_8h_html_a855132e205585c42908692aa42496bc1"><div class="ttname"><a href="udp__protocol_8h.html#a855132e205585c42908692aa42496bc1">initCommunication</a></div><div class="ttdeci">uint8_t initCommunication()</div><div class="ttdoc">Initialization of the socket and the callback function for reception. </div><div class="ttdef"><b>Definition:</b> udp_protocol.c:29</div></div>
 <div class="ttc" id="udp__async__driver_8h_html"><div class="ttname"><a href="udp__async__driver_8h.html">udp_async_driver.h</a></div><div class="ttdoc">Driver to exchange data over UDP (Asynchronous). </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -136,7 +136,7 @@ $(document).ready(function(){initNavTree('udp__protocol_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ca4ac332d33ef868678ee688899961de.html">udp</a></li><li class="navelem"><a class="el" href="udp__protocol_8h.html">udp_protocol.h</a></li>
-    <li class="footer">Generated on Fri Nov 7 2014 13:28:24 for Drone localization by
+    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
