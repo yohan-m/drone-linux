@@ -11,6 +11,8 @@
 #include "localization/bddTdoa.h"
 #include "localization/likelyhood.h"
 
+#include <time.h>
+
 void ardrone_program() 
 {	
 	//init
@@ -22,32 +24,36 @@ void ardrone_program()
 		return;
 	}
 
-	int size ;
-	Tdoa *arrayTdoa1 = NULL, *arrayTdoa2 = NULL, *arrayTdoa3 = NULL ;
-	Likelyhood *arrayLikelyhood = NULL ;
-	
-	readFiles(&arrayTdoa1,&arrayTdoa2,&arrayTdoa3,&size) ;	
-
 	char type;
 	uint32_t tdoa1, tdoa2, tdoa3, tdoa4 ;
-	uint32_t x, y, z ;
+	float x, y, z, timeDebut, diff ;
+
+	Tdoa *arrayTdoa1 = NULL, *arrayTdoa2 = NULL, *arrayTdoa3 = NULL ;
+	int size = 0 ;
+
+	readFiles(&arrayTdoa1,&arrayTdoa2,&arrayTdoa3,&size) ;	
 	
 	while(1) 
 	{	
 		//read USB
 		if(readUSBFrameSync(&type,&tdoa1,&tdoa2,&tdoa3,&tdoa4)==0) {
-
-		arrayLikelyhood = createArrayLikelyhood(arrayTdoa1, arrayTdoa2, arrayTdoa3, size, tdoa1, tdoa2, tdoa3) ;
-
-		sortArray(&arrayLikelyhood, size) ;
-
-		//displayArray(arrayLikelyhood, size) ;
-
-		x = arrayLikelyhood[0].position[0] ;
-		y = arrayLikelyhood[0].position[1] ;
-		z = arrayLikelyhood[0].position[2] ;
 		
-		sendFrame(type,x,y,z,0) ;
+		printf("tdoa1 : %f\n", (float)tdoa1*1/128) ;
+		printf("tdoa2 : %f\n", (float)tdoa2*1/128) ;
+		printf("tdoa3 : %f\n", (float)tdoa3*1/128) ;
+		printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;
+
+		timeDebut = clock() ;
+		computePosition(&x, &y, &z, tdoa1, tdoa2, tdoa3, tdoa4, arrayTdoa1, arrayTdoa2, arrayTdoa3,size) ;
+
+		diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
+		printf("temps calcul : %f\n",diff) ;
+
+		printf("x : %f\n", x) ;
+		printf("y : %f\n", y) ;
+		printf("z : %f\n", z) ;
+
+		sendFrame(type,(int)x*100,(int)y*100,(int)z*100) ;
 		}
 	}
 	

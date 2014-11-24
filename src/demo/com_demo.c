@@ -24,7 +24,7 @@ void comDemo()
 		//read USB
 		if(readUSBFrameSync(&type,&data0,&data1,&data2,&data3)==0) {
 			//send UDP
-			sendFrame(type,data0,data1,data2,data3);
+			sendFrame(type,data0,data1,data2);
 		}
 	}
 	
