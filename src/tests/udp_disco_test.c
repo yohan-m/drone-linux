@@ -2,6 +2,7 @@
 
 void test_udp_disco()
 {
+	int fd;
 	char IP[IP_SIZE];
 	wifiFrame disco_frame = createWifiFrame(DISCOVERY_FRAME, 0, 0, 0);
 	char * disco_data = wifiFrameToChar(disco_frame);
@@ -13,12 +14,12 @@ void test_udp_disco()
 	
 	printf("[Test] disco ip=%s\n",IP);
 		
-	if(udp_async_driver_init(30000,31000,IP)<0) {
+	if(udp_async_driver_init(30000,31000,IP,&fd)<0) {
 		printf("[Test] init returns error <0\n");
 		return;
 	}	
 	
-	udp_async_driver_enable_read(&test_callback_fct,64);
+	udp_async_driver_enable_read(&test_callback_fct,64,fd);
 	
 	while(1) {
 		getchar();

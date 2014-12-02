@@ -12,6 +12,8 @@
 #define __UDP_PROTOCOL__
 
 #include "udp_async_driver.h"
+#include "udp_driver_discover.h"
+#include "../../../common-sources/src/wifiFrame.h"
 
 /**
  * \brief Maximum size to read from UDP communication
@@ -25,6 +27,9 @@
  * \brief Remote (PC) port to which data will be sent
  */
 #define REMOTE_PORT 31000
+
+char IP[IP_SIZE];
+int fd_protocol;
 
 /**
  * \brief Function used to send a frame over wifi

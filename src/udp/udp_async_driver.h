@@ -24,6 +24,8 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#define MAX_SOCK_OPENED 5
+
 /**
  * \brief Typedef of the callback function used to receive asynchronous data.	
  */
@@ -39,20 +41,31 @@ struct sockaddr_in async_local_sockaddr;
  */
 struct sockaddr_in async_remote_sockaddr;
 
-/**
- * \brief Reference the socket.
- */
-int async_socket_fd;
+static struct sockaddr_in tab_async_remote_sockaddr[MAX_SOCK_OPENED];
+
+typedef struct{
+	int fd;
+	int ind_remote_sock;
+} corresp_fd_remote_sock;
+
+static corresp_fd_remote_sock tab_corresp_fd_remote_sock[MAX_SOCK_OPENED];
 
 /**
  * \brief Max packet size (receive).
  */
 int async_packet_size;
 
+static int tab_fd[MAX_SOCK_OPENED];
+
+static int ind_tab_fd = 0;
+
 /**
- * \brief Function called when the driver receive data via UDP.
+ * \brief Table of function called when the driver receive data via UDP.
  */
-udp_function callback_receive_udp;
+static udp_function tab_callback[MAX_SOCK_OPENED];
+
+static int ind_tab_callback = 0;
+
 
 /**
  * \brief        Initialization of the socket.
@@ -62,13 +75,13 @@ udp_function callback_receive_udp;
  * \param[in]	 remote_addr 	remote IP address to send/receive data.
  * \return 		 0 for a successfull call. A negative value on error.
  */
-int udp_async_driver_init(int local_port, int remote_port, char * remote_addr);
+int udp_async_driver_init(int local_port, int remote_port, char * remote_addr, int * async_socket_fd);
 
 /**
  * \brief        Close the socket.
  * \return 		 0 for a successfull call. A negative value on error.
  */
-int udp_async_driver_close();
+int udp_async_driver_close(int async_socket_fd);
 
 /**
  * \brief        Start to read via UDP.
@@ -76,7 +89,7 @@ int udp_async_driver_close();
  * \param[in]	 max_packet_size		Max packet size to read.
  * \return 		 0 for a successfull call. A negative value on error.
  */
-int udp_async_driver_enable_read(udp_function callback_receive_fct, int max_packet_size);
+int udp_async_driver_enable_read(udp_function callback_receive_fct, int max_packet_size, int async_socket_fd);
 
 /**
  * \brief        Send data over UDP.
@@ -84,7 +97,7 @@ int udp_async_driver_enable_read(udp_function callback_receive_fct, int max_pack
  * \param[in]	 size	Size of the buffer.
  * \return 		 0 for a successfull call. A negative value on error.
  */
-int udp_async_driver_write(unsigned char * data, int size);
+int udp_async_driver_write(unsigned char * data, int size, int async_socket_fd);
 
 /**
  * \brief        Handler called when the driver receive data.

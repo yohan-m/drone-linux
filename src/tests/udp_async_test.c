@@ -11,20 +11,21 @@ void test_udp_async()
 	data[4]='\0';
 	
 	char c;
+	int fd;
 	
-	udp_async_driver_init(30000,31000,"192.168.1.4");
-	udp_async_driver_enable_read(&test_callback_receive,64);
+	udp_async_driver_init(30000,31000,"192.168.1.4",&fd);
+	udp_async_driver_enable_read(&test_callback_receive,64,fd);
 	
 	while(cnt <10) { 
 		printf("getchar() ?\n");
 		c = getchar();	
 		if(c=='s') {
-			udp_async_driver_write(data,5);
+			udp_async_driver_write(data,5,fd);
 		}	
 		cnt++;
 	}
 	
-	udp_async_driver_close();
+	udp_async_driver_close(fd);
 }
 
 void test_callback_receive(unsigned char * data, int size)
