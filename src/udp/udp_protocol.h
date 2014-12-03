@@ -37,9 +37,10 @@ int fd_protocol;
  * \param[in]	data1	first data to send in the frame
  * \param[in]	data2	second data to send in the frame
  * \param[in]	data3	third data to send in the frame
+   \param[in]	stateMission	state of the mission to send in the frame
  * \return 		0 on success, 1 if frame creation or communication failed
  */
-uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3);
+uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, char stateMission) ;
 
 /**
  * \brief Function used to send a frame over wifi

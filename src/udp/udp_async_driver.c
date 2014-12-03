@@ -164,9 +164,9 @@ void udp_async_driver_handler(int sig)
 	
 	#ifdef DEBUG_UDP_DRIVER
 		printf("[Debug] L%d %s : %d bytes from %s:%d : ",__LINE__,__FUNCTION__,cnt_bytes,inet_ntoa(async_sender_sockaddr.sin_addr),ntohs(async_sender_sockaddr.sin_port));	
-		int i;
-		for(i=0 ; i<cnt_bytes ; i++) {
-			printf("0x%X ",data[i]);
+		int j;
+		for(j=0 ; j<cnt_bytes ; j++) {
+			printf("0x%X ",data[j]);
 		}
 		printf("(%s)\n",data);
 	#endif

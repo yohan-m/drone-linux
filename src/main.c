@@ -15,8 +15,37 @@
 #include "navdata/navdataToPC.h"
 
 #include <time.h>
+#include <pthread.h>
 
-void ardrone_program() 
+#define PERIODE_THREAD_CONTROL 30
+
+void *thread_control(void *arg)
+{
+	struct timespec time ;
+	int i = 0 ;
+
+	pthread_mutex_t verrou; 
+	pthread_cond_t cond; 
+
+	pthread_cond_init(&cond, NULL); 
+        pthread_mutex_init(&verrou, NULL); 
+
+	clock_gettime(CLOCK_REALTIME, &time); 
+	while(i <10 )
+	{
+		pthread_mutex_lock(&verrou); 
+   		time.tv_sec = time.tv_sec + PERIODE_THREAD_CONTROL; 
+    		printf("Activation periodique de la tâche thread_control %d secondes\n", (int) time.tv_sec); 
+    		//suite du code 
+    		pthread_cond_timedwait(&cond, &verrou, &time); 
+    		pthread_mutex_unlock(&verrou); 
+    		i++; 
+		
+	}
+	pthread_exit(NULL) ; 
+}
+
+void *thread_com(void *arg) 
 {	
 	//init
 	if(initUSBCommunicationSync()!=0) { //usb
@@ -63,39 +92,62 @@ void ardrone_program()
 		//read USB
 		if(readUSBFrameSync(&type,&tdoa1,&tdoa2,&tdoa3,&tdoa4)==0) {
 		
-		/*printf("tdoa1 : %f\n", (float)tdoa1*1/128) ;
-		/printf("tdoa2 : %f\n", (float)tdoa2*1/128) ;
-		printf("tdoa3 : %f\n", (float)tdoa3*1/128) ;
-		printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;*/
+		//printf("tdoa1 : %f\n", (float)tdoa1*1/128) ;
+		//printf("tdoa2 : %f\n", (float)tdoa2*1/128) ;
+		//printf("tdoa3 : %f\n", (float)tdoa3*1/128) ;
+		//printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;
 
 		timeDebut = clock() ;
 		computePosition(&x, &y, &z, tdoa1, tdoa2, tdoa3, tdoa4, arrayTdoa1, arrayTdoa2, arrayTdoa3,size) ;
 
 		diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
-		/*printf("temps calcul : %f\n",diff) ;
+		printf("temps calcul : %f\n",diff) ;
 
-		printf("x : %f\n", x) ;
-		printf("y : %f\n", y) ;
-		printf("z : %f\n", z) ;*/
+		//printf("x : %f\n", x) ;
+		//printf("y : %f\n", y) ;
+		//printf("z : %f\n", z) ;
 
-		sendFrame(type,(int)x*100,(int)y*100,(int)z*100) ;
+		sendFrame(type,(int)x*100,(int)y*100,(int)z*100,STOP_MISSION) ;
 		}
 	}
 	
 	//close
 	closeUSBCommunicationSync(); //usb
 	closeCommunication(); //udp
+
+	pthread_exit(NULL);
 }
 
 int main(int argc, char *argv[]) 
 {
-	printf("\nStart\n\n");
+	pthread_t threadCom ;
+	pthread_t threadControl ;
 
-	ardrone_program() ;
-	//comDemo();
+	printf("\nStart\n\n") ;
+
+   	if(pthread_create(&threadCom, NULL, thread_com, NULL) == -1) {
+		perror("pthread_create");
+		return 1;
+    	}
+
+	if(pthread_create(&threadControl, NULL, thread_control, NULL) == -1) {
+		perror("pthread_create");
+		return 1;
+    	}
+
+	if (pthread_join(threadCom, NULL)) {
+    		perror("pthread_join");
+    		return 1;
+    	}
+
+	if (pthread_join(threadControl, NULL)) {
+    		perror("pthread_join");
+    		return 1;
+    	}
 
 	printf("\nEnd\n\n");
-	return 0;	
+
+	return 0 ;	
 }
 
 
