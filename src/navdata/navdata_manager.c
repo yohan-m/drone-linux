@@ -90,3 +90,18 @@ void updateMission(){
 	newNavData(current_altitude(),current_psi(),current_vx(),current_vy());
 }
 
+int canStartMission(){
+	// critical section
+	pthread_mutex_lock(&mutex_navdata);
+	int bat = current_navdata.bat;
+	ctrl_states state = current_navdata.state;
+	pthread_mutex_unlock(&mutex_navdata);
+	// end of critical section
+	if (bat>LOW_BAT_LEVEL && (state==FLYING || state==HOVERING || state==INTERMEDIATE)){
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
+

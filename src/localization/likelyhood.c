@@ -1,16 +1,21 @@
 #include "likelyhood.h"
 
-int getNearestZ(float realZ, float cubeSize){
+int getNearestZ(int nbZ, float realZ, float cubeSize){
 	float approxInd = realZ/cubeSize;
 	if(approxInd<1.0){
 		return 1;
 	}
 	else{
 		if(fabs(approxInd-ceil(approxInd))<fabs(approxInd-floor(approxInd))){
-			return (int)ceil(approxInd)-1;
+			if((int)ceil(approxInd)<nbZ){
+				return (int)ceil(approxInd);
+			}
+			else{
+				return nbZ-1;
+			}
 		}
 		else{
-			return (int)floor(approxInd)-1;
+			return (int)floor(approxInd);
 		}
 	}
 }
@@ -38,15 +43,15 @@ int sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSi
 	Likelyhood temp ;
 	int sorted = 0 ;
 	int indStart = 0, indFinish = 0;
-	int indZMoy = getNearestZ(realZ,cubeSize);
+	int indZMoy = getNearestZ(nbZ, realZ,cubeSize);
 	indStart = (indZMoy-1)*nbPtsPlan;
-	indFinish = (indZMoy+1)*nbPtsPlan;
+	indFinish = (indZMoy+1)*nbPtsPlan-1;
 	
 	while (!sorted)
 	{
 		sorted = 1 ;
 
-		for(i = indStart ; i<indFinish-1 ; i++)
+		for(i = indStart ; i<indFinish ; i++)
 		{
 			if ((*array)[i].likelyhood > (*array)[i+1].likelyhood)
 			{
@@ -61,13 +66,17 @@ int sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSi
 	return indStart;
 }
 
-Likelyhood searchMin(Likelyhood *array, int size)
+Likelyhood searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ)
 {
 	int i = 0, indMin = 0 ;
 	float min = 1000.0 ;
 	Likelyhood likelyhood ;
+	int indStart = 0, indFinish = 0;
+	int indZMoy = getNearestZ(nbZ, realZ,cubeSize);
+	indStart = (indZMoy-1)*nbPtsPlan;
+	indFinish = (indZMoy+1)*nbPtsPlan-1;
 
-	for(i = 0 ; i<size ; i++)
+	for(i = indStart ; i<indFinish ; i++)
 	{
 		if(array[i].likelyhood < min)
 		{
@@ -107,7 +116,7 @@ void computePosition(float *x, float *y, float *z, int tdoa1, int tdoa2, int tdo
 	*y = arrayLikelyhood[indMin].position[1] ;
 	*z = realZ;//arrayLikelyhood[indMin].position[2] ;*/
 
-	Likelyhood minLikelyhood = searchMin(arrayLikelyhood, size) ;
+	Likelyhood minLikelyhood = searchMin(arrayLikelyhood, size, nbZ, nbPtsPlan, cubeSize, realZ) ;
 
 	*x = minLikelyhood.position[0] ;
 	*y = minLikelyhood.position[1] ;

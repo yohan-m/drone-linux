@@ -54,4 +54,6 @@ float current_vy();
 
 void updateMission();
 
+int canStartMission();
+
 #endif

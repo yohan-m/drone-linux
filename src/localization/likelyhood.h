@@ -27,7 +27,7 @@ Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arr
 
 int sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
 
-Likelyhood searchMin(Likelyhood *array, int size) ;
+Likelyhood searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
 
 void displayArray(Tdoa *array, int size) ;
 
