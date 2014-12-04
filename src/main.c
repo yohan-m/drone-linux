@@ -15,36 +15,11 @@
 #include "navdata/navdataToPC.h"
 #include "navdata/navdata_manager.h"
 
+#include "control/controlTask.h"
+
 #include <time.h>
 #include <pthread.h>
 
-#define PERIODE_THREAD_CONTROL 30
-
-void *thread_control(void *arg)
-{
-	struct timespec time ;
-	int i = 0 ;
-
-	pthread_mutex_t verrou; 
-	pthread_cond_t cond; 
-
-	pthread_cond_init(&cond, NULL); 
-        pthread_mutex_init(&verrou, NULL); 
-
-	clock_gettime(CLOCK_REALTIME, &time); 
-	while(i <10 )
-	{
-		pthread_mutex_lock(&verrou); 
-   		time.tv_sec = time.tv_sec + PERIODE_THREAD_CONTROL; 
-    		printf("Activation periodique de la tâche thread_control %d secondes\n", (int) time.tv_sec); 
-    		//suite du code 
-    		pthread_cond_timedwait(&cond, &verrou, &time); 
-    		pthread_mutex_unlock(&verrou); 
-    		i++; 
-		
-	}
-	pthread_exit(NULL) ; 
-}
 
 void *thread_com(void *arg) 
 {	
@@ -124,6 +99,13 @@ void *thread_com(void *arg)
 	pthread_exit(NULL);
 }
 
+
+// TODO
+//	- Appel a newLocalization(float x_drone, float y_drone) (voir mission.h) pour indiquer les nouvelles valeurs au régulateur.
+//	- Appel a newNavData(float z_baro, float heading, float forward_backward_speed, float left_right_speed) (voir mission.h) pour indiquer les nouvelles valeurs de navdata au régulateur.
+//	- Socket pour envoyer les commandes (loopback 5556 ?) (voir control.h)
+//	- Recevoir des commandes du PC (takeoff, land, mission, move, ...) et les transmettre a la tache de controle (voir controlTask.h)
+
 int main(int argc, char *argv[]) 
 {
 	pthread_t threadCom ;
@@ -136,7 +118,7 @@ int main(int argc, char *argv[])
 		return 1;
     	}
 
-	if(pthread_create(&threadControl, NULL, thread_control, NULL) == -1) {
+	if(pthread_create(&threadControl, NULL, controlTask, NULL) == -1) {
 		perror("pthread_create");
 		return 1;
     	}
