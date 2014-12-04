@@ -13,6 +13,7 @@
 
 #include "navdata/navdataLocal.h"
 #include "navdata/navdataToPC.h"
+#include "navdata/navdata_manager.h"
 
 #include <time.h>
 #include <pthread.h>
@@ -84,8 +85,13 @@ void *thread_com(void *arg)
 
 	Tdoa *arrayTdoa1 = NULL, *arrayTdoa2 = NULL, *arrayTdoa3 = NULL ;
 	int size = 0 ;
+	int nbX = 0, nbY = 0, nbZ = 0; // number of points on each axis
+	int nbPtsPlan = 0; // number of points on a x-y plan
+	float cubeSize = 0.0; // size of the cubes that the room are divided into
 
-	readFiles(&arrayTdoa1,&arrayTdoa2,&arrayTdoa3,&size) ;	
+	readFiles(&arrayTdoa1,&arrayTdoa2,&arrayTdoa3,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
+	
+	nbPtsPlan = nbX*nbY;
 	
 	while(1) 
 	{	
@@ -98,7 +104,7 @@ void *thread_com(void *arg)
 		//printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;
 
 		timeDebut = clock() ;
-		computePosition(&x, &y, &z, tdoa1, tdoa2, tdoa3, tdoa4, arrayTdoa1, arrayTdoa2, arrayTdoa3,size) ;
+		computePosition(&x, &y, &z, tdoa1, tdoa2, tdoa3, tdoa4, arrayTdoa1, arrayTdoa2, arrayTdoa3,size, nbZ, nbPtsPlan, cubeSize, current_altitude()) ;
 
 		diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
 		printf("temps calcul : %f\n",diff) ;

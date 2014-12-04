@@ -2,10 +2,12 @@
 #define __NAVDATA_LOCAL__
 
 #include "navdataToPC.h"
+#include "navdata_manager.h"
 #include "struct.h"
 
 #define IP_DRONE "127.0.0.1"
 #define PORT_NAV_LOCAL 15000
+#define NAV_HEADER 0x55667788
 
 int fd_navDrone;
 

@@ -1,5 +1,20 @@
 #include "likelyhood.h"
 
+int getNearestZ(float realZ, float cubeSize){
+	float approxInd = realZ/cubeSize;
+	if(approxInd<1.0){
+		return 1;
+	}
+	else{
+		if(fabs(approxInd-ceil(approxInd))<fabs(approxInd-floor(approxInd))){
+			return (int)ceil(approxInd)-1;
+		}
+		else{
+			return (int)floor(approxInd)-1;
+		}
+	}
+}
+
 Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float tdoa3)
 {
 	Likelyhood* arrayLikelyhood = (Likelyhood*)malloc(sizeof(Likelyhood)*size) ;
@@ -17,17 +32,21 @@ Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arr
 }
 
 
-void sortArray(Likelyhood **array, int size)
+int sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ)
 {
 	int i ;
 	Likelyhood temp ;
 	int sorted = 0 ;
-
+	int indStart = 0, indFinish = 0;
+	int indZMoy = getNearestZ(realZ,cubeSize);
+	indStart = (indZMoy-1)*nbPtsPlan;
+	indFinish = (indZMoy+1)*nbPtsPlan;
+	
 	while (!sorted)
 	{
 		sorted = 1 ;
 
-		for(i = 0 ; i<size-1 ; i++)
+		for(i = indStart ; i<indFinish-1 ; i++)
 		{
 			if ((*array)[i].likelyhood > (*array)[i+1].likelyhood)
 			{
@@ -38,6 +57,8 @@ void sortArray(Likelyhood **array, int size)
 			}	
 		}
 	}
+	
+	return indStart;
 }
 
 Likelyhood searchMin(Likelyhood *array, int size)
@@ -67,7 +88,7 @@ void displayArray(Tdoa *array, int size)
 	}
 }
 
-void computePosition(float *x, float *y, float *z, int tdoa1, int tdoa2, int tdoa3, int tdoa4, Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size)
+void computePosition(float *x, float *y, float *z, int tdoa1, int tdoa2, int tdoa3, int tdoa4, Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ)
 {
 	float tdoa12 = 0.0, tdoa13 = 0.0, tdoa14 = 0.0 ;
 	Likelyhood *arrayLikelyhood = NULL ;
@@ -80,17 +101,17 @@ void computePosition(float *x, float *y, float *z, int tdoa1, int tdoa2, int tdo
 
 	arrayLikelyhood = createArrayLikelyhood(arrayTdoa1, arrayTdoa2, arrayTdoa3, size, tdoa12, tdoa13, tdoa14) ;
 
-	/*sortArray(&arrayLikelyhood, size) ;
+	/*int indMin = sortArray(&arrayLikelyhood, size, nbZ, nbPtsPlan, cubeSize, realZ) ;
 
-	*x = arrayLikelyhood[0].position[0] ;
-	*y = arrayLikelyhood[0].position[1] ;
-	*z = arrayLikelyhood[0].position[2] ;*/
+	*x = arrayLikelyhood[indMin].position[0] ;
+	*y = arrayLikelyhood[indMin].position[1] ;
+	*z = realZ;//arrayLikelyhood[indMin].position[2] ;*/
 
 	Likelyhood minLikelyhood = searchMin(arrayLikelyhood, size) ;
 
 	*x = minLikelyhood.position[0] ;
 	*y = minLikelyhood.position[1] ;
-	*z = minLikelyhood.position[2] ;
+	*z = realZ;//minLikelyhood.position[2] ;
 }
 
 

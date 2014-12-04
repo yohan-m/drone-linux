@@ -28,10 +28,13 @@ void readNav(unsigned char * data, int size){
 	#ifdef DEBUG_INFO
 		printf("[Debug] L%d %s : Received navdata frame\n",__LINE__,__FUNCTION__);			
 	#endif
-	if(size>24){
+	if(size>0){
 		Navdata *nav = (Navdata*)data;
-		NavdataDemo *nd = (NavdataDemo*)&nav->options[0];
-		sendNav(data,size);
+		if(nav->header==NAV_HEADER){
+			NavdataDemo *nd = (NavdataDemo*)&nav->options[0];
+			processNavdata(nd);
+			sendNav(data,size);
+		}
 	}
 }
 

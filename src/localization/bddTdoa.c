@@ -13,7 +13,7 @@ Tdoa createTdoaStruct(float tdoa, float x, float y, float z)
 	return tdoaStruct ;
 }
 
-void readFiles(Tdoa **arrayTdoa1, Tdoa **arrayTdoa2, Tdoa **arrayTdoa3, int *size)
+void readFiles(Tdoa **arrayTdoa1, Tdoa **arrayTdoa2, Tdoa **arrayTdoa3, int *size, int * nbX, int * nbY, int * nbZ, float * cubeSize)
 {
 	FILE *file1 = fopen("tdoa1-2.txt","r") ;
 	FILE *file2 = fopen("tdoa1-3.txt","r") ;
@@ -25,7 +25,7 @@ void readFiles(Tdoa **arrayTdoa1, Tdoa **arrayTdoa2, Tdoa **arrayTdoa3, int *siz
 		float x, y, z, tdoa ;
 
 		// Creation of the array dtoa1 with data from the file tdoa1-2.txt
-		fscanf(file1,"%d", &sizeArray) ;
+		fscanf(file1,"%d %d %d %d %f", &sizeArray, nbX, nbY, nbZ, cubeSize) ;
 		*size = sizeArray ;
 
 		*arrayTdoa1 = malloc(sizeof(Tdoa)*sizeArray) ;

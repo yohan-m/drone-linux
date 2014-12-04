@@ -14,6 +14,7 @@ uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, cha
 	}
 }
 
+
 void readFrame(unsigned char * data, int size){
 	if(size==CONVERTED_WIFI_FRAME_SIZE)
 	{

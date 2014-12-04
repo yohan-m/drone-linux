@@ -22,7 +22,7 @@ typedef struct Tdoa
 
 Tdoa createTdoaStruct(float tdoa, float x, float y, float z) ;
 
-void readFiles(Tdoa **arrayTdoa1, Tdoa **arrayTdoa2, Tdoa **arrayTdoa3, int *size) ;
+void readFiles(Tdoa **arrayTdoa1, Tdoa **arrayTdoa2, Tdoa **arrayTdoa3, int *size, int * nbX, int * nbY, int * nbZ, float * cubeSize) ;
 
 void display(Tdoa arrayTdoa1[], Tdoa arrayTdoa2[], Tdoa arrayTdoa3[], int size) ;
 
