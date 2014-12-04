@@ -10,15 +10,18 @@ void mission(float x_cons, float y_cons, float z_cons, float angle_cons, float *
 	//Speeds
 	estimate_speed(*pitch_cmd, *roll_cmd, *angular_speed_cmd, *vertical_speed_cmd, &forward_backward_speed, &left_right_speed, &angular_speed, &vertical_speed);
 	
+	pthread_mutex_lock(&mutex_mission);
 	if(newSpeed!=0){
-		forward_backward_speed = navData_fb_speed;	//lock?
-		left_right_speed = navData_lr_speed;		//lock?
+		forward_backward_speed = navData_fb_speed;
+		left_right_speed = navData_lr_speed;
 		newSpeed=0;
 	}
+	pthread_mutex_unlock(&mutex_mission);
 	
 	//Position
 	estimate_position(forward_backward_speed, left_right_speed, angular_speed, vertical_speed, 0.03, &x, &y, &z, &angle);
 	
+	pthread_mutex_lock(&mutex_mission);
 	if(newCoordXY!=0) {
 		x = loca_x;
 		y = loca_y;
@@ -45,11 +48,13 @@ void mission(float x_cons, float y_cons, float z_cons, float angle_cons, float *
 	
 	//Control
 	controller(dx, dy, dz, angle_cons, angle, pitch_cmd, roll_cmd, angular_speed_cmd, vertical_speed_cmd);
+	pthread_mutex_unlock(&mutex_mission);
 }
 
 
 void newNavData(float z_baro, float heading, float forward_backward_speed, float left_right_speed)
 {
+	pthread_mutex_lock(&mutex_mission);
 	navData_z = z_baro;
 	navData_angle = heading;
 	convert_angle(&navData_angle);
@@ -58,34 +63,49 @@ void newNavData(float z_baro, float heading, float forward_backward_speed, float
 	newCoordZ = 1;
 	newAngle = 1;
 	newSpeed = 1;	
+	pthread_mutex_unlock(&mutex_mission);
 }
 
 
 void newLocalization(float x_drone, float y_drone)
 {
+	pthread_mutex_lock(&mutex_mission);
 	loca_x = x_drone;
 	loca_y = y_drone;
 	newCoordXY = 1;
+	pthread_mutex_unlock(&mutex_mission);
 }
 
 float getX()
 {
-	return x;
+	pthread_mutex_lock(&mutex_mission);
+	float x_local = x ;
+	pthread_mutex_unlock(&mutex_mission);
+	return x_local;
 }
 
 float getY()
 {
-	return y;
+	pthread_mutex_lock(&mutex_mission);
+	float y_local = y ;
+	pthread_mutex_unlock(&mutex_mission);
+	return y_local;
 }
 
 float getZ()
 {
-	return z;
+	pthread_mutex_lock(&mutex_mission);
+	float z_local = z ;
+	pthread_mutex_unlock(&mutex_mission);
+	return z_local;
 }
 
 float getAngle()
 {
-	return angle;
+	pthread_mutex_lock(&mutex_mission);
+	float angle_local = angle ;
+	pthread_mutex_unlock(&mutex_mission);
+	return angle_local;
 }
 
 

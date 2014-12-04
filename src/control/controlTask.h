@@ -46,6 +46,8 @@ void emergency();
  * PRIVATE
  */
  
+static pthread_mutex_t mutex_control = PTHREAD_MUTEX_INITIALIZER;
+ 
 void checkEndOfMission();
 
 int control_state;

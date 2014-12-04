@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <pthread.h>
 
 #define PI 3.14159265
 
@@ -34,6 +35,8 @@ float getAngle();
 /**
  * PRIVATE
  */
+ 
+static pthread_mutex_t mutex_mission = PTHREAD_MUTEX_INITIALIZER;
  
 float x;
 float y;
