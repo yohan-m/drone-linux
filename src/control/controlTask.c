@@ -95,8 +95,11 @@ void *controlTask(void *arg)
 }
 
 
-void executeMission(float x_obj, float y_obj, float z_obj, float angle_obj)
+int executeMission(float x_obj, float y_obj, float z_obj, float angle_obj)
 {
+	if(!canStartMission()) {
+		return -1;
+	}
 	pthread_mutex_lock(&mutex_control);
 	x_cons = x_obj;
 	y_cons = y_obj;
@@ -104,6 +107,7 @@ void executeMission(float x_obj, float y_obj, float z_obj, float angle_obj)
 	angle_cons = angle_obj;
 	control_state = STATE_MISSION;
 	pthread_mutex_unlock(&mutex_control);
+	return 0;
 }
 
 

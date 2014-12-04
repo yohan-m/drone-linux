@@ -31,7 +31,7 @@
 #define CONTROLTASK_PERIOD_MS 30
 
 void *controlTask(void *arg);
-void executeMission(float x_obj, float y_obj, float z_obj, float angle_obj);
+int executeMission(float x_obj, float y_obj, float z_obj, float angle_obj);
 void executeManual();
 
 void initNavData();
