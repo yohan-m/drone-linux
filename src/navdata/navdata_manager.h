@@ -2,6 +2,7 @@
 #define __NAVDATA_MANAGER__
 
 #include "struct.h"
+#include "../control/mission.h"
 #include <pthread.h>
 
 #define LOW_BAT_LEVEL 20
@@ -50,5 +51,7 @@ float current_psi();
 float current_vx();
 
 float current_vy();
+
+void updateMission();
 
 #endif

@@ -45,7 +45,7 @@ void *thread_com(void *arg)
 	system(rule);
 	sprintf(rule,"iptables -t nat -A PREROUTING -p UDP -d 127.0.0.1 --dport %d -j DNAT --to-destination 127.0.0.1:%d",NAVDATA_PORT,PORT_NAV_LOCAL);
 	system(rule);
-	sprintf(rule,"iptables -t nat -A PREROUTING -p UDP -d %s -j DNAT --to-destination %s:%d",IP,IP,REMOTE_PORT);
+	sprintf(rule,"iptables -t nat -A POSTROUTING -p UDP --sport %d -j SNAT --to-source 127.0.0.1:%d",CTRL_PORT_LOCAL,CTRL_PORT);
 	system(rule);
 	
 	if(initNavdataCommPC()!=0){
@@ -87,7 +87,7 @@ void *thread_com(void *arg)
 		//printf("x : %f\n", x) ;
 		//printf("y : %f\n", y) ;
 		//printf("z : %f\n", z) ;
-
+		newLocalization(x,y);
 		sendFrame(type,(int)x*100,(int)y*100,(int)z*100,STOP_MISSION) ;
 		}
 	}
@@ -101,9 +101,6 @@ void *thread_com(void *arg)
 
 
 // TODO
-//	- Appel a newLocalization(float x_drone, float y_drone) (voir mission.h) pour indiquer les nouvelles valeurs au régulateur.
-//	- Appel a newNavData(float z_baro, float heading, float forward_backward_speed, float left_right_speed) (voir mission.h) pour indiquer les nouvelles valeurs de navdata au régulateur.
-//	- Socket pour envoyer les commandes (loopback 5556 ?) (voir control.h)
 //	- Recevoir des commandes du PC (takeoff, land, mission, move, ...) et les transmettre a la tache de controle (voir controlTask.h)
 
 int main(int argc, char *argv[]) 

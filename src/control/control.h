@@ -14,8 +14,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../udp/udp_async_driver.h"
 
-void initControl();
+#define CTRL_PORT 5556
+#define CTRL_PORT_LOCAL 16000
+#define IP_DRONE "127.0.0.1"
+#define CTRL_MAX_PACKET_SIZE 512
+
+int fd_ctrlDrone;
+
+int initControl();
 
 void sendNavDataInit(int seqNum);
 
@@ -36,5 +44,9 @@ void sendMovement(int seqNum, int flag, float leftRightTilt, float frontBackTilt
 void numberToString(int number, char * str, int * size);
 
 void writeCmd(char * data, int size);
+
+void readCtrl(char * data, int size);
+
+int closeCtrl();
 
 #endif

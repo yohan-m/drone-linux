@@ -86,5 +86,7 @@ float current_vy(){
 	return vy;
 }
 
-
+void updateMission(){
+	newNavData(current_altitude(),current_psi(),current_vx(),current_vy());
+}
 

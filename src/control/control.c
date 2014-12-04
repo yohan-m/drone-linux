@@ -1,9 +1,17 @@
 #include "control.h"
 
-void initControl()
+int initControl()
 {
+	#ifdef DEBUG_INFO
+		printf("[Debug] L%d %s : Initializing control drone ...\n",__LINE__,__FUNCTION__);			
+	#endif
 
-
+	if(udp_async_driver_init(CTRL_PORT_LOCAL, CTRL_PORT, IP_DRONE, &fd_ctrlDrone)==0){
+		if(udp_async_driver_enable_read(&readCtrl, CTRL_MAX_PACKET_SIZE, fd_ctrlDrone)==0){
+			return 0;
+		}
+	}
+	return -1;
 }
 
 
@@ -194,4 +202,24 @@ void numberToString(int number, char * str, int * size)
 void writeCmd(char * data, int size) 
 {
 	//printf("%.*s\n", size, data);
+	udp_async_driver_write(data,size,fd_ctrlDrone);
+}
+
+void readCtrl(char * data, int size){
+
+}
+
+int closeCtrl(){
+	#ifdef DEBUG_INFO
+		printf("[Debug] L%d %s : Closing ctrl drone ...\n",__LINE__,__FUNCTION__);		
+	#endif
+	if(udp_async_driver_close(fd_ctrlDrone)==0) {
+			#ifdef DEBUG_INFO
+				printf("[Debug] L%d %s : Done !\n",__LINE__,__FUNCTION__);		
+			#endif
+		return 0;
+	}
+	else {
+		return 1;
+	}
 }
