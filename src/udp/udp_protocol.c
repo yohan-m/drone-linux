@@ -1,9 +1,9 @@
 #include "udp_protocol.h"
 
 uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, char stateMission){
-	wifiFrame f = createWifiFrame(type, data1, data2, data3, stateMission);
-	char * convertedFrame = wifiFrameToChar(f);
-	if(udp_async_driver_write((unsigned char *)convertedFrame, CONVERTED_WIFI_FRAME_SIZE, fd_protocol)==0) {
+	wifiFrame f = createWifiFrame(type, data1, data2, data3,0,CMD_NONE, stateMission);
+	//char * convertedFrame = wifiFrameToChar(f);
+	if(udp_async_driver_write((unsigned char *)&f, CONVERTED_WIFI_FRAME_SIZE, fd_protocol)==0) {
 		#ifdef DEBUG_UDP_PROTOCOL
 			printf("[Debug] L%d %s : Write OK !\n",__LINE__,__FUNCTION__);		
 		#endif
@@ -18,7 +18,7 @@ uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, cha
 void readFrame(unsigned char * data, int size){
 	if(size==CONVERTED_WIFI_FRAME_SIZE)
 	{
-	        wifiFrame wf = wifiFrameFromChar((char*)data);
+	        wifiFrame wf = *(wifiFrame*)data;//wifiFrameFromChar((char*)data);
 
 		if (wf.stateMission == LAUNCH_MISSION)
 		{
@@ -38,11 +38,11 @@ uint8_t initCommunication(){
 		printf("[Debug] L%d %s : Initializing UDP ...\n",__LINE__,__FUNCTION__);			
 	#endif
 	//char IP[IP_SIZE];
-	wifiFrame disco_frame = createWifiFrame(DISCOVERY_FRAME, 0, 0, 0,STOP_MISSION);
-	char * disco_data = wifiFrameToChar(disco_frame);
+	wifiFrame disco_frame = createDiscoveryFrame();
+	//char * disco_data = wifiFrameToChar(disco_frame);
 	
 	// waiting for PC to answer discovery frame (to get its IP for future communication)
-	while(udp_driver_discover_network(LOCAL_PORT,REMOTE_PORT,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE ,(unsigned char *)disco_data, CONVERTED_WIFI_FRAME_SIZE , MAX_DISCOVERY_WAIT_TIME, IP)<0) {
+	while(udp_driver_discover_network(LOCAL_PORT,REMOTE_PORT,(unsigned char *)&disco_frame, CONVERTED_WIFI_FRAME_SIZE ,(unsigned char *)&disco_frame, CONVERTED_WIFI_FRAME_SIZE , MAX_DISCOVERY_WAIT_TIME, IP)<0) {
 		printf("[Warning] L%d %s : Can't find a computer\n",__LINE__,__FUNCTION__);			
 	}
 
