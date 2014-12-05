@@ -26,55 +26,69 @@ void readFrame(unsigned char * data, int size){
 		int moveAsked = 0;
 		switch(wf.type){
 			case COMMAND_FRAME :
-				
-				if(wf.cmd & CMD_FWD == CMD_FWD){
+				printf("udp_protocol readframe : received cmd frame, cmd=%d, masque=%d, val masquee=%d\n",wf.cmd,CMD_FTRIM,(wf.cmd&CMD_FTRIM));
+				if((wf.cmd & CMD_FWD) == CMD_FWD){
+					printf("cmd fwd\n");
 					moveAsked = 1;
 					pitch -= MOVE_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_BWD == CMD_BWD){
+				if((wf.cmd & CMD_BWD) == CMD_BWD){
+					printf("cmd bwd\n");
 					moveAsked = 1;
 					pitch += MOVE_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_LEFT == CMD_LEFT){
+				if((wf.cmd & CMD_LEFT) == CMD_LEFT){
+					printf("cmd left\n");
 					moveAsked = 1;
 					roll -= MOVE_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_RIGHT == CMD_RIGHT){
+				if((wf.cmd & CMD_RIGHT) == CMD_RIGHT){
+					printf("cmd right\n");
 					moveAsked = 1;
 					roll += MOVE_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_UP == CMD_UP){
+				if((wf.cmd & CMD_UP) == CMD_UP){
+					printf("cmd up\n");
 					moveAsked = 1;
 					vertical_speed += SPEED_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_DOWN == CMD_DOWN){
+				if((wf.cmd & CMD_DOWN) == CMD_DOWN){
+					printf("cmd down\n");
 					moveAsked = 1;
 					vertical_speed -= SPEED_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_ROTATE_RIGHT == CMD_ROTATE_RIGHT){
+				if((wf.cmd & CMD_ROTATE_RIGHT) == CMD_ROTATE_RIGHT){
+					printf("cmd r right\n");
 					moveAsked = 1;
 					angular_speed += SPEED_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_ROTATE_LEFT == CMD_ROTATE_LEFT){
+				if((wf.cmd & CMD_ROTATE_LEFT) == CMD_ROTATE_LEFT){
+					printf("cmd r left\n");
 					moveAsked = 1;
 					angular_speed -= SPEED_AMPLITUDE;
 				}
-				if(wf.cmd & CMD_TAKE_OFF == CMD_TAKE_OFF){
+				if((wf.cmd & CMD_TAKE_OFF) == CMD_TAKE_OFF){
+					printf("cmd take off\n");
 					takeOff();
 				}
-				if(wf.cmd & CMD_LAND == CMD_LAND){
+				if((wf.cmd & CMD_LAND) == CMD_LAND){
+					printf("cmd land\n");
 					land();
 				}
-				if(wf.cmd & CMD_FTRIM == CMD_FTRIM){
+				if((wf.cmd & CMD_FTRIM) == CMD_FTRIM){
+					printf("cmd ftrim\n");
 					calibHor();
 				}
-				if(wf.cmd & CMD_EMERGENCY == CMD_EMERGENCY){
+				if((wf.cmd & CMD_EMERGENCY) == CMD_EMERGENCY){
+					printf("cmd emergency\n");
 					emergency();
 				}
-				if(wf.cmd & CMD_INIT_NAVDATA == CMD_INIT_NAVDATA){
+				if((wf.cmd & CMD_INIT_NAVDATA) == CMD_INIT_NAVDATA){
+					printf("cmd nav\n");
 					initNavData();
 				}
-				if(wf.cmd & CMD_CALIB_MAGNO == CMD_CALIB_MAGNO){
+				if((wf.cmd & CMD_CALIB_MAGNO) == CMD_CALIB_MAGNO){
+					printf("cmd magno\n");
 					calibMagn();
 				}
 				if(moveAsked){
@@ -83,6 +97,7 @@ void readFrame(unsigned char * data, int size){
 				break;
 			
 			case MISSION_FRAME:
+				printf("udp_protocol readframe : received mission frame\n");
 				if (wf.stateMission == LAUNCH_MISSION){
 					executeMission((float)wf.positions[0], (float)wf.positions[1], (float)wf.positions[2], (float)wf.angle);
 				}
@@ -92,10 +107,12 @@ void readFrame(unsigned char * data, int size){
 				break;
 				
 			case PC_CTRL:
+				printf("udp_protocol readframe : received pc ctrl frame\n");
 				enableControl(0);
 				break;
 				
 			case DRONE_CTRL:
+				printf("udp_protocol readframe : received drone ctrl frame\n");
 				enableControl(1);
 				break;
 			
