@@ -201,8 +201,12 @@ void numberToString(int number, char * str, int * size)
 
 void writeCmd(char * data, int size) 
 {
-	//printf("%.*s\n", size, data);
-	udp_async_driver_write(data,size,fd_ctrlDrone);
+	if(udp_async_driver_write(data,size,fd_ctrlDrone)>0){
+		//printf("writeCmd : %.*s sent\n", size, data);
+	}
+	else{
+		printf("writeCmd : failed to send\n");
+	}
 }
 
 void readCtrl(unsigned char * data, int size){

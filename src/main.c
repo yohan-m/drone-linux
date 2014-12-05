@@ -31,6 +31,11 @@ void *thread_com(void *arg)
 	if(initCommunication()!=0) { //udp
 		return;
 	}
+
+	if(initNavdataCommPC()!=0){
+		printf("failed to init navdata between drone and pc\n");
+		return;
+	}
 	
 	system("echo 1 > /proc/sys/net/ipv4/ip_forward");
 	system("iptables -t nat -F");
@@ -47,11 +52,6 @@ void *thread_com(void *arg)
 	system(rule);
 	sprintf(rule,"iptables -t nat -A POSTROUTING -p UDP --sport %d -j SNAT --to-source 127.0.0.1:%d",CTRL_PORT_LOCAL,CTRL_PORT);
 	system(rule);
-	
-	if(initNavdataCommPC()!=0){
-		printf("failed to init navdata between drone and pc\n");
-		return;
-	}
 	
 
 	char type;
@@ -82,7 +82,7 @@ void *thread_com(void *arg)
 		computePosition(&x, &y, &z, tdoa1, tdoa2, tdoa3, tdoa4, arrayTdoa1, arrayTdoa2, arrayTdoa3,size, nbZ, nbPtsPlan, cubeSize, current_altitude()) ;
 
 		diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
-		printf("temps calcul : %f\n",diff) ;
+		//printf("temps calcul : %f\n",diff) ;
 
 		//printf("x : %f\n", x) ;
 		//printf("y : %f\n", y) ;

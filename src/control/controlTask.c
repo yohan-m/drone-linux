@@ -19,14 +19,14 @@ void *controlTask(void *arg)
 	pthread_mutex_lock(&mutex_control);
 	control_enable = CONTROL_ENABLED;
 	control_state = STATE_MANUAL;
-	seqNumber = 0;
+	seqNumber = 1;
 	takeOffCalled = 0;
 	landCalled = 0;
 	moveCalled = 0;
 	emergencyCalled = 0;
 	calibHorCalled = 0;
 	calibMagnCalled = 0;
-	initNavDataCalled = 0;
+	initNavDataCalled = 1;
 	move_done = 0;
 	pthread_mutex_unlock(&mutex_control);
 	
@@ -220,6 +220,7 @@ void checkEndOfMission()
 	if( fabs(x_cons-getX()) < PRECISION_X && fabs(y_cons-getY()) < PRECISION_Y && fabs(z_cons-getZ()) < PRECISION_Z && fabs(diff_angle(angle_cons, getAngle())) < PRECISION_ANGLE ) {
 		move_done = 1;
 		executeManual();
+		sendFrame(MISSION_FRAME, 0, 0, 0, MISSION_FINISHED);
 	}
 }
 

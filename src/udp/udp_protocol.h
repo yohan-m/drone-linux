@@ -11,6 +11,7 @@
 #ifndef __UDP_PROTOCOL__
 #define __UDP_PROTOCOL__
 
+#include "../control/controlTask.h"
 #include "udp_async_driver.h"
 #include "udp_driver_discover.h"
 #include "../../../common-sources/src/wifiFrame.h"

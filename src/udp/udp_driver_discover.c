@@ -146,7 +146,6 @@ void udp_driver_discover_handler(int sig)
 		printf("[Error] L%d %s : %s\n",__LINE__,__FUNCTION__,strerror(errno));
 		return;	
 	}
-	
 	if(cnt_bytes == disco_response_size && memcmp(data,disco_response_frame,disco_response_size)==0) {
 		disco_ip = (char *)inet_ntoa(disco_sender_sockaddr.sin_addr);
 		

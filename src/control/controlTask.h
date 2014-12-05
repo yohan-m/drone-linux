@@ -19,6 +19,8 @@
 
 #include "mission.h"
 #include "control.h"
+#include "../navdata/navdata_manager.h"
+#include "../udp/udp_protocol.h"
 
 #define STATE_MANUAL 0
 #define STATE_MISSION 1
@@ -30,6 +32,9 @@
 #define PRECISION_Y (float)0.2	 	//m
 #define PRECISION_Z (float)0.1 		//m
 #define PRECISION_ANGLE (float)10.0 //degrees
+
+#define MOVE_AMPLITUDE 0.4
+#define SPEED_AMPLITUDE 0.6
 
 #define CONTROLTASK_PERIOD_MS 30
 
