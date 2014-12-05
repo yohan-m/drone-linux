@@ -138,7 +138,6 @@ void enableControl(int enable)
 		control_enable = enable;
 	}
 	control_state = STATE_MANUAL;
-	seqNumber = 0;
 	takeOffCalled = 0;
 	landCalled = 0;
 	moveCalled = 0;
