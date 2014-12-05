@@ -23,6 +23,9 @@
 #define STATE_MANUAL 0
 #define STATE_MISSION 1
 
+#define CONTROL_ENABLED 0
+#define CONTROL_DISABLED 1
+
 #define PRECISION_X (float)0.2 		//m
 #define PRECISION_Y (float)0.2	 	//m
 #define PRECISION_Z (float)0.1 		//m
@@ -33,6 +36,7 @@
 void *controlTask(void *arg);
 int executeMission(float x_obj, float y_obj, float z_obj, float angle_obj);
 void executeManual();
+void enableControl(int enable);
 
 void initNavData();
 void takeOff();
@@ -50,6 +54,7 @@ static pthread_mutex_t mutex_control = PTHREAD_MUTEX_INITIALIZER;
  
 void checkEndOfMission();
 
+int control_enable;
 int control_state;
 int seqNumber;
 float x_cons;

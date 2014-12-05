@@ -45,7 +45,7 @@ void numberToString(int number, char * str, int * size);
 
 void writeCmd(char * data, int size);
 
-void readCtrl(char * data, int size);
+void readCtrl(unsigned char * data, int size);
 
 int closeCtrl();
 

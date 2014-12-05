@@ -205,7 +205,7 @@ void writeCmd(char * data, int size)
 	udp_async_driver_write(data,size,fd_ctrlDrone);
 }
 
-void readCtrl(char * data, int size){
+void readCtrl(unsigned char * data, int size){
 
 }
 
