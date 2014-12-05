@@ -137,6 +137,16 @@ void enableControl(int enable)
 	if(enable==CONTROL_ENABLED || enable==CONTROL_DISABLED) {
 		control_enable = enable;
 	}
+	control_state = STATE_MANUAL;
+	seqNumber = 0;
+	takeOffCalled = 0;
+	landCalled = 0;
+	moveCalled = 0;
+	emergencyCalled = 0;
+	calibHorCalled = 0;
+	calibMagnCalled = 0;
+	initNavDataCalled = 0;
+	move_done = 0;
 	pthread_mutex_unlock(&mutex_control);
 }
 
