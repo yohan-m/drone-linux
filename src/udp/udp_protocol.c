@@ -16,6 +16,7 @@ uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, cha
 
 
 void readFrame(unsigned char * data, int size){
+	//printf("received frame on udp_protocol\n");
 	if(size==CONVERTED_WIFI_FRAME_SIZE)
 	{
         wifiFrame wf = *(wifiFrame*)data;//wifiFrameFromChar((char*)data);
@@ -26,7 +27,7 @@ void readFrame(unsigned char * data, int size){
 		int moveAsked = 0;
 		switch(wf.type){
 			case COMMAND_FRAME :
-				printf("udp_protocol readframe : received cmd frame, cmd=%d, masque=%d, val masquee=%d\n",wf.cmd,CMD_FTRIM,(wf.cmd&CMD_FTRIM));
+				//printf("udp_protocol readframe : received cmd frame, cmd=%d, masque=%d, val masquee=%d\n",wf.cmd,CMD_FTRIM,(wf.cmd&CMD_FTRIM));
 				if((wf.cmd & CMD_FWD) == CMD_FWD){
 					printf("cmd fwd\n");
 					moveAsked = 1;
@@ -108,12 +109,12 @@ void readFrame(unsigned char * data, int size){
 				
 			case PC_CTRL:
 				printf("udp_protocol readframe : received pc ctrl frame\n");
-				enableControl(0);
+				enableControl(1);
 				break;
 				
 			case DRONE_CTRL:
 				printf("udp_protocol readframe : received drone ctrl frame\n");
-				enableControl(1);
+				enableControl(0);
 				break;
 			
 			default:

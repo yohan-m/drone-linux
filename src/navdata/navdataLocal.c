@@ -33,6 +33,7 @@ void readNav(unsigned char * data, int size){
 		if(nav->header==NAV_HEADER){
 			NavdataDemo *nd = (NavdataDemo*)&nav->options[0];
 			processNavdata(nd);
+			updateMission();
 			sendNav(data,size);
 		}
 	}

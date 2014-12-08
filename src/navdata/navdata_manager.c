@@ -87,7 +87,12 @@ float current_vy(){
 }
 
 void updateMission(){
-	newNavData(current_altitude(),current_psi(),-current_vx(),current_vy());
+	float z, angle, vx, vy;
+	z = current_altitude();
+	angle = current_psi();
+	vx = -current_vx();
+	vy = current_vy();
+	newNavData(z,angle,vx,vy);
 }
 
 int canStartMission(){

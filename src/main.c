@@ -73,10 +73,10 @@ void *thread_com(void *arg)
 		//read USB
 		if(readUSBFrameSync(&type,&tdoa1,&tdoa2,&tdoa3,&tdoa4)==0) {
 		
-		//printf("tdoa1 : %f\n", (float)tdoa1*1/128) ;
-		//printf("tdoa2 : %f\n", (float)tdoa2*1/128) ;
-		//printf("tdoa3 : %f\n", (float)tdoa3*1/128) ;
-		//printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;
+		/*printf("tdoa1 : %f\n", (float)tdoa1*1/128) ;
+		printf("tdoa2 : %f\n", (float)tdoa2*1/128) ;
+		printf("tdoa3 : %f\n", (float)tdoa3*1/128) ;
+		printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;*/
 
 		timeDebut = clock() ;
 		computePosition(&x, &y, &z, tdoa1, tdoa2, tdoa3, tdoa4, arrayTdoa1, arrayTdoa2, arrayTdoa3,size, nbZ, nbPtsPlan, cubeSize, current_altitude()) ;

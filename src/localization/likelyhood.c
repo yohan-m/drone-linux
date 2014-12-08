@@ -84,7 +84,6 @@ Likelyhood searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float 
 			indMin = i ;
 		}
 	}
-
 	return array[indMin] ;
 }
 

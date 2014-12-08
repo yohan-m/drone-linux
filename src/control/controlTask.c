@@ -106,6 +106,7 @@ int executeMission(float x_obj, float y_obj, float z_obj, float angle_obj)
 	if(!canStartMission()) {
 		return -1;
 	}
+	printf("controlTask : executeMission called and running\n");
 	pthread_mutex_lock(&mutex_control);
 	x_cons = x_obj;
 	y_cons = y_obj;
@@ -119,6 +120,7 @@ int executeMission(float x_obj, float y_obj, float z_obj, float angle_obj)
 
 void executeManual()
 {		
+	printf("controlTask : executeManual called\n");
 	pthread_mutex_lock(&mutex_control);
 	takeOffCalled = 0;
 	landCalled = 0;
@@ -133,6 +135,7 @@ void executeManual()
 
 void enableControl(int enable) 
 {
+	printf("controlTask : enableControl called with enable=%d\n",enable);
 	pthread_mutex_lock(&mutex_control);
 	if(enable==CONTROL_ENABLED || enable==CONTROL_DISABLED) {
 		control_enable = enable;
@@ -152,6 +155,7 @@ void enableControl(int enable)
 
 void initNavData()
 {
+	printf("controlTask : initNavData called\n");
 	pthread_mutex_lock(&mutex_control);
 	initNavDataCalled = 1; 
 	pthread_mutex_unlock(&mutex_control);
@@ -160,6 +164,7 @@ void initNavData()
 
 void takeOff() 
 {
+	printf("controlTask : takeOff called\n");
 	pthread_mutex_lock(&mutex_control);
 	takeOffCalled = 1;
 	pthread_mutex_unlock(&mutex_control);
@@ -168,6 +173,7 @@ void takeOff()
 
 void land() 
 {
+	printf("controlTask : land called\n");
 	pthread_mutex_lock(&mutex_control);
 	landCalled = 1;
 	pthread_mutex_unlock(&mutex_control);
@@ -176,6 +182,7 @@ void land()
 
 void move(float pitch, float roll, float angular_speed, float vertical_speed) 
 {
+	printf("controlTask : move called\n");
 	pthread_mutex_lock(&mutex_control);
 	pitch_move = pitch;
 	roll_move = roll;
@@ -188,6 +195,7 @@ void move(float pitch, float roll, float angular_speed, float vertical_speed)
 
 void calibHor() 
 {
+	printf("controlTask : calibHor called\n");
 	pthread_mutex_lock(&mutex_control);
 	calibHorCalled = 1;
 	pthread_mutex_unlock(&mutex_control);
@@ -196,6 +204,7 @@ void calibHor()
 
 void calibMagn()
 {
+	printf("controlTask : calibMagn called\n");
 	pthread_mutex_lock(&mutex_control);
 	calibMagnCalled = 1;
 	pthread_mutex_unlock(&mutex_control);
@@ -204,6 +213,7 @@ void calibMagn()
 
 void emergency()
 {
+	printf("controlTask : emergency called\n");
 	pthread_mutex_lock(&mutex_control);
 	emergencyCalled = 1;
 	pthread_mutex_unlock(&mutex_control);
