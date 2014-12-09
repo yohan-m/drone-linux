@@ -20,13 +20,13 @@
 #include <time.h>
 #include <pthread.h>
 
-
+#include <unistd.h>
 void *thread_com(void *arg) 
 {	
 	//init
-	if(initUSBCommunicationSync()!=0) { //usb
+	/*if(initUSBCommunicationSync()!=0) { //usb
 		return;
-	}
+	}*/
 	
 	if(initCommunication()!=0) { //udp
 		return;
@@ -56,52 +56,66 @@ void *thread_com(void *arg)
 
 	char type;
 	uint32_t tdoa1, tdoa2, tdoa3, tdoa4 ;
+	uint32_t rss1, rss2, rss3, rss4;
+	uint32_t tabTdoa[4], tabRss[4];
 	float x, y, z, timeDebut, diff ;
 
-	Tdoa *arrayTdoa1 = NULL, *arrayTdoa2 = NULL, *arrayTdoa3 = NULL ;
+	Tdoa *arrayTdoa12 = NULL, *arrayTdoa13 = NULL, *arrayTdoa14 = NULL, *arrayTdoa21 = NULL, *arrayTdoa23 = NULL, *arrayTdoa24 = NULL;
+	Tdoa *arrayTdoa31 = NULL, *arrayTdoa32 = NULL, *arrayTdoa34 = NULL, *arrayTdoa41 = NULL, *arrayTdoa42 = NULL, *arrayTdoa43 = NULL ;
 	int size = 0 ;
 	int nbX = 0, nbY = 0, nbZ = 0; // number of points on each axis
 	int nbPtsPlan = 0; // number of points on a x-y plan
 	float cubeSize = 0.0; // size of the cubes that the room are divided into
 
-	readFiles(&arrayTdoa1,&arrayTdoa2,&arrayTdoa3,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
+	readFiles(&arrayTdoa12,&arrayTdoa13,&arrayTdoa14,FILE_TDOA_12,FILE_TDOA_13,FILE_TDOA_14,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
+	readFiles(&arrayTdoa21,&arrayTdoa23,&arrayTdoa24,FILE_TDOA_21,FILE_TDOA_23,FILE_TDOA_24,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
+	readFiles(&arrayTdoa31,&arrayTdoa32,&arrayTdoa34,FILE_TDOA_31,FILE_TDOA_32,FILE_TDOA_34,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
+	readFiles(&arrayTdoa41,&arrayTdoa42,&arrayTdoa43,FILE_TDOA_41,FILE_TDOA_42,FILE_TDOA_43,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
 	
 	nbPtsPlan = nbX*nbY;
 	
 	while(1) 
 	{	
 		//read USB
-		if(readUSBFrameSync(&type,&tdoa1,&tdoa2,&tdoa3,&tdoa4)==0) {
-		
-		/*printf("tdoa1 : %f\n", (float)tdoa1*1/128) ;
-		printf("tdoa2 : %f\n", (float)tdoa2*1/128) ;
-		printf("tdoa3 : %f\n", (float)tdoa3*1/128) ;
-		printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;*/
+		/*if(readUSBFrameSync(&type,&tdoa1,&tdoa2,&tdoa3,&tdoa4,&rss1,&rss2,&rss3,&rss4)==0) {
+			
+			tabTdoa[0] = tdoa1;
+			tabTdoa[1] = tdoa2;
+			tabTdoa[2] = tdoa3;
+			tabTdoa[3] = tdoa4;
+			tabRss[0] = rss1;
+			tabRss[1] = rss2;
+			tabRss[2] = rss3;
+			tabRss[3] = rss4;
+			//printf("tdoa1 : %f\n", (float)tdoa1*1/128) ;
+			//printf("tdoa2 : %f\n", (float)tdoa2*1/128) ;
+			//printf("tdoa3 : %f\n", (float)tdoa3*1/128) ;
+			//printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;
 
-		timeDebut = clock() ;
-		computePosition(&x, &y, &z, tdoa1, tdoa2, tdoa3, tdoa4, arrayTdoa1, arrayTdoa2, arrayTdoa3,size, nbZ, nbPtsPlan, cubeSize, current_altitude()) ;
+			timeDebut = clock() ;
+			computePosition(&x, &y, &z, tabTdoa, tabRss, arrayTdoa12, arrayTdoa13, arrayTdoa14, arrayTdoa21, arrayTdoa23, arrayTdoa24, arrayTdoa31, arrayTdoa32, arrayTdoa34, arrayTdoa41, arrayTdoa42, arrayTdoa43, size, nbZ, nbPtsPlan, cubeSize, current_altitude()) ;
 
-		diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
-		//printf("temps calcul : %f\n",diff) ;
+			diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
+			printf("temps calcul : %f\n",diff) ;
 
-		//printf("x : %f\n", x) ;
-		//printf("y : %f\n", y) ;
-		//printf("z : %f\n", z) ;
-		newLocalization(x,y);
-		sendFrame(type,(int)x*100,(int)y*100,(int)z*100,STOP_MISSION) ;
-		}
+			printf("x : %f\n", x) ;
+			printf("y : %f\n", y) ;
+			printf("z : %f\n", z) ;
+			newLocalization(x,y);
+			sendFrame(type,(int)x*100,(int)y*100,(int)z*100,STOP_MISSION) ;
+		}*/
+		newLocalization(2.1,3.3);
+		usleep(100000);
 	}
 	
 	//close
-	closeUSBCommunicationSync(); //usb
+	//closeUSBCommunicationSync(); //usb
 	closeCommunication(); //udp
 
 	pthread_exit(NULL);
 }
 
 
-// TODO
-//	- Recevoir des commandes du PC (takeoff, land, mission, move, ...) et les transmettre a la tache de controle (voir controlTask.h)
 
 int main(int argc, char *argv[]) 
 {

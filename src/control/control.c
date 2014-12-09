@@ -140,7 +140,7 @@ void sendLand(int seqNum)
 }
 
 
-void sendMovement(int seqNum, int flag, float leftRightTilt, float frontBackTilt, float verticalSpeed, float angularSpeed)
+void sendMovement(int seqNum, int flag, float frontBackTilt, float leftRightTilt, float verticalSpeed, float angularSpeed)
 {
     int seqSize = 0;
     char seqStr[64];

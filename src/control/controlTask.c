@@ -46,8 +46,8 @@ void *controlTask(void *arg)
 			if(control_state == STATE_MISSION) {
 				mission(x_cons, y_cons, z_cons, angle_cons, &pitch_cmd, &roll_cmd, &angular_speed_cmd, &vertical_speed_cmd);
 				sendMovement(seqNumber, 1, pitch_cmd, roll_cmd, vertical_speed_cmd, angular_speed_cmd);
-				checkEndOfMission();
 				printf("x=%f\ty=%f\tz=%f\tangle=%f\t\tpitch=%f\troll=%f\taspeed=%f\tvspeed=%f\n",getX(),getY(),getZ(),getAngle(),pitch_cmd,roll_cmd,angular_speed_cmd,vertical_speed_cmd);
+				checkEndOfMission();
 			}
 		
 			else if(control_state == STATE_MANUAL) {
@@ -128,6 +128,7 @@ void executeManual()
 	emergencyCalled = 0;
 	calibHorCalled = 0;
 	calibMagnCalled = 0;
+	move_done = 1;
 	control_state = STATE_MANUAL;
 	pthread_mutex_unlock(&mutex_control);
 }
@@ -229,7 +230,9 @@ void checkEndOfMission()
 {
 	if( fabs(x_cons-getX()) < PRECISION_X && fabs(y_cons-getY()) < PRECISION_Y && fabs(z_cons-getZ()) < PRECISION_Z && fabs(diff_angle(angle_cons, getAngle())) < PRECISION_ANGLE ) {
 		move_done = 1;
+		pthread_mutex_unlock(&mutex_control);
 		executeManual();
+		pthread_mutex_lock(&mutex_control);
 		sendFrame(MISSION_FRAME, 0, 0, 0, MISSION_FINISHED);
 	}
 }

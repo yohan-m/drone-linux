@@ -11,6 +11,7 @@
 #ifndef __UDP_PROTOCOL__
 #define __UDP_PROTOCOL__
 
+#include <pthread.h>
 #include "../control/controlTask.h"
 #include "udp_async_driver.h"
 #include "udp_driver_discover.h"
@@ -31,6 +32,8 @@
 
 char IP[IP_SIZE];
 int fd_protocol;
+
+static pthread_mutex_t mutex_udp_protocol = PTHREAD_MUTEX_INITIALIZER;
 
 /**
  * \brief Function used to send a frame over wifi

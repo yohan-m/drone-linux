@@ -1,15 +1,18 @@
 #include "udp_protocol.h"
 
 uint8_t sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, char stateMission){
+	pthread_mutex_lock(&mutex_udp_protocol);
 	wifiFrame f = createWifiFrame(type, data1, data2, data3,0,CMD_NONE, stateMission);
 	//char * convertedFrame = wifiFrameToChar(f);
 	if(udp_async_driver_write((unsigned char *)&f, CONVERTED_WIFI_FRAME_SIZE, fd_protocol)>0) {
+		pthread_mutex_unlock(&mutex_udp_protocol);
 		#ifdef DEBUG_UDP_PROTOCOL
 			printf("[Debug] L%d %s : Write OK !\n",__LINE__,__FUNCTION__);		
 		#endif
 		return 0;
 	}
 	else {
+		pthread_mutex_unlock(&mutex_udp_protocol);
 		return 1;
 	}
 }
@@ -100,7 +103,7 @@ void readFrame(unsigned char * data, int size){
 			case MISSION_FRAME:
 				printf("udp_protocol readframe : received mission frame\n");
 				if (wf.stateMission == LAUNCH_MISSION){
-					executeMission((float)wf.positions[0], (float)wf.positions[1], (float)wf.positions[2], (float)wf.angle);
+					executeMission((float)wf.positions[0]/100.0, (float)wf.positions[1]/100.0, (float)wf.positions[2]/100.0, (float)wf.angle);
 				}
 				else if (wf.stateMission == STOP_MISSION){
 					executeManual();

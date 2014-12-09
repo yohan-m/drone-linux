@@ -39,7 +39,7 @@ void sendTakeOff(int seqNum);
 
 void sendLand(int seqNum);
 
-void sendMovement(int seqNum, int flag, float leftRightTilt, float frontBackTilt, float verticalSpeed, float angularSpeed);
+void sendMovement(int seqNum, int flag, float frontBackTilt, float leftRightTilt, float verticalSpeed, float angularSpeed);
 
 void numberToString(int number, char * str, int * size);
 

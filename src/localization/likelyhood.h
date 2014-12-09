@@ -23,7 +23,7 @@ typedef struct Likelyhood
 	float position[3] ; //en m
 } Likelyhood ;
 
-Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float td0a3) ;
+Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float td0a3, int toIgnore) ;
 
 int sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
 
@@ -31,6 +31,6 @@ Likelyhood searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float 
 
 void displayArray(Tdoa *array, int size) ;
 
-void computePosition(float *x, float *y, float *z, int tdoa1, int tdoa2, int tdoa3, int tdoa4, Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
+void computePosition(float *x, float *y, float *z, int * tabTdoa, int * tabRss, Tdoa *arrayTdoa12, Tdoa *arrayTdoa13, Tdoa *arrayTdoa14, Tdoa *arrayTdoa21, Tdoa *arrayTdoa23, Tdoa *arrayTdoa24, Tdoa *arrayTdoa31, Tdoa *arrayTdoa32, Tdoa *arrayTdoa34, Tdoa *arrayTdoa41, Tdoa *arrayTdoa42, Tdoa *arrayTdoa43, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
 
 #endif

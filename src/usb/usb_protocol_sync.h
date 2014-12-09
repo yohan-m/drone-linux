@@ -18,7 +18,7 @@ int checkSeqNum;
 int cnt_missed;
 int cnt_ok;
 
-uint8_t readUSBFrameSync(char * type, uint32_t * data0, uint32_t * data1, uint32_t * data2, uint32_t * data3);
+uint8_t readUSBFrameSync(char * type, uint32_t * data0, uint32_t * data1, uint32_t * data2, uint32_t * data3, uint32_t * rss0, uint32_t * rss1, uint32_t * rss2, uint32_t * rss3);
 
 /**
  * \brief        Initialization of the socket and the callback function for reception.

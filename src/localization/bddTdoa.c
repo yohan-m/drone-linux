@@ -13,11 +13,11 @@ Tdoa createTdoaStruct(float tdoa, float x, float y, float z)
 	return tdoaStruct ;
 }
 
-void readFiles(Tdoa **arrayTdoa1, Tdoa **arrayTdoa2, Tdoa **arrayTdoa3, int *size, int * nbX, int * nbY, int * nbZ, float * cubeSize)
+void readFiles(Tdoa **arrayTdoa1, Tdoa **arrayTdoa2, Tdoa **arrayTdoa3, char * fileName1, char * fileName2, char * fileName3, int *size, int * nbX, int * nbY, int * nbZ, float * cubeSize)
 {
-	FILE *file1 = fopen("tdoa1-2.txt","r") ;
-	FILE *file2 = fopen("tdoa1-3.txt","r") ;
-	FILE *file3 = fopen("tdoa1-4.txt","r") ;
+	FILE *file1 = fopen(fileName1,"r") ;
+	FILE *file2 = fopen(fileName2,"r") ;
+	FILE *file3 = fopen(fileName3,"r") ;
 
 	if(file1 != NULL && file2 != NULL && file3 != NULL)
 	{

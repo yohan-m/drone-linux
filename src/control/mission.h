@@ -20,7 +20,7 @@
 #define GAIN_PITCH 0.1
 #define GAIN_ROLL 0.1
 #define GAIN_ANGULAR 0.002
-#define GAIN_VERTICAL 0.8
+#define GAIN_VERTICAL 0.9
 
 void mission(float x_cons, float y_cons, float z_cons, float angle_cons, float * pitch_cmd, float * roll_cmd, float * angular_speed_cmd, float * vertical_speed_cmd);
 

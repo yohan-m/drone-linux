@@ -28,8 +28,8 @@
 #define CONTROL_ENABLED 0
 #define CONTROL_DISABLED 1
 
-#define PRECISION_X (float)0.2 		//m
-#define PRECISION_Y (float)0.2	 	//m
+#define PRECISION_X (float)0.3		//m
+#define PRECISION_Y (float)0.3	 	//m
 #define PRECISION_Z (float)0.1 		//m
 #define PRECISION_ANGLE (float)10.0 //degrees
 

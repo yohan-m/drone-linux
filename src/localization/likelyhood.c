@@ -20,14 +20,26 @@ int getNearestZ(int nbZ, float realZ, float cubeSize){
 	}
 }
 
-Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float tdoa3)
+Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float tdoa3, int toIgnore)
 {
 	Likelyhood* arrayLikelyhood = (Likelyhood*)malloc(sizeof(Likelyhood)*size) ;
 
 	int i ;
 	for (i = 0 ; i<size ; i++)
 	{
-		arrayLikelyhood[i].likelyhood = fabs(arrayTdoa1[i].tdoa - tdoa1) + fabs(arrayTdoa2[i].tdoa - tdoa2) + fabs(arrayTdoa3[i].tdoa - tdoa3) ;
+		//arrayLikelyhood[i].likelyhood = fabs(arrayTdoa1[i].tdoa - tdoa1) + fabs(arrayTdoa2[i].tdoa - tdoa2) + fabs(arrayTdoa3[i].tdoa - tdoa3) ;
+		if(toIgnore==1){
+			arrayLikelyhood[i].likelyhood = fabs(arrayTdoa2[i].tdoa - tdoa2) + fabs(arrayTdoa3[i].tdoa - tdoa3) ;
+		}
+		else if(toIgnore==2){
+			arrayLikelyhood[i].likelyhood = fabs(arrayTdoa1[i].tdoa - tdoa1) + fabs(arrayTdoa3[i].tdoa - tdoa3) ;
+		}
+		else if(toIgnore==3){
+			arrayLikelyhood[i].likelyhood = fabs(arrayTdoa2[i].tdoa - tdoa2) + fabs(arrayTdoa1[i].tdoa - tdoa1) ;
+		}
+		else{
+			arrayLikelyhood[i].likelyhood = fabs(arrayTdoa1[i].tdoa - tdoa1) + fabs(arrayTdoa2[i].tdoa - tdoa2) + fabs(arrayTdoa3[i].tdoa - tdoa3) ;
+		}
 		arrayLikelyhood[i].position[0] = arrayTdoa1[i].position[0] ;
 		arrayLikelyhood[i].position[1] = arrayTdoa1[i].position[1] ;
 		arrayLikelyhood[i].position[2] = arrayTdoa1[i].position[2] ;
@@ -96,18 +108,62 @@ void displayArray(Tdoa *array, int size)
 	}
 }
 
-void computePosition(float *x, float *y, float *z, int tdoa1, int tdoa2, int tdoa3, int tdoa4, Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ)
+void computePosition(float *x, float *y, float *z, int * tabTdoa, int * tabRss, Tdoa *arrayTdoa12, Tdoa *arrayTdoa13, Tdoa *arrayTdoa14, Tdoa *arrayTdoa21, Tdoa *arrayTdoa23, Tdoa *arrayTdoa24, Tdoa *arrayTdoa31, Tdoa *arrayTdoa32, Tdoa *arrayTdoa34, Tdoa *arrayTdoa41, Tdoa *arrayTdoa42, Tdoa *arrayTdoa43, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ)
 {
-	float tdoa12 = 0.0, tdoa13 = 0.0, tdoa14 = 0.0 ;
+	//float tdoa12 = 0.0, tdoa13 = 0.0, tdoa14 = 0.0 ;
 	Likelyhood *arrayLikelyhood = NULL ;
 
-	tdoa12 = (float)(tdoa2 - tdoa1) * 1.0/128.0;
+	/*tdoa12 = (float)(tdoa2 - tdoa1) * 1.0/128.0;
 	tdoa13 = (float)(tdoa3 - tdoa1) * 1.0/128.0;
-	tdoa14 = (float)(tdoa4 - tdoa1) * 1.0/128.0;
+	tdoa14 = (float)(tdoa4 - tdoa1) * 1.0/128.0;*/
+	
+	// searching for min rss
+	int indMinRss = -1, minRss = 100000000, indMaxRss = -1, maxRss = -1, i;
+	for(i=0;i<4;i++){
+		if(tabRss[i]<minRss){
+			indMinRss = i;
+			minRss = tabRss[i];
+		}
+		if(tabRss[i]>maxRss){
+			indMaxRss = i;
+			maxRss = tabRss[i];
+		}
+	}
+
+	
+	/*if(tdoa2!=0)
+		tdoa12 = (float)(tdoa2 - tdoa1) * 1.0/2.0;
+	else
+		tdoa12 = 0.0;
+	if(tdoa3!=0)
+		tdoa13 = (float)(tdoa3 - tdoa1) * 1.0/2.0;
+	else
+		tdoa12 = 0.0;
+	if(tdoa4!=0)
+		tdoa14 = (float)(tdoa4 - tdoa1) * 1.0/2.0;
+	else
+		tdoa12 = 0.0;*/
 
 	//displayArray(arrayTdoa1, size) ;
 
-	arrayLikelyhood = createArrayLikelyhood(arrayTdoa1, arrayTdoa2, arrayTdoa3, size, tdoa12, tdoa13, tdoa14) ;
+	// creating likelihood array according to which reference was chosen (ref = rss max)
+	switch(indMaxRss){
+		case 0:
+			arrayLikelyhood = createArrayLikelyhood(arrayTdoa12, arrayTdoa13, arrayTdoa14, size, tabTdoa[1], tabTdoa[2], tabTdoa[3],indMinRss+1) ;
+			break;
+		case 1:
+			arrayLikelyhood = createArrayLikelyhood(arrayTdoa21, arrayTdoa23, arrayTdoa24, size, tabTdoa[0], tabTdoa[2], tabTdoa[3],indMinRss+1) ;
+			break;
+		case 2:
+			arrayLikelyhood = createArrayLikelyhood(arrayTdoa31, arrayTdoa32, arrayTdoa34, size, tabTdoa[0], tabTdoa[1], tabTdoa[3],indMinRss+1) ;
+			break;
+		case 3:
+			arrayLikelyhood = createArrayLikelyhood(arrayTdoa41, arrayTdoa42, arrayTdoa43, size, tabTdoa[0], tabTdoa[1], tabTdoa[2],indMinRss+1) ;
+			break;
+		default:
+			break;
+	}
+	//arrayLikelyhood = createArrayLikelyhood(arrayTdoa12, arrayTdoa13, arrayTdoa14, size, tdoa12, tdoa13, tdoa14) ;
 
 	/*int indMin = sortArray(&arrayLikelyhood, size, nbZ, nbPtsPlan, cubeSize, realZ) ;
 
