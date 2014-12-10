@@ -24,9 +24,9 @@
 void *thread_com(void *arg) 
 {	
 	//init
-	/*if(initUSBCommunicationSync()!=0) { //usb
+	if(initUSBCommunicationSync()!=0) { //usb
 		return;
-	}*/
+	}
 	
 	if(initCommunication()!=0) { //udp
 		return;
@@ -53,11 +53,11 @@ void *thread_com(void *arg)
 	sprintf(rule,"iptables -t nat -A POSTROUTING -p UDP --sport %d -j SNAT --to-source 127.0.0.1:%d",CTRL_PORT_LOCAL,CTRL_PORT);
 	system(rule);
 	
-
+	static pthread_mutex_t mutex_usb = PTHREAD_MUTEX_INITIALIZER;
 	char type;
-	uint32_t tdoa1, tdoa2, tdoa3, tdoa4 ;
-	uint32_t rss1, rss2, rss3, rss4;
-	uint32_t tabTdoa[4], tabRss[4];
+	int32_t tdoa1, tdoa2, tdoa3, tdoa4 ;
+	int32_t rss1, rss2, rss3, rss4;
+	int32_t tabTdoa[4], tabRss[4];
 	float x, y, z, timeDebut, diff ;
 
 	Tdoa *arrayTdoa12 = NULL, *arrayTdoa13 = NULL, *arrayTdoa14 = NULL, *arrayTdoa21 = NULL, *arrayTdoa23 = NULL, *arrayTdoa24 = NULL;
@@ -76,8 +76,9 @@ void *thread_com(void *arg)
 	
 	while(1) 
 	{	
+		pthread_mutex_lock(&mutex_usb);
 		//read USB
-		/*if(readUSBFrameSync(&type,&tdoa1,&tdoa2,&tdoa3,&tdoa4,&rss1,&rss2,&rss3,&rss4)==0) {
+		if(readUSBFrameSync(&type,&tdoa1,&tdoa2,&tdoa3,&tdoa4,&rss1,&rss2,&rss3,&rss4)==0) {
 			
 			tabTdoa[0] = tdoa1;
 			tabTdoa[1] = tdoa2;
@@ -102,14 +103,15 @@ void *thread_com(void *arg)
 			printf("y : %f\n", y) ;
 			printf("z : %f\n", z) ;
 			newLocalization(x,y);
-			sendFrame(type,(int)x*100,(int)y*100,(int)z*100,STOP_MISSION) ;
-		}*/
-		newLocalization(2.1,3.3);
-		usleep(100000);
+			sendFrame(type,(int)(x*100),(int)(y*100),(int)(z*100),STOP_MISSION) ;
+		}
+		pthread_mutex_unlock(&mutex_usb);
+		/*newLocalization(2.1,3.3);
+		usleep(100000);*/
 	}
 	
 	//close
-	//closeUSBCommunicationSync(); //usb
+	closeUSBCommunicationSync(); //usb
 	closeCommunication(); //udp
 
 	pthread_exit(NULL);
