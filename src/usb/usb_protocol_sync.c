@@ -1,7 +1,7 @@
 #include "usb_protocol_sync.h"
 
 
-uint8_t readUSBFrameSync(char * type, int32_t * data0, int32_t * data1, int32_t * data2, int32_t * data3, int32_t * rss0, int32_t * rss1, int32_t * rss2, int32_t * rss3)
+uint8_t readUSBFrameSync(char * type, float * data0, float * data1, float * data2, float * data3, int32_t * rss0, int32_t * rss1, int32_t * rss2, int32_t * rss3)
 {
 	unsigned char data[CONVERTED_SERIAL_FRAME_SIZE];
 	
@@ -66,10 +66,12 @@ uint8_t readUSBFrameSync(char * type, int32_t * data0, int32_t * data1, int32_t 
 	#endif
 	
 	*type = frame.type;
-	*data0 = frame.data[0]*MULTIPLIER_RAW_TIMES;
-	*data1 = frame.data[1]*MULTIPLIER_RAW_TIMES;
-	*data2 = frame.data[2]*MULTIPLIER_RAW_TIMES;
-	*data3 = frame.data[3]*MULTIPLIER_RAW_TIMES;
+	*data0 = -(float)frame.data[0]/DIVIDER_RAW_TIMES;
+	*data1 = -(float)frame.data[1]/DIVIDER_RAW_TIMES;
+	*data2 = -(float)frame.data[2]/DIVIDER_RAW_TIMES;
+	*data3 = -(float)frame.data[3]/DIVIDER_RAW_TIMES; 
+
+	
 	*rss0 = frame.rss[0];
 	*rss1 = frame.rss[1];
 	*rss2 = frame.rss[2];

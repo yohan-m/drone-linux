@@ -31,6 +31,6 @@ Likelyhood searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float 
 
 void displayArray(Tdoa *array, int size) ;
 
-void computePosition(float *x, float *y, float *z, int32_t * tabTdoa, int32_t * tabRss, Tdoa *arrayTdoa12, Tdoa *arrayTdoa13, Tdoa *arrayTdoa14, Tdoa *arrayTdoa21, Tdoa *arrayTdoa23, Tdoa *arrayTdoa24, Tdoa *arrayTdoa31, Tdoa *arrayTdoa32, Tdoa *arrayTdoa34, Tdoa *arrayTdoa41, Tdoa *arrayTdoa42, Tdoa *arrayTdoa43, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
+void computePosition(float *x, float *y, float *z, float * tabTdoa, int32_t * tabRss, Tdoa *arrayTdoa12, Tdoa *arrayTdoa13, Tdoa *arrayTdoa14, Tdoa *arrayTdoa21, Tdoa *arrayTdoa23, Tdoa *arrayTdoa24, Tdoa *arrayTdoa31, Tdoa *arrayTdoa32, Tdoa *arrayTdoa34, Tdoa *arrayTdoa41, Tdoa *arrayTdoa42, Tdoa *arrayTdoa43, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
 
 #endif

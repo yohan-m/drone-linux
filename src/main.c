@@ -55,10 +55,12 @@ void *thread_com(void *arg)
 	
 	static pthread_mutex_t mutex_usb = PTHREAD_MUTEX_INITIALIZER;
 	char type;
-	int32_t tdoa1, tdoa2, tdoa3, tdoa4 ;
+	float tdoa1, tdoa2, tdoa3, tdoa4 ;
 	int32_t rss1, rss2, rss3, rss4;
-	int32_t tabTdoa[4], tabRss[4];
-	float x, y, z, timeDebut, diff ;
+	float tabTdoa[4] ;
+	int32_t tabRss[4] ;
+	float x, y, z, timeDebut, diff, xMoyen, yMoyen, tabX[50], tabY[50] ;
+	int idx_tab = 0;
 
 	Tdoa *arrayTdoa12 = NULL, *arrayTdoa13 = NULL, *arrayTdoa14 = NULL, *arrayTdoa21 = NULL, *arrayTdoa23 = NULL, *arrayTdoa24 = NULL;
 	Tdoa *arrayTdoa31 = NULL, *arrayTdoa32 = NULL, *arrayTdoa34 = NULL, *arrayTdoa41 = NULL, *arrayTdoa42 = NULL, *arrayTdoa43 = NULL ;
@@ -73,6 +75,11 @@ void *thread_com(void *arg)
 	readFiles(&arrayTdoa41,&arrayTdoa42,&arrayTdoa43,FILE_TDOA_41,FILE_TDOA_42,FILE_TDOA_43,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
 	
 	nbPtsPlan = nbX*nbY;
+
+	for(int i = 0 ; i < 50 ; i++) {
+		tabX[i]=0.0;
+		tabY[i]=0.0;
+	}
 	
 	while(1) 
 	{	
@@ -99,11 +106,24 @@ void *thread_com(void *arg)
 			diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
 			printf("temps calcul : %f\n",diff) ;
 
-			printf("x : %f\n", x) ;
-			printf("y : %f\n", y) ;
+			tabX[idx_tab]=x;
+			tabY[idx_tab]=y;
+			idx_tab = (idx_tab+1)%50;
+
+			xMoyen=0.0;
+			yMoyen=0.0;
+			for(int i = 0 ; i < 50 ; i++) {
+				xMoyen+=tabX[i];
+				yMoyen+=tabY[i];
+			}
+			xMoyen = xMoyen/50.0;
+			yMoyen = yMoyen/50.0;
+
+			printf("x : %f\n", xMoyen) ;
+			printf("y : %f\n", yMoyen) ;
 			printf("z : %f\n", z) ;
 			newLocalization(x,y);
-			sendFrame(type,(int)(x*100),(int)(y*100),(int)(z*100),STOP_MISSION) ;
+			sendFrame(type,(int)(xMoyen*100),(int)(yMoyen*100),(int)(z*100),STOP_MISSION) ;
 		}
 		pthread_mutex_unlock(&mutex_usb);
 		/*newLocalization(2.1,3.3);
