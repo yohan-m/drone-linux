@@ -21,6 +21,9 @@
 #include <pthread.h>
 
 #include <unistd.h>
+
+#define MOVING_AVG_SIZE 30
+
 void *thread_com(void *arg) 
 {	
 	//init
@@ -59,8 +62,7 @@ void *thread_com(void *arg)
 	int32_t rss1, rss2, rss3, rss4;
 	float tabTdoa[4] ;
 	int32_t tabRss[4] ;
-	float x, y, z, timeDebut, diff, xMoyen, yMoyen, tabX[50], tabY[50] ;
-	int idx_tab = 0;
+	float x, y, z, timeDebut, diff;
 
 	Tdoa *arrayTdoa12 = NULL, *arrayTdoa13 = NULL, *arrayTdoa14 = NULL, *arrayTdoa21 = NULL, *arrayTdoa23 = NULL, *arrayTdoa24 = NULL;
 	Tdoa *arrayTdoa31 = NULL, *arrayTdoa32 = NULL, *arrayTdoa34 = NULL, *arrayTdoa41 = NULL, *arrayTdoa42 = NULL, *arrayTdoa43 = NULL ;
@@ -68,6 +70,17 @@ void *thread_com(void *arg)
 	int nbX = 0, nbY = 0, nbZ = 0; // number of points on each axis
 	int nbPtsPlan = 0; // number of points on a x-y plan
 	float cubeSize = 0.0; // size of the cubes that the room are divided into
+	
+	float tabX[MOVING_AVG_SIZE];
+	float tabY[MOVING_AVG_SIZE];
+	float xAvg,yAvg;
+	int indexAvg=0;
+	
+	int cnt;
+	for (cnt = 0 ; cnt<MOVING_AVG_SIZE ; cnt++) {
+		tabX[cnt]=0.0;
+		tabY[cnt]=0.0;
+	}
 
 	readFiles(&arrayTdoa12,&arrayTdoa13,&arrayTdoa14,FILE_TDOA_12,FILE_TDOA_13,FILE_TDOA_14,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
 	readFiles(&arrayTdoa21,&arrayTdoa23,&arrayTdoa24,FILE_TDOA_21,FILE_TDOA_23,FILE_TDOA_24,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
@@ -76,11 +89,7 @@ void *thread_com(void *arg)
 	
 	nbPtsPlan = nbX*nbY;
 
-	for(int i = 0 ; i < 50 ; i++) {
-		tabX[i]=0.0;
-		tabY[i]=0.0;
-	}
-	
+
 	while(1) 
 	{	
 		pthread_mutex_lock(&mutex_usb);
@@ -105,25 +114,27 @@ void *thread_com(void *arg)
 
 			diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
 			printf("temps calcul : %f\n",diff) ;
-
-			tabX[idx_tab]=x;
-			tabY[idx_tab]=y;
-			idx_tab = (idx_tab+1)%50;
-
-			xMoyen=0.0;
-			yMoyen=0.0;
-			for(int i = 0 ; i < 50 ; i++) {
-				xMoyen+=tabX[i];
-				yMoyen+=tabY[i];
+			
+			tabX[indexAvg] = x;
+			tabY[indexAvg] = y;
+			indexAvg = (indexAvg+1)%MOVING_AVG_SIZE;
+			xAvg = 0.0;
+			yAvg = 0.0;
+			
+			for(cnt = 0 ; cnt<MOVING_AVG_SIZE ; cnt++) {
+				xAvg += tabX[cnt];
+				yAvg += tabY[cnt];				
 			}
-			xMoyen = xMoyen/50.0;
-			yMoyen = yMoyen/50.0;
-
-			printf("x : %f\n", xMoyen) ;
-			printf("y : %f\n", yMoyen) ;
+			
+			xAvg = xAvg/((float)MOVING_AVG_SIZE);
+			yAvg = yAvg/((float)MOVING_AVG_SIZE);
+			
+			printf("x : %f\tx_avg : %f\n", x, xAvg) ;
+			printf("y : %f\ty_avg : %f\n", y, yAvg) ;
 			printf("z : %f\n", z) ;
-			newLocalization(x,y);
-			sendFrame(type,(int)(xMoyen*100),(int)(yMoyen*100),(int)(z*100),STOP_MISSION) ;
+			
+			newLocalization(xAvg,yAvg);
+			sendFrame(type,(int)(xAvg*100),(int)(yAvg*100),(int)(z*100),STOP_MISSION) ;
 		}
 		pthread_mutex_unlock(&mutex_usb);
 		/*newLocalization(2.1,3.3);
