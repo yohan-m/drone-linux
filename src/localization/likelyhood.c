@@ -7,11 +7,11 @@ int getNearestZ(int nbZ, float realZ, float cubeSize){
 	}
 	else{
 		if(fabs(approxInd-ceil(approxInd))<fabs(approxInd-floor(approxInd))){
-			if((int)ceil(approxInd)<nbZ){
+			if((int)ceil(approxInd)<nbZ - 1){
 				return (int)ceil(approxInd);
 			}
 			else{
-				return nbZ-1;
+				return nbZ-2;
 			}
 		}
 		else{

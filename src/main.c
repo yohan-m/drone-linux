@@ -22,7 +22,7 @@
 
 #include <unistd.h>
 
-#define MOVING_AVG_SIZE 30
+#define MOVING_AVG_SIZE 25
 
 void *thread_com(void *arg) 
 {	
@@ -110,7 +110,7 @@ void *thread_com(void *arg)
 			//printf("tdoa4 : %f\n", (float)tdoa4*1/128) ;
 
 			timeDebut = clock() ;
-			computePosition(&x, &y, &z, tabTdoa, tabRss, arrayTdoa12, arrayTdoa13, arrayTdoa14, arrayTdoa21, arrayTdoa23, arrayTdoa24, arrayTdoa31, arrayTdoa32, arrayTdoa34, arrayTdoa41, arrayTdoa42, arrayTdoa43, size, nbZ, nbPtsPlan, cubeSize, current_altitude()) ;
+			computePosition(&x, &y, &z, tabTdoa, tabRss, arrayTdoa12, arrayTdoa13, arrayTdoa14, arrayTdoa21, arrayTdoa23, arrayTdoa24, arrayTdoa31, arrayTdoa32, arrayTdoa34, arrayTdoa41, arrayTdoa42, arrayTdoa43, size, nbZ, nbPtsPlan, cubeSize, 1.80);//current_altitude()) ;
 
 			diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
 			printf("temps calcul : %f\n",diff) ;
