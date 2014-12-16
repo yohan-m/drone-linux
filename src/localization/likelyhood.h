@@ -1,41 +1,36 @@
 /**
-* \file hyperbolic.h
+* \file likelyhood.h
 *
-* \brief hyperbolic functions
+* \brief likelyhood functions
 *
 * \author Mathieu Touzery
 *
-* \date 18 Nov 2014
+* \date 14 Oct 2014
 */
-#ifndef __HYPERBOLIC__
-#define __HYPERBOLIC__
+
+#ifndef __LIKELYHOOD__
+#define __LIKELYHOOD__
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define speedSound 360 // m/s
-#define x1 0
-#define y1 0
-#define z1 3
-#define x2 6
-#define y2 0
-#define z2 3
-#define x3 6
-#define y3 3
-#define z3 3
-#define x4 0
-#define y4 3
-#define z4 3
-#define x21 x2 - x1
-#define x23 x2 - x3
-#define x31 x3 - x1
-#define x43 x4 - x3
-#define y21 y2 - y1
-#define y23 y2 - y3
-#define y31 y3 - y1
-#define y43 y4 - y3
-#define z21 z2 - z1
-#define z23 z2 - z3
-#define z31 z3 - z1
-#define z43 z4 - z3
-void computePositions(float tdoa_12, float tdoa_13, float tdoa_32, float tdoa_34, float *x, float *y, float *z) ;
+#include "bddTdoa.h"
+
+
+typedef struct Likelyhood
+{
+float likelyhood ;
+float position[3] ; //en m
+} Likelyhood ;
+
+Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float td0a3, int toIgnore, int indStart, int indFinish) ;
+
+int sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
+
+Likelyhood searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
+
+void displayArray(Tdoa *array, int size) ;
+
+void computePosition(float *x, float *y, float *z, float * tabTdoa, int32_t * tabRss, Tdoa *arrayTdoa12, Tdoa *arrayTdoa13, Tdoa *arrayTdoa14, Tdoa *arrayTdoa21, Tdoa *arrayTdoa23, Tdoa *arrayTdoa24, Tdoa *arrayTdoa31, Tdoa *arrayTdoa32, Tdoa *arrayTdoa34, Tdoa *arrayTdoa41, Tdoa *arrayTdoa42, Tdoa *arrayTdoa43, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
+
 #endif
