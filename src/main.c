@@ -113,7 +113,7 @@ void *thread_com(void *arg)
 			computePosition(&x, &y, &z, tabTdoa, tabRss, arrayTdoa12, arrayTdoa13, arrayTdoa14, arrayTdoa21, arrayTdoa23, arrayTdoa24, arrayTdoa31, arrayTdoa32, arrayTdoa34, arrayTdoa41, arrayTdoa42, arrayTdoa43, size, nbZ, nbPtsPlan, cubeSize, current_altitude()) ;
 
 			diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
-			printf("temps calcul : %f\n",diff) ;
+			//printf("temps calcul : %f\n",diff) ;
 			
 			tabX[indexAvg] = x;
 			tabY[indexAvg] = y;
@@ -129,9 +129,9 @@ void *thread_com(void *arg)
 			xAvg = xAvg/((float)MOVING_AVG_SIZE);
 			yAvg = yAvg/((float)MOVING_AVG_SIZE);
 			
-			printf("x : %f\tx_avg : %f\n", x, xAvg) ;
+			/*printf("x : %f\tx_avg : %f\n", x, xAvg) ;
 			printf("y : %f\ty_avg : %f\n", y, yAvg) ;
-			printf("z : %f\n", z) ;
+			printf("z : %f\n", z) ;*/
 			
 			newLocalization(xAvg,yAvg);
 			sendFrame(type,(int)(xAvg*100),(int)(yAvg*100),(int)(z*100),STOP_MISSION) ;

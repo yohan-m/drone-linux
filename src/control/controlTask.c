@@ -46,7 +46,7 @@ void *controlTask(void *arg)
 			if(control_state == STATE_MISSION) {
 				mission(x_cons, y_cons, z_cons, angle_cons, &pitch_cmd, &roll_cmd, &angular_speed_cmd, &vertical_speed_cmd);
 				sendMovement(seqNumber, 1, pitch_cmd, roll_cmd, vertical_speed_cmd, angular_speed_cmd);
-				printf("x=%f\ty=%f\tz=%f\tangle=%f\t\tpitch=%f\troll=%f\taspeed=%f\tvspeed=%f\n",getX(),getY(),getZ(),getAngle(),pitch_cmd,roll_cmd,angular_speed_cmd,vertical_speed_cmd);
+				//printf("x=%f\ty=%f\tz=%f\tangle=%f\t\tpitch=%f\troll=%f\taspeed=%f\tvspeed=%f\n",getX(),getY(),getZ(),getAngle(),pitch_cmd,roll_cmd,angular_speed_cmd,vertical_speed_cmd);
 				checkEndOfMission();
 			}
 		
@@ -104,6 +104,7 @@ void *controlTask(void *arg)
 int executeMission(float x_obj, float y_obj, float z_obj, float angle_obj)
 {
 	if(!canStartMission()) {
+		printf("controlTask : can't start mission\n");
 		return -1;
 	}
 	printf("controlTask : executeMission called and running\n");

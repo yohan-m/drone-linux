@@ -65,7 +65,7 @@ float current_psi(){
 	float psi = current_navdata.psi;
 	pthread_mutex_unlock(&mutex_navdata);
 	// end of critical section
-	return psi;
+	return (psi-160.0);
 }
 
 float current_vx(){
@@ -106,6 +106,7 @@ int canStartMission(){
 		return 1;
 	}
 	else{
+		printf("bat=%d, state=%d\n",bat,state);
 		return 0;
 	}
 }

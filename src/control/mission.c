@@ -42,6 +42,8 @@ void mission(float x_cons, float y_cons, float z_cons, float angle_cons, float *
 	float dx = x_cons - x;
 	float dy = y_cons - y;
 	float dz = z_cons - z;
+
+	printf("dx=%f\tdy=%f\tdz=%f\tangle=%f\tangle_cons=%f\n",dx,dy,dz,angle,angle_cons);
 	
 	convert_angle(&angle);
 	convert_angle(&angle_cons);
@@ -125,6 +127,8 @@ void controller(float dx, float dy, float dz, float angle_drone_cons, float angl
 	*roll_cmd  *= GAIN_ROLL;
 	*angular_speed_cmd = -GAIN_ANGULAR * diff_angle(angle_drone,angle_drone_cons);
 	*vertical_speed_cmd = GAIN_VERTICAL * dz;
+
+	printf("pitch=%f\troll=%f\tangular_speed=%f\tvert_speed=%f\n",*pitch_cmd,*roll_cmd,*angular_speed_cmd,*vertical_speed_cmd);
 	
 	if(*pitch_cmd>1.0) {
 		*pitch_cmd = 1.0;
