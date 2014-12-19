@@ -107,6 +107,7 @@ void readFrame(unsigned char * data, int size){
 				}
 				else if (wf.stateMission == STOP_MISSION){
 					executeManual();
+					land() ;
 				}
 				break;
 				
