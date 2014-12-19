@@ -74,13 +74,16 @@ void *thread_com(void *arg)
 	float tabX[MOVING_AVG_SIZE];
 	float tabY[MOVING_AVG_SIZE];
 	float xAvg,yAvg;
-	int indexAvg=0;
+	int indexXAvg=0;
+	int indexYAvg=0;
 	
 	int cnt;
 	for (cnt = 0 ; cnt<MOVING_AVG_SIZE ; cnt++) {
-		tabX[cnt]=0.0;
-		tabY[cnt]=0.0;
+		tabX[cnt]=3.0;
+		tabY[cnt]=2.0;
 	}
+	xAvg = 3.0;
+	yAvg = 2.0;
 
 	readFiles(&arrayTdoa12,&arrayTdoa13,&arrayTdoa14,FILE_TDOA_12,FILE_TDOA_13,FILE_TDOA_14,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
 	readFiles(&arrayTdoa21,&arrayTdoa23,&arrayTdoa24,FILE_TDOA_21,FILE_TDOA_23,FILE_TDOA_24,&size,&nbX,&nbY,&nbZ, &cubeSize) ;	
@@ -115,17 +118,22 @@ void *thread_com(void *arg)
 			diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
 			//printf("temps calcul : %f\n",diff) ;
 			
-			tabX[indexAvg] = x;
-			tabY[indexAvg] = y;
-			indexAvg = (indexAvg+1)%MOVING_AVG_SIZE;
-			xAvg = 0.0;
-			yAvg = 0.0;
+			if(fabs(x-xAvg)<1.5 && x>0.0 && x<4.2) {
+				tabX[indexXAvg] = x;
+				indexXAvg = (indexXAvg+1)%MOVING_AVG_SIZE;
+			}
 			
+			if(fabs(y-yAvg)<1.5 && y>0.0 && y<6.6) {
+				tabY[indexYAvg] = y;
+				indexYAvg = (indexYAvg+1)%MOVING_AVG_SIZE;
+			}
+
+			xAvg = 0.0;
+			yAvg = 0.0;			
 			for(cnt = 0 ; cnt<MOVING_AVG_SIZE ; cnt++) {
 				xAvg += tabX[cnt];
 				yAvg += tabY[cnt];				
-			}
-			
+			}			
 			xAvg = xAvg/((float)MOVING_AVG_SIZE);
 			yAvg = yAvg/((float)MOVING_AVG_SIZE);
 			

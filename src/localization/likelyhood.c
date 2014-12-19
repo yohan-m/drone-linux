@@ -136,9 +136,9 @@ void computePosition(float *x, float *y, float *z, float * tabTdoa, int32_t * ta
 			maxRss = tabRss[i];
 		}
 	}
-	//printf("indmin=%d\tindmax=%d\n",indMinRss+1,indMaxRss+1);
+	printf("indmin=%d\tindmax=%d\n",indMinRss+1,indMaxRss+1);
 	for(i=0;i<4;i++){
-		//printf("tdoa[%d]=%f\n",i+1,tabTdoa[i]);
+		printf("tdoa[%d]=%f\n",i+1,tabTdoa[i]);
 	}
 	
 	/*if(tdoa2!=0)
