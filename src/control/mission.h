@@ -31,6 +31,7 @@ float getX();
 float getY();
 float getZ();
 float getAngle();
+void setAngleBias(float bias);
 
 /**
  * PRIVATE
@@ -42,6 +43,8 @@ float x;
 float y;
 float z;
 float angle;
+
+float angle_bias;
 
 int newCoordXY;
 float loca_x;

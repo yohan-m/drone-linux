@@ -58,7 +58,7 @@ void newNavData(float z_baro, float heading, float forward_backward_speed, float
 {
 	pthread_mutex_lock(&mutex_mission);
 	navData_z = z_baro;
-	navData_angle = heading;
+	navData_angle = heading-angle_bias;
 	convert_angle(&navData_angle);
 	navData_fb_speed = forward_backward_speed;
 	navData_lr_speed = left_right_speed;
@@ -108,6 +108,11 @@ float getAngle()
 	float angle_local = angle ;
 	pthread_mutex_unlock(&mutex_mission);
 	return angle_local;
+}
+
+void setAngleBias(float bias)
+{
+	angle_bias = bias;
 }
 
 

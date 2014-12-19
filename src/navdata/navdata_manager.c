@@ -65,7 +65,7 @@ float current_psi(){
 	float psi = current_navdata.psi;
 	pthread_mutex_unlock(&mutex_navdata);
 	// end of critical section
-	return (psi-160.0);
+	return psi;
 }
 
 float current_vx(){

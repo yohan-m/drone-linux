@@ -57,6 +57,7 @@ void *controlTask(void *arg)
 					landCalled = 0;
 				}
 				else if(takeOffCalled==1) {
+					setAngleBias(current_psi());
 					sendTakeOff(seqNumber);
 					takeOffCalled = 0;
 				}
