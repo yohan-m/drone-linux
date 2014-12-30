@@ -30,9 +30,19 @@
  */
 #define REMOTE_PORT 31000
 
+/**
+ * \brief IP of the remote PC
+ */
 char IP[IP_SIZE];
+
+/**
+ * \brief File descriptor of the UDP socket used for this communication
+ */
 int fd_protocol;
 
+/**
+ * \brief Mutex to secure the use of data within this communication thread
+ */
 static pthread_mutex_t mutex_udp_protocol = PTHREAD_MUTEX_INITIALIZER;
 
 /**

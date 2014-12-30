@@ -150,6 +150,7 @@ void udp_async_driver_handler(int sig)
 	int slen=sizeof(async_sender_sockaddr);
 	int i, cnt_bytes;
 	
+	// searching the file descriptor on which data has been received
 	for(i=0;i<ind_tab_fd;i++){
 		cnt_bytes = recvfrom(tab_fd[i], data, async_packet_size, 0, (struct sockaddr *)&async_sender_sockaddr, (socklen_t *)&slen);
 		if(cnt_bytes>=0){

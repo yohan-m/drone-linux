@@ -15,6 +15,7 @@ void initNavdataManager(){
 	// end of critical section
 }
 
+
 void processNavdata(NavdataDemo * nd){
 	// critical section
 	pthread_mutex_lock(&mutex_navdata);
@@ -36,6 +37,7 @@ void processNavdata(NavdataDemo * nd){
 	// end of critical section
 }
 
+
 int low_battery(){
 	// critical section
 	pthread_mutex_lock(&mutex_navdata);
@@ -50,6 +52,7 @@ int low_battery(){
 	}
 }
 
+
 float current_altitude(){
 	// critical section
 	pthread_mutex_lock(&mutex_navdata);
@@ -58,6 +61,7 @@ float current_altitude(){
 	// end of critical section
 	return altitude;
 }
+
 
 float current_psi(){
 	// critical section
@@ -68,6 +72,7 @@ float current_psi(){
 	return psi;
 }
 
+
 float current_vx(){
 	// critical section
 	pthread_mutex_lock(&mutex_navdata);
@@ -76,6 +81,7 @@ float current_vx(){
 	// end of critical section
 	return vx;
 }
+
 
 float current_vy(){
 	// critical section
@@ -86,6 +92,7 @@ float current_vy(){
 	return vy;
 }
 
+
 void updateMission(){
 	float z, angle, vx, vy;
 	z = current_altitude();
@@ -95,6 +102,7 @@ void updateMission(){
 	newNavData(z,angle,vx,vy);
 }
 
+
 int canStartMission(){
 	// critical section
 	pthread_mutex_lock(&mutex_navdata);
@@ -102,6 +110,7 @@ int canStartMission(){
 	ctrl_states state = current_navdata.state;
 	pthread_mutex_unlock(&mutex_navdata);
 	// end of critical section
+	// mission can be started if enough battery and drone in one of the 3 normal flying states
 	if (bat>LOW_BAT_LEVEL && (state==FLYING || state==HOVERING || state==INTERMEDIATE)){
 		return 1;
 	}

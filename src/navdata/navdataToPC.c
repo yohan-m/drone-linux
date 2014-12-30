@@ -18,6 +18,7 @@ int initNavdataCommPC(){
 	return -1;
 }
 
+
 void readNavPC(unsigned char * data, int size){
 	#ifdef DEBUG_INFO
 		printf("[Debug] L%d %s : Received navdata frame\n",__LINE__,__FUNCTION__);			
