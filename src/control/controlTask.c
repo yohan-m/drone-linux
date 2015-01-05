@@ -49,15 +49,18 @@ void *controlTask(void *arg)
 				//printf("x=%f\ty=%f\tz=%f\tangle=%f\t\tpitch=%f\troll=%f\taspeed=%f\tvspeed=%f\n",getX(),getY(),getZ(),getAngle(),pitch_cmd,roll_cmd,angular_speed_cmd,vertical_speed_cmd);
 				checkEndOfMission();
 			}
-		
-			else if(control_state == STATE_MANUAL) {
-		
-				if(landCalled==1) {
+			
+			else if(control_state==STATE_MANUAL || move_done==1) {
+
+				if(move_done==1) {
+					sendMovement(seqNumber,0,0.0,0.0,0.0,0);
+					move_done = 0;
+				}
+				else if(landCalled==1) {
 					sendLand(seqNumber);
 					landCalled = 0;
 				}
 				else if(takeOffCalled==1) {
-					setAngleBias(current_psi());
 					sendTakeOff(seqNumber);
 					takeOffCalled = 0;
 				}
@@ -81,10 +84,6 @@ void *controlTask(void *arg)
 				else if(calibMagnCalled==1) {
 					sendCalibMagn(seqNumber);
 					calibMagnCalled = 0;
-				}
-				else if(move_done==1) {
-					sendMovement(seqNumber,0,0.0,0.0,0.0,0);
-					move_done = 0;
 				}
 				else {
 					sendResetWatchdog(seqNumber);

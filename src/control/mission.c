@@ -58,7 +58,7 @@ void newNavData(float z_baro, float heading, float forward_backward_speed, float
 {
 	pthread_mutex_lock(&mutex_mission);
 	navData_z = z_baro;
-	navData_angle = heading-angle_bias;
+	navData_angle = heading-BIAIS;
 	convert_angle(&navData_angle);
 	navData_fb_speed = forward_backward_speed;
 	navData_lr_speed = left_right_speed;
@@ -110,12 +110,6 @@ float getAngle()
 	return angle_local;
 }
 
-void setAngleBias(float bias)
-{
-	angle_bias = bias;
-}
-
-
 
 /*****************************/
 /**         PRIVATE         **/
@@ -135,32 +129,32 @@ void controller(float dx, float dy, float dz, float angle_drone_cons, float angl
 
 	printf("pitch=%f\troll=%f\tangular_speed=%f\tvert_speed=%f\n",*pitch_cmd,*roll_cmd,*angular_speed_cmd,*vertical_speed_cmd);
 	
-	if(*pitch_cmd>1.0) {
-		*pitch_cmd = 1.0;
+	if(*pitch_cmd>PITCH_CMD_MAX) {
+		*pitch_cmd = PITCH_CMD_MAX;
 	}
-	else if(*pitch_cmd<-1.0) {
-		*pitch_cmd = -1.0;
-	}
-	
-	if(*roll_cmd>1.0) {
-		*roll_cmd = 1.0;
-	}
-	else if(*roll_cmd<-1.0) {
-		*roll_cmd = -1.0;
+	else if(*pitch_cmd<-PITCH_CMD_MAX) {
+		*pitch_cmd = -PITCH_CMD_MAX;
 	}
 	
-	if(*angular_speed_cmd>1.0) {
-		*angular_speed_cmd = 1.0;
+	if(*roll_cmd>ROLL_CMD_MAX) {
+		*roll_cmd = ROLL_CMD_MAX;
 	}
-	else if(*angular_speed_cmd<-1.0) {
-		*angular_speed_cmd = -1.0;
+	else if(*roll_cmd<-ROLL_CMD_MAX) {
+		*roll_cmd = -ROLL_CMD_MAX;
 	}
 	
-	if(*vertical_speed_cmd>1.0) {
-		*vertical_speed_cmd = 1.0;
+	if(*angular_speed_cmd>ANGULAR_CMD_MAX) {
+		*angular_speed_cmd = ANGULAR_CMD_MAX;
 	}
-	else if(*vertical_speed_cmd<-1.0) {
-		*vertical_speed_cmd = -1.0;
+	else if(*angular_speed_cmd<-ANGULAR_CMD_MAX) {
+		*angular_speed_cmd = -ANGULAR_CMD_MAX;
+	}
+	
+	if(*vertical_speed_cmd>VERTICAL_CMD_MAX) {
+		*vertical_speed_cmd = VERTICAL_CMD_MAX;
+	}
+	else if(*vertical_speed_cmd<-VERTICAL_CMD_MAX) {
+		*vertical_speed_cmd = -VERTICAL_CMD_MAX;
 	}
 }
 

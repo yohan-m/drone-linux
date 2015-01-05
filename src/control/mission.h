@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <pthread.h>
+#include "../../../common-sources/src/defines.h"
 
 #define PI 3.14159265
 
@@ -21,6 +22,12 @@
 #define GAIN_ROLL 0.1
 #define GAIN_ANGULAR 0.0005
 #define GAIN_VERTICAL 5
+
+#define PITCH_CMD_MAX 0.15
+#define ROLL_CMD_MAX 0.15
+#define ANGULAR_CMD_MAX 0.3
+#define VERTICAL_CMD_MAX 0.25
+
 
 void mission(float x_cons, float y_cons, float z_cons, float angle_cons, float * pitch_cmd, float * roll_cmd, float * angular_speed_cmd, float * vertical_speed_cmd);
 
@@ -31,7 +38,6 @@ float getX();
 float getY();
 float getZ();
 float getAngle();
-void setAngleBias(float bias);
 
 /**
  * PRIVATE
@@ -43,8 +49,6 @@ float x;
 float y;
 float z;
 float angle;
-
-float angle_bias;
 
 int newCoordXY;
 float loca_x;
