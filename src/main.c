@@ -118,15 +118,15 @@ void *thread_com(void *arg)
 			diff = (float)((float)clock()-(float)timeDebut) ;///((float)CLOCKS_PER_SEC) ;
 			//printf("temps calcul : %f\n",diff) ;
 			
-			if(fabs(x-xAvg)<1.5 && x>0.0 && x<4.2) {
+			//if(fabs(x-xAvg)<1.5 && x>0.0 && x<4.2) {
 				tabX[indexXAvg] = x;
 				indexXAvg = (indexXAvg+1)%MOVING_AVG_SIZE;
-			}
+			//}
 			
-			if(fabs(y-yAvg)<1.5 && y>0.0 && y<6.6) {
+			//if(fabs(y-yAvg)<1.5 && y>0.0 && y<6.6) {
 				tabY[indexYAvg] = y;
 				indexYAvg = (indexYAvg+1)%MOVING_AVG_SIZE;
-			}
+			//}
 
 			xAvg = 0.0;
 			yAvg = 0.0;			
@@ -137,10 +137,10 @@ void *thread_com(void *arg)
 			xAvg = xAvg/((float)MOVING_AVG_SIZE);
 			yAvg = yAvg/((float)MOVING_AVG_SIZE);
 			
-			/*printf("x : %f\tx_avg : %f\n", x, xAvg) ;
-			printf("y : %f\ty_avg : %f\n", y, yAvg) ;
-			printf("z : %f\n", z) ;*/
-			
+			//printf("x : %f\tx_avg : %f\n", x, xAvg) ;
+			//printf("y : %f\ty_avg : %f\n", y, yAvg) ;
+			//printf("z : %f\n", z) ;
+	
 			newLocalization(xAvg,yAvg);
 			sendFrame(type,(int)(xAvg*100),(int)(yAvg*100),(int)(z*100),STOP_MISSION) ;
 		}

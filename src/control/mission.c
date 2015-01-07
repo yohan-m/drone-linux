@@ -2,7 +2,7 @@
 
 void mission(float x_cons, float y_cons, float z_cons, float angle_cons, float * pitch_cmd, float * roll_cmd, float * angular_speed_cmd, float * vertical_speed_cmd)
 {
-	float forward_backward_speed = 0.0;
+	/*float forward_backward_speed = 0.0;
 	float left_right_speed = 0.0;
 	float angular_speed = 0.0;
 	float vertical_speed = 0.0;	
@@ -20,7 +20,7 @@ void mission(float x_cons, float y_cons, float z_cons, float angle_cons, float *
 	
 	//Position
 	estimate_position(forward_backward_speed, left_right_speed, angular_speed, vertical_speed, 0.03, &x, &y, &z, &angle);
-	
+	*/
 	pthread_mutex_lock(&mutex_mission);
 	if(newCoordXY!=0) {
 		x = loca_x;
