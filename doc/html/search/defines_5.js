@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['max_5fdiscovery_5fwait_5ftime',['MAX_DISCOVERY_WAIT_TIME',['../udp__driver__discover_8h.html#ac73e208ecb0da873e4f02f70010821d3',1,'udp_driver_discover.h']]],
-  ['max_5fpacket_5fsize',['MAX_PACKET_SIZE',['../udp__protocol_8h.html#a879456c3b8e2853f7044d764e9c180d4',1,'udp_protocol.h']]]
+  ['gain_5fangular',['GAIN_ANGULAR',['../mission_8h.html#a68288a0d82328add65986e7eb9a508e6',1,'mission.h']]],
+  ['gain_5fpitch',['GAIN_PITCH',['../mission_8h.html#a8b38c812db76f5c7956d54c93ba7f508',1,'mission.h']]],
+  ['gain_5froll',['GAIN_ROLL',['../mission_8h.html#aa19c8460c50c50bc24d7c6545fdeba7d',1,'mission.h']]],
+  ['gain_5fvertical',['GAIN_VERTICAL',['../mission_8h.html#accc4988769b1bf95c0febf0450a646d9',1,'mission.h']]]
 ];

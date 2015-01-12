@@ -1,13 +1,23 @@
 var NAVTREE =
 [
   [ "Drone localization", "index.html", [
+    [ "Data Structures", null, [
+      [ "Data Structures", "annotated.html", "annotated" ],
+      [ "Data Structure Index", "classes.html", null ],
+      [ "Data Fields", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ],
     [ "Files", null, [
       [ "File List", "files.html", "files" ],
       [ "Globals", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -16,7 +26,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"com__demo_8c.html"
+"annotated.html",
+"mission_8h.html#ad0da36b2558901e21e7a30f6c227a45e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

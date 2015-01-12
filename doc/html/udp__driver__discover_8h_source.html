@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -90,7 +91,7 @@ $(document).ready(function(){initNavTree('udp__driver__discover_8h_source.html',
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -139,7 +140,7 @@ $(document).ready(function(){initNavTree('udp__driver__discover_8h_source.html',
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="udp__driver__discover_8h.html#a93fb14ea93961b97b3bfba01ab9450c3">   64</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="udp__driver__discover_8h.html#a93fb14ea93961b97b3bfba01ab9450c3">disco_found</a>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> <a class="code" href="udp__driver__discover_8h.html#a0d057ee7c8816c8d8b9427ab605ef606">udp_driver_discover_network</a>(<span class="keywordtype">int</span> local_port, <span class="keywordtype">int</span> remote_port, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * discovery_frame, <span class="keywordtype">int</span> discovery_size, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * response_frame, <span class="keywordtype">int</span> response_size, <span class="keywordtype">int</span> delay_ms, <span class="keywordtype">char</span> * IP);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> <a class="code" href="udp__driver__discover_8h.html#a0d057ee7c8816c8d8b9427ab605ef606">udp_driver_discover_network</a>(<span class="keywordtype">int</span> local_port, <span class="keywordtype">int</span> remote_port, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * discovery_frame, <span class="keywordtype">int</span> discovery_size, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * response_frame, <span class="keywordtype">int</span> response_size, <span class="keywordtype">int</span> delay_ms, <span class="keywordtype">char</span> * <a class="code" href="udp__protocol_8h.html#a266c687be5a3c93444079dce45b842e2">IP</a>);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="udp__driver__discover_8h.html#aeea6669b314c1eba34635d037d2c87b3">udp_driver_discover_handler</a>(<span class="keywordtype">int</span> sig);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
@@ -152,6 +153,7 @@ $(document).ready(function(){initNavTree('udp__driver__discover_8h_source.html',
 <div class="ttc" id="udp__driver__discover_8h_html_a0d057ee7c8816c8d8b9427ab605ef606"><div class="ttname"><a href="udp__driver__discover_8h.html#a0d057ee7c8816c8d8b9427ab605ef606">udp_driver_discover_network</a></div><div class="ttdeci">int udp_driver_discover_network(int local_port, int remote_port, unsigned char *discovery_frame, int discovery_size, unsigned char *response_frame, int response_size, int delay_ms, char *IP)</div><div class="ttdoc">Find the address of the computer on the network. </div><div class="ttdef"><b>Definition:</b> udp_driver_discover.c:4</div></div>
 <div class="ttc" id="udp__driver__discover_8h_html_a72e3bce5c40c6ae0baca818fa2195d47"><div class="ttname"><a href="udp__driver__discover_8h.html#a72e3bce5c40c6ae0baca818fa2195d47">disco_remote_sockaddr</a></div><div class="ttdeci">struct sockaddr_in disco_remote_sockaddr</div><div class="ttdoc">Store the port/adress informations. </div><div class="ttdef"><b>Definition:</b> udp_driver_discover.h:39</div></div>
 <div class="ttc" id="udp__driver__discover_8h_html_a9b375c48f88826cb18ff7e6b78d0789b"><div class="ttname"><a href="udp__driver__discover_8h.html#a9b375c48f88826cb18ff7e6b78d0789b">disco_ip</a></div><div class="ttdeci">char * disco_ip</div><div class="ttdoc">Store the IP of the response. </div><div class="ttdef"><b>Definition:</b> udp_driver_discover.h:59</div></div>
+<div class="ttc" id="udp__protocol_8h_html_a266c687be5a3c93444079dce45b842e2"><div class="ttname"><a href="udp__protocol_8h.html#a266c687be5a3c93444079dce45b842e2">IP</a></div><div class="ttdeci">char IP[IP_SIZE]</div><div class="ttdoc">IP of the remote PC. </div><div class="ttdef"><b>Definition:</b> udp_protocol.h:36</div></div>
 <div class="ttc" id="udp__driver__discover_8h_html_a711223fd0430ddd5d6638a3d5668298b"><div class="ttname"><a href="udp__driver__discover_8h.html#a711223fd0430ddd5d6638a3d5668298b">disco_response_frame</a></div><div class="ttdeci">unsigned char * disco_response_frame</div><div class="ttdoc">Response frame. </div><div class="ttdef"><b>Definition:</b> udp_driver_discover.h:49</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -159,7 +161,7 @@ $(document).ready(function(){initNavTree('udp__driver__discover_8h_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ca4ac332d33ef868678ee688899961de.html">udp</a></li><li class="navelem"><a class="el" href="udp__driver__discover_8h.html">udp_driver_discover.h</a></li>
-    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
+    <li class="footer">Generated on Mon Jan 12 2015 20:42:54 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

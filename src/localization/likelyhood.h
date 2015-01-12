@@ -39,7 +39,7 @@ typedef struct Likelyhood
  * \param[in]	indFinish	place at which to stop reading in the TDOA databases for reference values used in likelyhood value computation
  * \return		a likelyhood array
  */
-Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float td0a3, int toIgnore, int indStart, int indFinish) ;
+Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arrayTdoa3, int size, float tdoa1, float tdoa2, float tdoa3, int toIgnore, int indStart, int indFinish) ;
 
 /**
  * \brief Sorts the likelyhood array in order to retrieve the most likely position of the drone (unused)
@@ -48,6 +48,7 @@ Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arr
  * \param[in]	nbPtsPlan	nummber of points a plan contains in the test room
  * \param[in]	cubeSize	length of the side of the cubes in which the room is divided
  * \param[in]	realZ		current altitude of the drone
+ * \param[in]	nbZ 
  */
 int sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
 
@@ -91,6 +92,7 @@ void displayArray(Tdoa *array, int size) ;
  * \param[in]	nbPtsPlan	nummber of points a plan contains in the test room
  * \param[in]	cubeSize	length of the side of the cubes in which the room is divided
  * \param[in]	realZ		current altitude of the drone
+ * \param[in]	nbZ
  */
 void computePosition(float *x, float *y, float *z, float * tabTdoa, int32_t * tabRss, Tdoa *arrayTdoa12, Tdoa *arrayTdoa13, Tdoa *arrayTdoa14, Tdoa *arrayTdoa21, Tdoa *arrayTdoa23, Tdoa *arrayTdoa24, Tdoa *arrayTdoa31, Tdoa *arrayTdoa32, Tdoa *arrayTdoa34, Tdoa *arrayTdoa41, Tdoa *arrayTdoa42, Tdoa *arrayTdoa43, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ) ;
 

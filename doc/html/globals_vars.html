@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -76,7 +77,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals_func.html"><span>Functions</span></a></li>
       <li class="current"><a href="globals_vars.html"><span>Variables</span></a></li>
       <li><a href="globals_type.html"><span>Typedefs</span></a></li>
+      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li><a href="globals_defs.html"><span>Macros</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_v"><span>v</span></a></li>
+      <li><a href="#index_x"><span>x</span></a></li>
+      <li><a href="#index_y"><span>y</span></a></li>
+      <li class="current"><a href="#index_z"><span>z</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -99,7 +124,7 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -109,7 +134,18 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 </div>
 
 <div class="contents">
-&#160;<ul>
+&#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>angle
+: <a class="el" href="mission_8h.html#ab8ef1bf8a70cc07c6d55823c390a7e76">mission.h</a>
+</li>
+<li>angle_cons
+: <a class="el" href="control_task_8h.html#ae896598952b616c182a9ce8899054382">controlTask.h</a>
+</li>
+<li>angular_speed_move
+: <a class="el" href="control_task_8h.html#a48c6f785b842f7b4b18d1d1c18b569c1">controlTask.h</a>
+</li>
 <li>async_local_sockaddr
 : <a class="el" href="udp__async__driver_8h.html#a56f92a4e4d44ff3b4760484294bce82b">udp_async_driver.h</a>
 </li>
@@ -119,11 +155,15 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 <li>async_remote_sockaddr
 : <a class="el" href="udp__async__driver_8h.html#a7f57748bcfc23db50b953d6a6b8091f6">udp_async_driver.h</a>
 </li>
-<li>async_socket_fd
-: <a class="el" href="udp__async__driver_8h.html#ac1c7d265099c0d3089cfba257b4ce1a1">udp_async_driver.h</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>calibHorCalled
+: <a class="el" href="control_task_8h.html#a25d39344bb6912819c076e514cfec1c4">controlTask.h</a>
 </li>
-<li>callback_receive_udp
-: <a class="el" href="udp__async__driver_8h.html#a73ad48f7031f36329b9d1861347d2aeb">udp_async_driver.h</a>
+<li>calibMagnCalled
+: <a class="el" href="control_task_8h.html#a9e4e9976fc56a6ed6a42d88b0045ce62">controlTask.h</a>
 </li>
 <li>checkSeqNum
 : <a class="el" href="usb__protocol__sync_8h.html#a44d527fb508ce6d48b9a471eb38c0205">usb_protocol_sync.h</a>
@@ -134,6 +174,19 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 <li>cnt_ok
 : <a class="el" href="usb__protocol__sync_8h.html#aff1d8a4c7e391b1262673c432a197d39">usb_protocol_sync.h</a>
 </li>
+<li>control_enable
+: <a class="el" href="control_task_8h.html#a357235c0e6f2eee3a5c916a32232f085">controlTask.h</a>
+</li>
+<li>control_state
+: <a class="el" href="control_task_8h.html#a1056a64d003ed074fe8a45d5bee05773">controlTask.h</a>
+</li>
+<li>current_navdata
+: <a class="el" href="navdata__manager_8h.html#acc19acd5a322368863917ef462493613">navdata_manager.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
 <li>disco_found
 : <a class="el" href="udp__driver__discover_8h.html#a93fb14ea93961b97b3bfba01ab9450c3">udp_driver_discover.h</a>
 </li>
@@ -155,8 +208,161 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 <li>disco_socket_fd
 : <a class="el" href="udp__driver__discover_8h.html#a885b86e78764a2cb28c7a9104ba39a6a">udp_driver_discover.h</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>emergencyCalled
+: <a class="el" href="control_task_8h.html#a957a90bf5380e9d69aad79e96446c6af">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>fd_ctrlDrone
+: <a class="el" href="control_8h.html#afb95103c48cfc382814ee13edf4d128a">control.h</a>
+</li>
+<li>fd_navDrone
+: <a class="el" href="navdata_local_8h.html#ae29d2c8ed6635b9704ac0b7831f9a92c">navdataLocal.h</a>
+</li>
+<li>fd_navPC
+: <a class="el" href="navdata_to_p_c_8h.html#a2ec266a3ef6ab2011b400619812fd865">navdataToPC.h</a>
+</li>
+<li>fd_protocol
+: <a class="el" href="udp__protocol_8h.html#a0513dc9bccc20c1833d1b2d11bc3cbe3">udp_protocol.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>initNavDataCalled
+: <a class="el" href="control_task_8h.html#ab4aeb53284f2c06c114951362166bc20">controlTask.h</a>
+</li>
+<li>IP
+: <a class="el" href="udp__protocol_8h.html#a266c687be5a3c93444079dce45b842e2">udp_protocol.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>landCalled
+: <a class="el" href="control_task_8h.html#a0e4acfad12f7da9b5d4ef7f077d904dd">controlTask.h</a>
+</li>
+<li>loca_x
+: <a class="el" href="mission_8h.html#a1c268d4f72ede5f10e4ae85d62918da4">mission.h</a>
+</li>
+<li>loca_y
+: <a class="el" href="mission_8h.html#af22d8306b318a9210e9be324a6ee0afd">mission.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>move_done
+: <a class="el" href="control_task_8h.html#a77a0e2147b8e748b31d7c3f14dffc60e">controlTask.h</a>
+</li>
+<li>moveCalled
+: <a class="el" href="control_task_8h.html#ac8e802c861d01aa412e1326912cd9569">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
+<li>navData_angle
+: <a class="el" href="mission_8h.html#a7161c23d5a1689b01146730c3f22103f">mission.h</a>
+</li>
+<li>navData_fb_speed
+: <a class="el" href="mission_8h.html#a9dffa1144ece871439d2107efc26f7c8">mission.h</a>
+</li>
+<li>navData_lr_speed
+: <a class="el" href="mission_8h.html#a881ef1c55f3ae05b7023d1abb4764b44">mission.h</a>
+</li>
+<li>navData_z
+: <a class="el" href="mission_8h.html#a3ee03fdfd5ddf99b9239a852c4f52b50">mission.h</a>
+</li>
+<li>newAngle
+: <a class="el" href="mission_8h.html#a363eff749a98781a645e4ffba30c5bcf">mission.h</a>
+</li>
+<li>newCoordXY
+: <a class="el" href="mission_8h.html#aa2e1a46ca80adb3b953fd496f8dfcf4f">mission.h</a>
+</li>
+<li>newCoordZ
+: <a class="el" href="mission_8h.html#ad9a03023a9976fa7c10e7fe6c3d2d00a">mission.h</a>
+</li>
+<li>newSpeed
+: <a class="el" href="mission_8h.html#ad98c740c58a00cf7849c002ce8a418dd">mission.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>pitch_move
+: <a class="el" href="control_task_8h.html#afeea11d4645222de317cab5aac0fe781">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>roll_move
+: <a class="el" href="control_task_8h.html#a41e3f1bb64908c79616afecec5c8c834">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>seqNumber
+: <a class="el" href="control_task_8h.html#a9f98268e5e2d3461a268b3f82d1f2476">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>takeOffCalled
+: <a class="el" href="control_task_8h.html#a7182b43c51a94e8a20b735b9e64932d1">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
 <li>usb_device
 : <a class="el" href="usb__driver_8h.html#a6db4bd47fe9a2923965a4176b3890b06">usb_driver.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>vertical_speed_move
+: <a class="el" href="control_task_8h.html#a3788107604b3c5374d8043f7dc403f54">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_x"></a>- x -</h3><ul>
+<li>x
+: <a class="el" href="mission_8h.html#ad0da36b2558901e21e7a30f6c227a45e">mission.h</a>
+</li>
+<li>x_cons
+: <a class="el" href="control_task_8h.html#a566c9ae778d35320dc7c2989fc3e3b0c">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_y"></a>- y -</h3><ul>
+<li>y
+: <a class="el" href="mission_8h.html#aa4f0d3eebc3c443f9be81bf48561a217">mission.h</a>
+</li>
+<li>y_cons
+: <a class="el" href="control_task_8h.html#aa70490dc316066c66388effb63b1135c">controlTask.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_z"></a>- z -</h3><ul>
+<li>z
+: <a class="el" href="mission_8h.html#af73583b1e980b0aa03f9884812e9fd4d">mission.h</a>
+</li>
+<li>z_cons
+: <a class="el" href="control_task_8h.html#a1adcd371e3fa4b85017d4744028a51f7">controlTask.h</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -164,7 +370,7 @@ $(document).ready(function(){initNavTree('globals_vars.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
+    <li class="footer">Generated on Mon Jan 12 2015 20:42:55 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -90,7 +91,7 @@ $(document).ready(function(){initNavTree('udp__protocol_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,7 +103,8 @@ $(document).ready(function(){initNavTree('udp__protocol_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">udp_protocol.h File Reference</div>  </div>
 </div><!--header-->
@@ -110,7 +112,11 @@ $(document).ready(function(){initNavTree('udp__protocol_8h.html','');});
 
 <p>Protocol level functions for wireless communication.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="udp__async__driver_8h_source.html">udp_async_driver.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;pthread.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="control_task_8h_source.html">../control/controlTask.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="udp__async__driver_8h_source.html">udp_async_driver.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="udp__driver__discover_8h_source.html">udp_driver_discover.h</a>&quot;</code><br/>
+<code>#include &quot;../../../common-sources/src/wifiFrame.h&quot;</code><br/>
 </div>
 <p><a href="udp__protocol_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -128,9 +134,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad12df1ad776e07f97712be22ebac40f3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__protocol_8h.html#ad12df1ad776e07f97712be22ebac40f3">sendFrame</a> (char type, uint32_t data1, uint32_t data2, uint32_t data3, uint32_t data4)</td></tr>
-<tr class="memdesc:ad12df1ad776e07f97712be22ebac40f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to send a frame over wifi.  <a href="#ad12df1ad776e07f97712be22ebac40f3">More...</a><br/></td></tr>
-<tr class="separator:ad12df1ad776e07f97712be22ebac40f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4f21bdd8445a0285973b39d97c87816"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__protocol_8h.html#ac4f21bdd8445a0285973b39d97c87816">sendFrame</a> (char type, uint32_t data1, uint32_t data2, uint32_t data3, char stateMission)</td></tr>
+<tr class="memdesc:ac4f21bdd8445a0285973b39d97c87816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to send a frame over wifi.  <a href="#ac4f21bdd8445a0285973b39d97c87816">More...</a><br/></td></tr>
+<tr class="separator:ac4f21bdd8445a0285973b39d97c87816"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d5b506fa3329c66f278f1abd08d1c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__protocol_8h.html#a15d5b506fa3329c66f278f1abd08d1c8">readFrame</a> (unsigned char *data, int size)</td></tr>
 <tr class="memdesc:a15d5b506fa3329c66f278f1abd08d1c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to send a frame over wifi.  <a href="#a15d5b506fa3329c66f278f1abd08d1c8">More...</a><br/></td></tr>
 <tr class="separator:a15d5b506fa3329c66f278f1abd08d1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +146,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a9774ba52c91c5ee43e94d8a8d0ceda64"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__protocol_8h.html#a9774ba52c91c5ee43e94d8a8d0ceda64">closeCommunication</a> ()</td></tr>
 <tr class="memdesc:a9774ba52c91c5ee43e94d8a8d0ceda64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the socket.  <a href="#a9774ba52c91c5ee43e94d8a8d0ceda64">More...</a><br/></td></tr>
 <tr class="separator:a9774ba52c91c5ee43e94d8a8d0ceda64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a266c687be5a3c93444079dce45b842e2"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__protocol_8h.html#a266c687be5a3c93444079dce45b842e2">IP</a> [<a class="el" href="udp__driver__discover_8h.html#a2b0b8b640f7863e341022226a4084ad9">IP_SIZE</a>]</td></tr>
+<tr class="memdesc:a266c687be5a3c93444079dce45b842e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">IP of the remote PC.  <a href="#a266c687be5a3c93444079dce45b842e2">More...</a><br/></td></tr>
+<tr class="separator:a266c687be5a3c93444079dce45b842e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0513dc9bccc20c1833d1b2d11bc3cbe3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__protocol_8h.html#a0513dc9bccc20c1833d1b2d11bc3cbe3">fd_protocol</a></td></tr>
+<tr class="memdesc:a0513dc9bccc20c1833d1b2d11bc3cbe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">File descriptor of the UDP socket used for this communication.  <a href="#a0513dc9bccc20c1833d1b2d11bc3cbe3">More...</a><br/></td></tr>
+<tr class="separator:a0513dc9bccc20c1833d1b2d11bc3cbe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Protocol level functions for wireless communication. </p>
@@ -261,7 +276,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad12df1ad776e07f97712be22ebac40f3"></a>
+<a class="anchor" id="ac4f21bdd8445a0285973b39d97c87816"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -292,8 +307,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>data4</em>&#160;</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>stateMission</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -310,11 +325,40 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">data1</td><td>first data to send in the frame </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">data2</td><td>second data to send in the frame </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">data3</td><td>third data to send in the frame </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">data4</td><td>fourth data to send in the frame </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">stateMission</td><td>state of the mission to send in the frame </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, 1 if frame creation or communication failed </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a0513dc9bccc20c1833d1b2d11bc3cbe3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fd_protocol</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>File descriptor of the UDP socket used for this communication. </p>
+
+</div>
+</div>
+<a class="anchor" id="a266c687be5a3c93444079dce45b842e2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char IP[<a class="el" href="udp__driver__discover_8h.html#a2b0b8b640f7863e341022226a4084ad9">IP_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>IP of the remote PC. </p>
 
 </div>
 </div>
@@ -324,7 +368,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ca4ac332d33ef868678ee688899961de.html">udp</a></li><li class="navelem"><a class="el" href="udp__protocol_8h.html">udp_protocol.h</a></li>
-    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
+    <li class="footer">Generated on Mon Jan 12 2015 20:42:55 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

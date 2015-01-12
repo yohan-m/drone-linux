@@ -1,5 +1,5 @@
 /**
- * \file usb_protocol.h
+ * \file usb_protocol_sync.h
  *
  * \brief Protocol level functions for USB communication
  *

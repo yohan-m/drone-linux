@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['searchmin',['searchMin',['../likelyhood_8c.html#a8a48df6df50196dd0d73590824e5eaa8',1,'searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ):&#160;likelyhood.c'],['../likelyhood_8h.html#a8a48df6df50196dd0d73590824e5eaa8',1,'searchMin(Likelyhood *array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ):&#160;likelyhood.c']]],
+  ['sendcalibhplan',['sendCalibHPlan',['../control_8c.html#a92f9a879ed9217aa26ba33463e8e6a1d',1,'sendCalibHPlan(int seqNum):&#160;control.c'],['../control_8h.html#a92f9a879ed9217aa26ba33463e8e6a1d',1,'sendCalibHPlan(int seqNum):&#160;control.c']]],
+  ['sendcalibmagn',['sendCalibMagn',['../control_8c.html#a3d8b7d60d7256035e513b234d038f90a',1,'sendCalibMagn(int seqNum):&#160;control.c'],['../control_8h.html#a3d8b7d60d7256035e513b234d038f90a',1,'sendCalibMagn(int seqNum):&#160;control.c']]],
+  ['sendemergency',['sendEmergency',['../control_8c.html#a34dc3853464a3bb5eef599883bf639d3',1,'sendEmergency(int seqNum):&#160;control.c'],['../control_8h.html#a34dc3853464a3bb5eef599883bf639d3',1,'sendEmergency(int seqNum):&#160;control.c']]],
+  ['sendframe',['sendFrame',['../udp__protocol_8c.html#ac4f21bdd8445a0285973b39d97c87816',1,'sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, char stateMission):&#160;udp_protocol.c'],['../udp__protocol_8h.html#ac4f21bdd8445a0285973b39d97c87816',1,'sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, char stateMission):&#160;udp_protocol.c']]],
+  ['sendland',['sendLand',['../control_8c.html#acd50b56ced648524656123b402068d64',1,'sendLand(int seqNum):&#160;control.c'],['../control_8h.html#acd50b56ced648524656123b402068d64',1,'sendLand(int seqNum):&#160;control.c']]],
+  ['sendmovement',['sendMovement',['../control_8c.html#a7e7326ea92e6aa88c94ad91099374181',1,'sendMovement(int seqNum, int flag, float frontBackTilt, float leftRightTilt, float verticalSpeed, float angularSpeed):&#160;control.c'],['../control_8h.html#a7e7326ea92e6aa88c94ad91099374181',1,'sendMovement(int seqNum, int flag, float frontBackTilt, float leftRightTilt, float verticalSpeed, float angularSpeed):&#160;control.c']]],
+  ['sendnav',['sendNav',['../navdata_local_8c.html#a0e5364e7aa16520af839c46f5273cca3',1,'sendNav(unsigned char *data, int size):&#160;navdataLocal.c'],['../navdata_local_8h.html#a0e5364e7aa16520af839c46f5273cca3',1,'sendNav(unsigned char *data, int size):&#160;navdataLocal.c']]],
+  ['sendnavdatainit',['sendNavDataInit',['../control_8c.html#ab72db8cdd599d90e619bf6dc249ebc09',1,'sendNavDataInit(int seqNum):&#160;control.c'],['../control_8h.html#ab72db8cdd599d90e619bf6dc249ebc09',1,'sendNavDataInit(int seqNum):&#160;control.c']]],
+  ['sendnavtopc',['sendNavToPC',['../navdata_to_p_c_8c.html#a598642ba2c01317ea93a9064cc64c54b',1,'sendNavToPC(unsigned char *data, int size):&#160;navdataToPC.c'],['../navdata_to_p_c_8h.html#a598642ba2c01317ea93a9064cc64c54b',1,'sendNavToPC(unsigned char *data, int size):&#160;navdataToPC.c']]],
+  ['sendresetwatchdog',['sendResetWatchdog',['../control_8c.html#a03a24efd16a77999c7eeb1bb4451bc91',1,'sendResetWatchdog(int seqNum):&#160;control.c'],['../control_8h.html#a03a24efd16a77999c7eeb1bb4451bc91',1,'sendResetWatchdog(int seqNum):&#160;control.c']]],
+  ['sendtakeoff',['sendTakeOff',['../control_8c.html#a4a515e59c8f70245c5f152b8ce3e1119',1,'sendTakeOff(int seqNum):&#160;control.c'],['../control_8h.html#a4a515e59c8f70245c5f152b8ce3e1119',1,'sendTakeOff(int seqNum):&#160;control.c']]],
+  ['seqnumber',['seqNumber',['../control_task_8h.html#a9f98268e5e2d3461a268b3f82d1f2476',1,'controlTask.h']]],
+  ['sequence',['sequence',['../struct_navdata.html#a0ab03ef2cc38198d3666a992a245fddf',1,'Navdata']]],
+  ['size',['size',['../struct_navdata_option.html#aaba88b24a21a6c70c895c0d55f4a69a0',1,'NavdataOption::size()'],['../struct_navdata_demo.html#aaba88b24a21a6c70c895c0d55f4a69a0',1,'NavdataDemo::size()']]],
+  ['sortarray',['sortArray',['../likelyhood_8c.html#aab30d6a8b319f97ea3976f188a9c567a',1,'sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ):&#160;likelyhood.c'],['../likelyhood_8h.html#aab30d6a8b319f97ea3976f188a9c567a',1,'sortArray(Likelyhood **array, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ):&#160;likelyhood.c']]],
+  ['speed_5famplitude',['SPEED_AMPLITUDE',['../control_task_8h.html#a475085685292217040eef8503c933ac3',1,'controlTask.h']]],
+  ['speedsound',['speedSound',['../hyperbolic_8h.html#ac7ff8a193fc3ba1b350089628cd3d625',1,'hyperbolic.h']]],
+  ['state',['state',['../structnavdata__processed.html#aa7d19a64557f5a05e14d248b5387787d',1,'navdata_processed']]],
+  ['state_5fmanual',['STATE_MANUAL',['../control_task_8h.html#af6606bced84f23958921ccc74024ce9d',1,'controlTask.h']]],
+  ['state_5fmission',['STATE_MISSION',['../control_task_8h.html#a88cb894423ca572dbfd81fa7ff2196b0',1,'controlTask.h']]],
+  ['struct_2eh',['struct.h',['../struct_8h.html',1,'']]]
+];

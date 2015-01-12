@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -90,7 +91,7 @@ $(document).ready(function(){initNavTree('usb__protocol__sync_8c.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -110,8 +111,8 @@ $(document).ready(function(){initNavTree('usb__protocol__sync_8c.html','');});
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aacfee0da355606333af1c6b9abc62346"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__protocol__sync_8c.html#aacfee0da355606333af1c6b9abc62346">readUSBFrameSync</a> (char *type, uint32_t *data0, uint32_t *data1, uint32_t *data2, uint32_t *data3)</td></tr>
-<tr class="separator:aacfee0da355606333af1c6b9abc62346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b340ad4bf4fdb80c21a461b3874c2d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__protocol__sync_8c.html#a79b340ad4bf4fdb80c21a461b3874c2d">readUSBFrameSync</a> (char *type, float *data0, float *data1, float *data2, float *data3, int32_t *rss0, int32_t *rss1, int32_t *rss2, int32_t *rss3)</td></tr>
+<tr class="separator:a79b340ad4bf4fdb80c21a461b3874c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a040bded0139e7538fe77d5a3d76eb083"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__protocol__sync_8c.html#a040bded0139e7538fe77d5a3d76eb083">initUSBCommunicationSync</a> ()</td></tr>
 <tr class="memdesc:a040bded0139e7538fe77d5a3d76eb083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the socket and the callback function for reception.  <a href="#a040bded0139e7538fe77d5a3d76eb083">More...</a><br/></td></tr>
 <tr class="separator:a040bded0139e7538fe77d5a3d76eb083"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,7 +158,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aacfee0da355606333af1c6b9abc62346"></a>
+<a class="anchor" id="a79b340ad4bf4fdb80c21a461b3874c2d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -170,26 +171,50 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>data0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>data1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>data2</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
-          <td class="paramname"><em>data3</em>&#160;</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>data3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>rss0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>rss1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>rss2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>rss3</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -207,7 +232,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_74712b2155551d19e5fc375f21fbf06e.html">usb</a></li><li class="navelem"><a class="el" href="usb__protocol__sync_8c.html">usb_protocol_sync.c</a></li>
-    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
+    <li class="footer">Generated on Mon Jan 12 2015 20:42:55 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['color',['color',['../leds__motors__manager_8h.html#a37dbdc30935031c05304482e1be89d8f',1,'leds_motors_manager.h']]]
+  ['ctrl_5fstates',['ctrl_states',['../navdata__manager_8h.html#a4b0095fb0b500f9faf83159197f26628',1,'navdata_manager.h']]]
 ];

@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -90,7 +91,7 @@ $(document).ready(function(){initNavTree('udp__async__driver_8c.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -110,42 +111,49 @@ $(document).ready(function(){initNavTree('udp__async__driver_8c.html','');});
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad82d1fbcc134cf92ff52ff182b9e7179"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#ad82d1fbcc134cf92ff52ff182b9e7179">udp_async_driver_init</a> (int local_port, int remote_port, char *remote_addr)</td></tr>
-<tr class="memdesc:ad82d1fbcc134cf92ff52ff182b9e7179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the socket.  <a href="#ad82d1fbcc134cf92ff52ff182b9e7179">More...</a><br/></td></tr>
-<tr class="separator:ad82d1fbcc134cf92ff52ff182b9e7179"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16df52bd471f5272d1d42cfa98d20ebd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#a16df52bd471f5272d1d42cfa98d20ebd">udp_async_driver_close</a> ()</td></tr>
-<tr class="memdesc:a16df52bd471f5272d1d42cfa98d20ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the socket.  <a href="#a16df52bd471f5272d1d42cfa98d20ebd">More...</a><br/></td></tr>
-<tr class="separator:a16df52bd471f5272d1d42cfa98d20ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9593e43a9ce48b4c7c05cd5b0f1c77cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#a9593e43a9ce48b4c7c05cd5b0f1c77cc">udp_async_driver_enable_read</a> (<a class="el" href="udp__async__driver_8h.html#ab3ea8cdebbc98366344ac75baf0ef9db">udp_function</a> callback_receive_fct, int max_packet_size)</td></tr>
-<tr class="memdesc:a9593e43a9ce48b4c7c05cd5b0f1c77cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to read via UDP.  <a href="#a9593e43a9ce48b4c7c05cd5b0f1c77cc">More...</a><br/></td></tr>
-<tr class="separator:a9593e43a9ce48b4c7c05cd5b0f1c77cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12f1c8395df645afbf7d5e0d542129a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#a12f1c8395df645afbf7d5e0d542129a3">udp_async_driver_write</a> (unsigned char *data, int size)</td></tr>
-<tr class="memdesc:a12f1c8395df645afbf7d5e0d542129a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data over UDP.  <a href="#a12f1c8395df645afbf7d5e0d542129a3">More...</a><br/></td></tr>
-<tr class="separator:a12f1c8395df645afbf7d5e0d542129a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2103deca7046875198b4f7185bfa3a8f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#a2103deca7046875198b4f7185bfa3a8f">udp_async_driver_init</a> (int local_port, int remote_port, char *remote_addr, int *async_socket_fd)</td></tr>
+<tr class="memdesc:a2103deca7046875198b4f7185bfa3a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the socket.  <a href="#a2103deca7046875198b4f7185bfa3a8f">More...</a><br/></td></tr>
+<tr class="separator:a2103deca7046875198b4f7185bfa3a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fff2eebb37b575ba4604a0b673c4cc9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#a7fff2eebb37b575ba4604a0b673c4cc9">udp_async_driver_close</a> (int async_socket_fd)</td></tr>
+<tr class="memdesc:a7fff2eebb37b575ba4604a0b673c4cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the socket.  <a href="#a7fff2eebb37b575ba4604a0b673c4cc9">More...</a><br/></td></tr>
+<tr class="separator:a7fff2eebb37b575ba4604a0b673c4cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4623815711d22668d0080e624dea0e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#aa4623815711d22668d0080e624dea0e7">udp_async_driver_enable_read</a> (<a class="el" href="udp__async__driver_8h.html#ab3ea8cdebbc98366344ac75baf0ef9db">udp_function</a> callback_receive_fct, int max_packet_size, int async_socket_fd)</td></tr>
+<tr class="memdesc:aa4623815711d22668d0080e624dea0e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to read via UDP.  <a href="#aa4623815711d22668d0080e624dea0e7">More...</a><br/></td></tr>
+<tr class="separator:aa4623815711d22668d0080e624dea0e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fae7ead8293cb853d9cd0dc35bcfe68"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#a6fae7ead8293cb853d9cd0dc35bcfe68">udp_async_driver_write</a> (unsigned char *data, int size, int async_socket_fd)</td></tr>
+<tr class="memdesc:a6fae7ead8293cb853d9cd0dc35bcfe68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data over UDP.  <a href="#a6fae7ead8293cb853d9cd0dc35bcfe68">More...</a><br/></td></tr>
+<tr class="separator:a6fae7ead8293cb853d9cd0dc35bcfe68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29b0bb5cd353909cbd1514d48ced1b49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="udp__async__driver_8c.html#a29b0bb5cd353909cbd1514d48ced1b49">udp_async_driver_handler</a> (int sig)</td></tr>
 <tr class="memdesc:a29b0bb5cd353909cbd1514d48ced1b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler called when the driver receive data.  <a href="#a29b0bb5cd353909cbd1514d48ced1b49">More...</a><br/></td></tr>
 <tr class="separator:a29b0bb5cd353909cbd1514d48ced1b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a16df52bd471f5272d1d42cfa98d20ebd"></a>
+<a class="anchor" id="a7fff2eebb37b575ba4604a0b673c4cc9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int udp_async_driver_close </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>async_socket_fd</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Close the socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">async_socket_fd</td><td>file descriptor of the socket to close </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>0 for a successfull call. A negative value on error. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a9593e43a9ce48b4c7c05cd5b0f1c77cc"></a>
+<a class="anchor" id="aa4623815711d22668d0080e624dea0e7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -159,7 +167,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>max_packet_size</em>&#160;</td>
+          <td class="paramname"><em>max_packet_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>async_socket_fd</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -174,6 +188,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">callback_receive_fct</td><td>Function called when the driver read data. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">max_packet_size</td><td>Max packet size to read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">async_socket_fd</td><td>file descriptor on which reading should be done </td></tr>
   </table>
   </dd>
 </dl>
@@ -206,7 +221,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad82d1fbcc134cf92ff52ff182b9e7179"></a>
+<a class="anchor" id="a2103deca7046875198b4f7185bfa3a8f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -226,7 +241,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>remote_addr</em>&#160;</td>
+          <td class="paramname"><em>remote_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>async_socket_fd</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -243,6 +264,7 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">local_port</td><td>Local port used to receive data. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">remote_port</td><td>remote port used to send data. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">remote_addr</td><td>remote IP address to send/receive data. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">async_socket_fd</td><td>created file descriptor </td></tr>
   </table>
   </dd>
 </dl>
@@ -250,7 +272,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a12f1c8395df645afbf7d5e0d542129a3"></a>
+<a class="anchor" id="a6fae7ead8293cb853d9cd0dc35bcfe68"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -264,7 +286,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>async_socket_fd</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -279,6 +307,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Buffer to send. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of the buffer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">async_socket_fd</td><td>file descriptor on which data should be sent </td></tr>
   </table>
   </dd>
 </dl>
@@ -292,7 +321,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ca4ac332d33ef868678ee688899961de.html">udp</a></li><li class="navelem"><a class="el" href="udp__async__driver_8c.html">udp_async_driver.c</a></li>
-    <li class="footer">Generated on Fri Nov 14 2014 14:07:56 for Drone localization by
+    <li class="footer">Generated on Mon Jan 12 2015 20:42:55 for Drone localization by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

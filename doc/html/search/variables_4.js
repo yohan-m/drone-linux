@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remote_5fsockaddr',['remote_sockaddr',['../udp__driver_8h.html#a597e35b4befb285ebdaf98d099b56f7c',1,'udp_driver.h']]]
+  ['emergencycalled',['emergencyCalled',['../control_task_8h.html#a957a90bf5380e9d69aad79e96446c6af',1,'controlTask.h']]]
 ];

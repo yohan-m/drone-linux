@@ -6,5 +6,7 @@ var udp__protocol_8h =
     [ "closeCommunication", "udp__protocol_8h.html#a9774ba52c91c5ee43e94d8a8d0ceda64", null ],
     [ "initCommunication", "udp__protocol_8h.html#a855132e205585c42908692aa42496bc1", null ],
     [ "readFrame", "udp__protocol_8h.html#a15d5b506fa3329c66f278f1abd08d1c8", null ],
-    [ "sendFrame", "udp__protocol_8h.html#ad12df1ad776e07f97712be22ebac40f3", null ]
+    [ "sendFrame", "udp__protocol_8h.html#ac4f21bdd8445a0285973b39d97c87816", null ],
+    [ "fd_protocol", "udp__protocol_8h.html#a0513dc9bccc20c1833d1b2d11bc3cbe3", null ],
+    [ "IP", "udp__protocol_8h.html#a266c687be5a3c93444079dce45b842e2", null ]
 ];

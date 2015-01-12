@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['max_5fdiscovery_5fwait_5ftime',['MAX_DISCOVERY_WAIT_TIME',['../udp__driver__discover_8h.html#ac73e208ecb0da873e4f02f70010821d3',1,'udp_driver_discover.h']]],
-  ['max_5fpacket_5fsize',['MAX_PACKET_SIZE',['../udp__protocol_8h.html#a879456c3b8e2853f7044d764e9c180d4',1,'udp_protocol.h']]]
+  ['divider_5fraw_5ftimes',['DIVIDER_RAW_TIMES',['../usb__protocol__sync_8h.html#ad3e3622160694cfaf6979af3422973b5',1,'usb_protocol_sync.h']]]
 ];

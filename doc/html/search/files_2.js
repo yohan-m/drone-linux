@@ -1,25 +1,5 @@
 var searchData=
 [
-  ['udp_5fasync_5fdriver_2ec',['udp_async_driver.c',['../udp__async__driver_8c.html',1,'']]],
-  ['udp_5fasync_5fdriver_2eh',['udp_async_driver.h',['../udp__async__driver_8h.html',1,'']]],
-  ['udp_5fasync_5ftest_2ec',['udp_async_test.c',['../udp__async__test_8c.html',1,'']]],
-  ['udp_5fasync_5ftest_2eh',['udp_async_test.h',['../udp__async__test_8h.html',1,'']]],
-  ['udp_5fdisco_5ftest_2ec',['udp_disco_test.c',['../udp__disco__test_8c.html',1,'']]],
-  ['udp_5fdisco_5ftest_2eh',['udp_disco_test.h',['../udp__disco__test_8h.html',1,'']]],
-  ['udp_5fdriver_5fdiscover_2ec',['udp_driver_discover.c',['../udp__driver__discover_8c.html',1,'']]],
-  ['udp_5fdriver_5fdiscover_2eh',['udp_driver_discover.h',['../udp__driver__discover_8h.html',1,'']]],
-  ['udp_5fmanager_5ftest_2ec',['udp_manager_test.c',['../udp__manager__test_8c.html',1,'']]],
-  ['udp_5fmanager_5ftest_2eh',['udp_manager_test.h',['../udp__manager__test_8h.html',1,'']]],
-  ['udp_5fprotocol_2ec',['udp_protocol.c',['../udp__protocol_8c.html',1,'']]],
-  ['udp_5fprotocol_2eh',['udp_protocol.h',['../udp__protocol_8h.html',1,'']]],
-  ['udp_5fprotocol_5ftest_2ec',['udp_protocol_test.c',['../udp__protocol__test_8c.html',1,'']]],
-  ['udp_5fprotocol_5ftest_2eh',['udp_protocol_test.h',['../udp__protocol__test_8h.html',1,'']]],
-  ['usb_5fdriver_2ec',['usb_driver.c',['../usb__driver_8c.html',1,'']]],
-  ['usb_5fdriver_2eh',['usb_driver.h',['../usb__driver_8h.html',1,'']]],
-  ['usb_5fprotocol_5fsync_2ec',['usb_protocol_sync.c',['../usb__protocol__sync_8c.html',1,'']]],
-  ['usb_5fprotocol_5fsync_2eh',['usb_protocol_sync.h',['../usb__protocol__sync_8h.html',1,'']]],
-  ['usb_5fprotocol_5ftest_2ec',['usb_protocol_test.c',['../usb__protocol__test_8c.html',1,'']]],
-  ['usb_5fprotocol_5ftest_2eh',['usb_protocol_test.h',['../usb__protocol__test_8h.html',1,'']]],
-  ['usb_5ftest_2ec',['usb_test.c',['../usb__test_8c.html',1,'']]],
-  ['usb_5ftest_2eh',['usb_test.h',['../usb__test_8h.html',1,'']]]
+  ['hyperbolic_2ec',['hyperbolic.c',['../hyperbolic_8c.html',1,'']]],
+  ['hyperbolic_2eh',['hyperbolic.h',['../hyperbolic_8h.html',1,'']]]
 ];

@@ -28,7 +28,6 @@ Likelyhood * createArrayLikelyhood(Tdoa *arrayTdoa1, Tdoa *arrayTdoa2, Tdoa *arr
 	int j =0;
 	for (i = indStart ; i<indFinish ; i++)
 	{
-		//arrayLikelyhood[i].likelyhood = fabs(arrayTdoa1[i].tdoa - tdoa1) + fabs(arrayTdoa2[i].tdoa - tdoa2) + fabs(arrayTdoa3[i].tdoa - tdoa3) ;
 		if(toIgnore==1){
 			arrayLikelyhood[j].likelyhood = fabs(arrayTdoa2[i].tdoa - tdoa2) + fabs(arrayTdoa3[i].tdoa - tdoa3) ;
 		}
@@ -112,18 +111,13 @@ void displayArray(Tdoa *array, int size)
 
 void computePosition(float *x, float *y, float *z, float * tabTdoa, int32_t * tabRss, Tdoa *arrayTdoa12, Tdoa *arrayTdoa13, Tdoa *arrayTdoa14, Tdoa *arrayTdoa21, Tdoa *arrayTdoa23, Tdoa *arrayTdoa24, Tdoa *arrayTdoa31, Tdoa *arrayTdoa32, Tdoa *arrayTdoa34, Tdoa *arrayTdoa41, Tdoa *arrayTdoa42, Tdoa *arrayTdoa43, int size, int nbZ, int nbPtsPlan, float cubeSize, float realZ)
 {
-	//float tdoa12 = 0.0, tdoa13 = 0.0, tdoa14 = 0.0 ;
 	Likelyhood *arrayLikelyhood = NULL ;
 
-	/*tdoa12 = (float)(tdoa2 - tdoa1) * 1.0/128.0;
-	tdoa13 = (float)(tdoa3 - tdoa1) * 1.0/128.0;
-	tdoa14 = (float)(tdoa4 - tdoa1) * 1.0/128.0;*/
-	
 	// calculating necessary work interval
 	int indStart = 0, indFinish = 0;
 	int indZMoy = getNearestZ(nbZ, realZ,cubeSize);
 	indStart = (indZMoy-1)*nbPtsPlan;
-	indFinish = indStart+3*nbPtsPlan-1;//(indZMoy+1)*nbPtsPlan-1;
+	indFinish = indStart+3*nbPtsPlan-1;
 	// searching for min rss
 	int indMinRss = -1, minRss = 100000000, indMaxRss = -1, maxRss = -1, i;
 	for(i=0;i<4;i++){
@@ -136,25 +130,6 @@ void computePosition(float *x, float *y, float *z, float * tabTdoa, int32_t * ta
 			maxRss = tabRss[i];
 		}
 	}
-	//printf("indmin=%d\tindmax=%d\n",indMinRss+1,indMaxRss+1);
-	for(i=0;i<4;i++){
-		//printf("tdoa[%d]=%f\n",i+1,tabTdoa[i]);
-	}
-	
-	/*if(tdoa2!=0)
-		tdoa12 = (float)(tdoa2 - tdoa1) * 1.0/2.0;
-	else
-		tdoa12 = 0.0;
-	if(tdoa3!=0)
-		tdoa13 = (float)(tdoa3 - tdoa1) * 1.0/2.0;
-	else
-		tdoa12 = 0.0;
-	if(tdoa4!=0)
-		tdoa14 = (float)(tdoa4 - tdoa1) * 1.0/2.0;
-	else
-		tdoa12 = 0.0;*/
-
-	//displayArray(arrayTdoa1, size) ;
 
 	// creating likelihood array according to which reference was chosen (ref = rss max)
 	switch(indMaxRss){
@@ -179,19 +154,13 @@ void computePosition(float *x, float *y, float *z, float * tabTdoa, int32_t * ta
 		default:
 			break;
 	}
-	//arrayLikelyhood = createArrayLikelyhood(arrayTdoa12, arrayTdoa13, arrayTdoa14, size, tdoa12, tdoa13, tdoa14) ;
 
-	/*int indMin = sortArray(&arrayLikelyhood, size, nbZ, nbPtsPlan, cubeSize, realZ) ;
-
-	*x = arrayLikelyhood[indMin].position[0] ;
-	*y = arrayLikelyhood[indMin].position[1] ;
-	*z = realZ;//arrayLikelyhood[indMin].position[2] ;*/
 
 	Likelyhood minLikelyhood = searchMin(arrayLikelyhood, size, nbZ, nbPtsPlan, cubeSize, realZ) ;
 	free(arrayLikelyhood);
 	*x = minLikelyhood.position[0] ;
 	*y = minLikelyhood.position[1] ;
-	*z = realZ;//minLikelyhood.position[2] ;
+	*z = realZ;
 }
 
 

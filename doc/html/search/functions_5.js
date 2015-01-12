@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sendframe',['sendFrame',['../udp__protocol_8c.html#ad12df1ad776e07f97712be22ebac40f3',1,'sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, uint32_t data4):&#160;udp_protocol.c'],['../udp__protocol_8h.html#ad12df1ad776e07f97712be22ebac40f3',1,'sendFrame(char type, uint32_t data1, uint32_t data2, uint32_t data3, uint32_t data4):&#160;udp_protocol.c']]]
+  ['land',['land',['../control_task_8c.html#a3c29060e61e5ef8929d29158353dfa7e',1,'land():&#160;controlTask.c'],['../control_task_8h.html#a3c29060e61e5ef8929d29158353dfa7e',1,'land():&#160;controlTask.c']]],
+  ['low_5fbattery',['low_battery',['../navdata__manager_8c.html#a16f8a310fbaa6a9296869d5b30ed256a',1,'low_battery():&#160;navdata_manager.c'],['../navdata__manager_8h.html#a16f8a310fbaa6a9296869d5b30ed256a',1,'low_battery():&#160;navdata_manager.c']]]
 ];
